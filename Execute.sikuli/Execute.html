@@ -1,0 +1,132 @@
+
+<html>
+   <head>
+      <style type="text/css">
+         .sikuli-code {
+            font-size: 20px;
+            font-family: "Osaka-mono", Monospace;
+            line-height: 1.5em;
+            display:table-cell;
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            width: 99%;   /* remove horizontal scroll-bar when viewing in IE7 */
+         }
+         .sikuli-code img {
+            vertical-align: middle;
+            margin: 2px;
+            border: 1px solid #ccc;
+            padding: 2px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-box-shadow: 1px 1px 1px gray;
+            -webkit-box-shadow: 1px 1px 2px gray;
+         }
+         .kw {
+            color: blue;
+         }
+         .skw {
+            color: rgb(63, 127, 127);
+         }
+
+         .str {
+            color: rgb(128, 0, 0);
+         }
+
+         .dig {
+            color: rgb(128, 64, 0);
+         }
+
+         .cmt {
+            color: rgb(200, 0, 200);
+         }
+
+         h2 {
+            display: inline;
+            font-weight: normal;
+         }
+
+         .info {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: none;
+         }
+
+         a {
+            color: #9D2900;
+         }
+
+         body {
+            font-family: "Trebuchet MS", Arial, Sans-Serif;
+         }
+
+      </style>
+   </head>
+<body>
+<div class="info">
+<h2>Execute.sikuli</h2> <a href="Execute.zip">(Download this script)</a>
+</div>
+<pre class="sikuli-code">
+<span class="kw">import</span> unittest
+<span class="kw">import</span> os
+<span class="kw">import</span> os.path
+<span class="kw">import</span> json
+<span class="kw">import</span> time
+<span class="kw">from</span> AlternateAgentProfile <span class="kw">import</span> *
+<span class="kw">from</span> AgentProfile1 <span class="kw">import</span> *
+<span class="kw">from</span> BranchProfile <span class="kw">import</span> *
+<span class="kw">from</span> Content <span class="kw">import</span> *
+<span class="kw">from</span> FindUsBar <span class="kw">import</span> *
+<span class="kw">from</span> FindUsPage <span class="kw">import</span> *
+<span class="kw">from</span> FooterLinks <span class="kw">import</span> *
+<span class="kw">from</span> QuickSearch <span class="kw">import</span>*
+<span class="kw">from</span> WebsiteLoginComponent <span class="kw">import</span>*
+<span class="kw">from</span> SavedProperties <span class="kw">import</span>*
+<span class="kw">from</span> GlobalMobileSignIn <span class="kw">import</span>*
+<span class="kw">from</span> PasswordReset <span class="kw">import</span>*
+<span class="kw">import</span> HTMLTestRunner
+reload(HTMLTestRunner)
+
+timestr = time.strftime(<span class="str">"%d%m%Y%H%M%S"</span>)<span class="cmt">#creates a unique username for testing</span>
+configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
+<span class="kw">with</span> open(configPath, <span class="str">"r"</span>) <span class="kw">as</span> config:
+    data = json.load(config)
+tmp = data[<span class="str">"username"</span>]
+data[<span class="str">"username"</span>] = timestr + <span class="str">"@test.com"</span>
+<span class="kw">with</span> open(configPath, <span class="str">"w"</span>) <span class="kw">as</span> config:
+    config.write(json.dumps(data))
+
+dir=<span class="str">'C:\SikuliScripts\Results'</span>
+outfile=file(os.path.join(dir,<span class="str">"Report.html"</span>), <span class="str">"wb"</span>)
+
+
+suite=unittest.TestLoader().loadTestsFromTestCase(AlternateAgentProfile) <span class="cmt"># setup new test suite</span>
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(AgentProfile1)) <span class="cmt"># add additional test cases</span>
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(BranchProfile))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(Content))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(FindUsBar))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(FindUsPage))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(FooterLinks))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(QuickSearch))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(WebsiteLoginComponent))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(SavedProperties))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(PasswordReset))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(GlobalMobileSignIn))
+
+
+
+<span class="cmt">#timestr = time.strftime("%Y%m%d-%H%M%S")</span>
+<span class="cmt">#fileName = timestr + "Report.html"</span>
+<span class="cmt">#outfile = open("C:\SikuliScripts\Results\\" + fileName, "wb")</span>
+<span class="cmt">#outfile = open("C:\SikuliScripts\Results\Report.html", "wb")</span>
+
+runner = HTMLTestRunner.HTMLTestRunner(stream = outfile, title = <span class="str">'Barfoot.co.nz Regression'</span>, description = <span class="str">'Test barfoot.co.nz site'</span>)
+<span class="cmt">#runner = HTMLTestRunner.HTMLTestRunner(stream = outfile, verbosity=2, dirTestScreenshots = 'C:\SikuliScripts\Results')</span>
+runner.run(suite)
+outfile.close()
+</pre>
+</body>
+</html>

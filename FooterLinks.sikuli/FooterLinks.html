@@ -1,0 +1,159 @@
+
+<html>
+   <head>
+      <style type="text/css">
+         .sikuli-code {
+            font-size: 20px;
+            font-family: "Osaka-mono", Monospace;
+            line-height: 1.5em;
+            display:table-cell;
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            width: 99%;   /* remove horizontal scroll-bar when viewing in IE7 */
+         }
+         .sikuli-code img {
+            vertical-align: middle;
+            margin: 2px;
+            border: 1px solid #ccc;
+            padding: 2px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-box-shadow: 1px 1px 1px gray;
+            -webkit-box-shadow: 1px 1px 2px gray;
+         }
+         .kw {
+            color: blue;
+         }
+         .skw {
+            color: rgb(63, 127, 127);
+         }
+
+         .str {
+            color: rgb(128, 0, 0);
+         }
+
+         .dig {
+            color: rgb(128, 64, 0);
+         }
+
+         .cmt {
+            color: rgb(200, 0, 200);
+         }
+
+         h2 {
+            display: inline;
+            font-weight: normal;
+         }
+
+         .info {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: none;
+         }
+
+         a {
+            color: #9D2900;
+         }
+
+         body {
+            font-family: "Trebuchet MS", Arial, Sans-Serif;
+         }
+
+      </style>
+   </head>
+<body>
+<div class="info">
+<h2>FooterLinks.sikuli</h2> <a href="FooterLinks.zip">(Download this script)</a>
+</div>
+<pre class="sikuli-code">
+<span class="kw">from</span> sikuli <span class="kw">import</span>*
+<span class="kw">import</span> unittest
+<span class="kw">import</span> json
+
+
+<span class="kw">class</span> FooterLinks(unittest.TestCase):
+    <span class="kw">def</span> setUp(self):
+        configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
+        config = json.loads(open(configPath).read())
+        app = App(config[<span class="str">"application"</span>])
+        openApp(app)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="skw">type</span>(<span class="str">"l"</span>, KeyModifier.CTRL)
+        <span class="skw">type</span>(config[<span class="str">"url"</span>] + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">find</span>(<img src="barfootLogo-1.png" />)
+        wheel(<img src="MainPage_FindUs.png" />, WHEEL_DOWN, <span class="dig">10</span>)
+
+    <span class="kw">def</span> tearDown(self):
+        <span class="skw">click</span>(Pattern(<img src="closeButtonChrome-1.png" />).targetOffset(<span class="dig">24</span>,-<span class="dig">2</span>))
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+
+    <span class="kw">def</span> test_FooterAuctions(self):
+        <span class="skw">click</span>(<img src="MainPage_Footer_Auctions.png" />)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="kw">if</span> exists(Pattern(<img src="ThisWkAuctionPage_Title.png" />).exact()):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
+
+    <span class="kw">def</span> test_FooterAuctionVenues(self):
+        <span class="skw">click</span>(<img src="MainPage_Footer_AuctionsVenues.png" />)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="kw">if</span> exists(Pattern(<img src="AuctionVenuesPage_Title.png" />).exact()):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
+
+    <span class="kw">def</span> test_FooterMortgageeSales(self):
+        <span class="skw">click</span>(<img src="MainPage_Footer_MortgageeSales.png" />)
+        <span class="cmt">#find(Pattern("PropertySearch_MortgageeSales_CheckBox.png").exact())</span>
+
+        <span class="kw">if</span> exists(Pattern(<img src="MainPageSearch_MortgageeSales_Title.png" />).exact()):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
+
+    <span class="kw">def</span> test_FooterMortgageeSales(self):
+        <span class="skw">click</span>(<img src="MainPage_Footer_OpenHomes.png" />)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="kw">if</span> exists(Pattern(<img src="PropertySearch_OpenHomes_CheckBox.png" />).exact()):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
+
+    <span class="kw">def</span> test_FooterSearchSoldProperties(self):
+        <span class="skw">click</span>(Pattern(<img src="MainPage_Footer_SearchSoldProperties.png" />).targetOffset(-<span class="dig">3</span>,<span class="dig">1</span>))
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="skw">find</span>(Pattern(<img src="SearchSoldProperties_SoldSticker.png" />).exact())
+        <span class="kw">if</span> exists(Pattern(<img src="SoldPropertyPage_PropertyTitle.png" />).similar(<span class="dig">0.91</span>)):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
+
+
+    <span class="kw">def</span> test_MobileSite(self):
+        <span class="skw">click</span>(<img src="MainPage_Footer_MobileSite.png" />)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+
+        <span class="kw">if</span> exists(Pattern(<img src="MobileSite_HamburgerButton.png" />).exact()):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
+        <span class="skw">click</span>(<img src="MobileSite_DesktopSite_Button.png" />)
+        <span class="skw">wait</span>(<span class="dig">4</span>)
+
+
+    <span class="kw">def</span> test_AppStoreLink(self):
+        <span class="skw">click</span>(<img src="MainPage_DownloadApp.png" />)
+        <span class="skw">wait</span>(<span class="dig">3</span>)
+        <span class="kw">if</span> exists(Pattern(<img src="AppStore_BarfootAppLogo.png" />).exact()):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
+</pre>
+</body>
+</html>

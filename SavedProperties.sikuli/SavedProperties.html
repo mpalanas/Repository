@@ -1,0 +1,188 @@
+
+<html>
+   <head>
+      <style type="text/css">
+         .sikuli-code {
+            font-size: 20px;
+            font-family: "Osaka-mono", Monospace;
+            line-height: 1.5em;
+            display:table-cell;
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            width: 99%;   /* remove horizontal scroll-bar when viewing in IE7 */
+         }
+         .sikuli-code img {
+            vertical-align: middle;
+            margin: 2px;
+            border: 1px solid #ccc;
+            padding: 2px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-box-shadow: 1px 1px 1px gray;
+            -webkit-box-shadow: 1px 1px 2px gray;
+         }
+         .kw {
+            color: blue;
+         }
+         .skw {
+            color: rgb(63, 127, 127);
+         }
+
+         .str {
+            color: rgb(128, 0, 0);
+         }
+
+         .dig {
+            color: rgb(128, 64, 0);
+         }
+
+         .cmt {
+            color: rgb(200, 0, 200);
+         }
+
+         h2 {
+            display: inline;
+            font-weight: normal;
+         }
+
+         .info {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: none;
+         }
+
+         a {
+            color: #9D2900;
+         }
+
+         body {
+            font-family: "Trebuchet MS", Arial, Sans-Serif;
+         }
+
+      </style>
+   </head>
+<body>
+<div class="info">
+<h2>SavedProperties.sikuli</h2> <a href="SavedProperties.zip">(Download this script)</a>
+</div>
+<pre class="sikuli-code">
+<span class="kw">from</span> sikuli <span class="kw">import</span>*
+<span class="kw">import</span> unittest
+<span class="kw">import</span> json
+
+
+
+<span class="kw">class</span> SavedProperties(unittest.TestCase):
+
+    <span class="kw">def</span> setUp(self):
+        configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
+        config = json.loads(open(configPath).read())
+        app = App(config[<span class="str">"application"</span>])
+        openApp(app)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="skw">type</span>(<span class="str">"l"</span>, KeyModifier.CTRL)
+        <span class="skw">type</span>(config[<span class="str">"url"</span>] + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">find</span>(<img src="barfootLogo-1.png" />)
+        <span class="skw">click</span>(<img src="SigninPage_SignIn_Button.png" />)
+        <span class="skw">click</span>(Pattern(<img src="SignInPopUp_emailAddress_field.png" />).targetOffset(-<span class="dig">84</span>,<span class="dig">48</span>))
+        <span class="skw">type</span>(config[<span class="str">"username"</span>])
+        <span class="skw">click</span>(Pattern(<img src="SignInPopUp_Password_field.png" />).targetOffset(-<span class="dig">91</span>,-<span class="dig">16</span>))
+        <span class="skw">type</span>(config[<span class="str">"password"</span>])
+        <span class="skw">click</span>(<img src="SignInPopUp_SignIn_Button.png" />)
+        <span class="skw">wait</span>(<span class="dig">3</span>)
+        <span class="skw">find</span>(<img src="UsernameMyAccount.png" />)
+
+    <span class="kw">def</span> tearDown(self):
+        <span class="skw">type</span>(Key.BACKSPACE)
+        <span class="skw">click</span>(<img src="SavedPropertiesPage_Remove_Button.png" />)
+        <span class="skw">type</span>(Key.F5)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="skw">click</span>(Pattern(<img src="UsernameMyAccount-1.png" />).targetOffset(<span class="dig">81</span>,-<span class="dig">2</span>))
+        <span class="skw">click</span>(<img src="MyAccountDropdown_SignOut_Button.png" />)
+        <span class="skw">wait</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(Pattern(<img src="closeButtonChrome.png" />).targetOffset(<span class="dig">24</span>,-<span class="dig">2</span>))
+
+
+    <span class="kw">def</span> test_CommercialSaveProperty(self):
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">click</span>(<img src="FrontPage_Commercial_Button.png" />)
+        <span class="skw">click</span>(<img src="FrontPage_Search_Button-1.png" />)
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">find</span>(<img src="FrontPage_CommercialFacet.png" />)
+        <span class="skw">click</span>(<img src="FrontPageSearchResults_SaveProperty_Button-1.png" />)
+        <span class="skw">find</span>(<img src="SaveProperty_Check_Button-1.png" />)
+        <span class="skw">click</span>(Pattern(<img src="UsernameMyAccount-2.png" />).targetOffset(<span class="dig">86</span>,-<span class="dig">5</span>))
+        <span class="skw">click</span>(<img src="AccountDropdown_Profile_Button-1.png" />)
+        <span class="skw">click</span>(<img src="ProfilePage_SavedProperties_Button-1.png" />)
+        <span class="skw">find</span>(<img src="SavedPropertiesPage_MoreDetailsRemove_Button-1.png" />)
+        <span class="skw">click</span>(<img src="SavedPropertiesPage_MoreDetails_Button.png" />)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="kw">if</span> exists(<img src="PropertyDetailPage_SavedProperty_Button-1.png" />):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
+
+    <span class="kw">def</span> test_ResidentialSavedProperties(self):
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">click</span>(<img src="FrontPage_Buy_Button.png" />)
+        <span class="skw">click</span>(<img src="FrontPage_Search_Button.png" />)
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">find</span>(<img src="1447889264312.png" />)
+        <span class="skw">click</span>(<img src="FrontPageSearchResults_SaveProperty_Button.png" />)
+        <span class="skw">find</span>(<img src="SaveProperty_Check_Button.png" />)
+        <span class="skw">click</span>(Pattern(<img src="UsernameMyAccount-3.png" />).targetOffset(<span class="dig">85</span>,-<span class="dig">5</span>))
+        <span class="skw">click</span>(<img src="AccountDropdown_Profile_Button.png" />)
+        <span class="skw">click</span>(<img src="ProfilePage_SavedProperties_Button.png" />)
+        <span class="skw">find</span>(<img src="SavedPropertiesPage_MoreDetailsRemove_Button.png" />)
+        <span class="skw">click</span>(<img src="SavedPropertiesPage_MoreDetails_Button-2.png" />)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="kw">if</span> exists(<img src="PropertyDetailPage_SavedProperty_Button-1.png" />):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
+
+    <span class="kw">def</span> test_RuralSavedProperties(self):
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">click</span>(<img src="1447889176530.png" />)
+        <span class="skw">click</span>(<img src="1447882327038.png" />)
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">find</span>(<img src="1447889247040.png" />)
+        <span class="skw">click</span>(<img src="1447888350266.png" />)
+        <span class="skw">find</span>(<img src="1447888392634.png" />)
+        <span class="skw">click</span>(<img src="1447799262013.png" />)
+        <span class="skw">click</span>(<img src="1447884837635.png" />)
+        <span class="skw">click</span>(<img src="1447888701806.png" />)
+        <span class="skw">find</span>(<img src="1447888720119.png" />)
+        <span class="skw">click</span>(<img src="1447888759150.png" />)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="kw">if</span> exists(<img src="PropertyDetailPage_SavedProperty_Button-1.png" />):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
+
+    <span class="kw">def</span> test_RentalSavedProperties(self):
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">click</span>(<img src="1447889347592.png" />)
+        <span class="skw">click</span>(<img src="1447882327038-1.png" />)
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">find</span>(<img src="1447889368574.png" />)
+        <span class="skw">click</span>(<img src="1447888350266-1.png" />)
+        <span class="skw">find</span>(<img src="1447888392634-1.png" />)
+        <span class="skw">click</span>(<img src="1447799262013-1.png" />)
+        <span class="skw">click</span>(<img src="1447884837635-1.png" />)
+        <span class="skw">click</span>(<img src="1447888701806-1.png" />)
+        <span class="skw">find</span>(<img src="1447888720119-1.png" />)
+        <span class="skw">click</span>(<img src="1447888759150-1.png" />)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="kw">if</span> exists(<img src="PropertyDetailPage_SavedProperty_Button-1.png" />):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
+</pre>
+</body>
+</html>

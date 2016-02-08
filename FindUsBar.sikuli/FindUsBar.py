@@ -12,35 +12,39 @@ class FindUsBar(unittest.TestCase):
         type("l", KeyModifier.CTRL)
         type(config["url"] + Key.ENTER)
         wait(2)
-        find("barfootLogo.png")
-        wheel("barfootLogo-1.png", WHEEL_DOWN, 3)
 
     def tearDown(self):
 
-        click(Pattern("closeButtonChrome-1.png").targetOffset(24,0))
+        configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
+        config = json.loads(open(configPath).read())
+        appTaskName = config["appTaskName"]
+        os.system("taskkill /f /im " +appTaskName)
            
         wait(2)
 
 
     def test_FindABranch(self):
-        click(Pattern("findUs-2.png").targetOffset(-86,38))
-        if exists(Pattern("MainPage_FindABranch.png").exact()):
+        click(Pattern("findUs-2.png").targetOffset(-90,37))
+        if exists(Pattern("MainPage_FindABranch.png").similar(0.89)):
             assert True
         else:
             assert False
     def test_OurTeam(self):
-        click(Pattern("findUs.png").targetOffset(-8,37))
-        if exists(Pattern("FindUs_FindASalesperson.png").exact()):
+        click(Pattern("findUs.png").targetOffset(-10,38))
+        if exists(Pattern("FindUs_FindASalesperson.png").similar(0.89)):
             assert True
         else:
             assert False
 
     def test_FindPersonsName(self):
         click(Pattern("findUs-1.png").targetOffset(-97,6))
-        click("MainPage_FindUs_TextBox.png")
         type("bob voss")
         wait(2)
-        if exists(Pattern("MainPage_FindUs_SearchResult.png").exact()):
+        click(Pattern("MainPage_FindUs_SearchResult.png").similar(0.75))
+            
+        if exists(Pattern("BobVoss_ProfilePage_Title.png").similar(0.79)): 
             assert True
         else:
             assert False
+
+            

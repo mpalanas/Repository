@@ -1,6 +1,7 @@
 from sikuli import*
 import unittest
 import json
+import os
   
 class BranchProfile(unittest.TestCase):
         
@@ -11,57 +12,61 @@ class BranchProfile(unittest.TestCase):
         openApp(app)
         wait(1)
         type("l", KeyModifier.CTRL)
-        type(config["url"] + Key.ENTER)
+        type(config["url"] + "/albany" + Key.ENTER)
         wait(2)
-        click(Pattern("findUs.png").targetOffset(-90,38))
-        click("FindUs_BranchName_Button.png") 
 
     def tearDown(self):
 
-        click(Pattern("closeButtonChrome.png").targetOffset(17,-1)) 
+        configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
+        config = json.loads(open(configPath).read())
+        appTaskName = config["appTaskName"]
+        os.system("taskkill /f /im " +appTaskName)
+        wait(2)
+        
            
     def test_BranchDetails(self):   
-            if exists("BranchPage_BranchDetails.png"):
+            if exists(Pattern("BranchPage_BranchDetails.png").similar(0.61)):
                 assert True
             else:
                 assert False
                 
     def test_BranchStaffManager(self):
-            click("BranchPage_OurTeam_Button.png")   
-            if exists(Pattern("OurTeamPage_ManagersName.png").exact()):
+            click(Pattern("BranchPage_OurTeam_Button.png").similar(0.83))
+            wait(3)
+            if exists(Pattern("OurTeamPage_ManagersName.png").similar(0.50)):
                 assert True
             else:
                 assert False
                 
     def test_BranchStaffPropertyManagement(self):
             click("BranchPage_OurTeam_Button.png")   
-            if exists(Pattern("OurTeamPage_PropertyManagement.png").exact()):
+            if exists(Pattern("OurTeamPage_PropertyManagement.png").similar(0.85)):
                 assert True
             else:
                 assert False
 
     def test_BranchStaffResidentialSalespeople(self):
             click("BranchPage_OurTeam_Button.png")
-            wheel("OurTeamPage_PropertyManagement.png", WHEEL_DOWN, 4)
+            wheel(Pattern("OurTeamPage_PropertyManagement.png").similar(0.76), WHEEL_DOWN, 4)
             
-            if exists(Pattern("OurTeam_ResidentialSalespeople.png").exact()):
+            if exists(Pattern("OurTeam_ResidentialSalespeople.png").similar(0.87)):
                 assert True
             else:
                 assert False    
 
-    def test_BranchStaffRuralSalespeople(self):
+    def test_BranchStaffRuralSalespeople(self):    
             click("BranchPage_OurTeam_Button.png")
-            wheel("OurTeamPage_PropertyManagement.png", WHEEL_DOWN, 80)
+            wheel(Pattern("OurTeamPage_PropertyManagement.png").similar(0.76), WHEEL_DOWN, 80)
             
-            if exists(Pattern("OurTeam_RuralSalespeople.png.png").exact()):
+            if exists(Pattern("OurTeam_RuralSalespeople.png.png").similar(0.89)):
                 assert True
             else:
                 assert False    
                 
     def test_BranchProperties(self):
-            click("BranchPage_Properties_Button.png")
+            click(Pattern("BranchPage_Properties_Button.png").similar(0.76))
             find("BranchPage_AlbanyProperties.png")
-            if exists(Pattern("BranchPage_PropertiesMoreDetail_Button.png").exact()):
+            if exists(Pattern("BranchPage_PropertiesMoreDetail_Button.png").similar(0.71)):
                 assert True
             else:
                 assert False
@@ -70,7 +75,7 @@ class BranchProfile(unittest.TestCase):
             click("BranchPage_Rentals_Button.png")
             find("BranchPage_AlbanyRentals.png")
             click("BranchPage_PropertiesMoreDetail_Button.png")
-            if exists(Pattern("BranchRetal_PropertyDetailApplyOnlineToRent_Button.png").exact()):
+            if exists(Pattern("BranchRetal_PropertyDetailApplyOnlineToRent_Button.png").similar(0.64)):
                 assert True
             else:
                 assert False
@@ -88,7 +93,7 @@ class BranchProfile(unittest.TestCase):
             find("BranchPage_AlbanyOpenHomes.png")
             click("BranchPage_OpenHomeMoreDetails.png")
             wait(2)
-            if exists(Pattern("PropertyDetail_OpenHome.png").exact()):
+            if exists(Pattern("PropertyDetail_OpenHome.png").similar(0.82)):
                 assert True
             else:
                 assert False

@@ -73,6 +73,7 @@
 <span class="kw">from</span> sikuli <span class="kw">import</span>*
 <span class="kw">import</span> unittest
 <span class="kw">import</span> json
+<span class="kw">import</span> os
 
 <span class="kw">class</span> AlternateAgentProfile(unittest.TestCase):
     <span class="kw">def</span> setUp(self):
@@ -82,36 +83,33 @@
         openApp(app)
         <span class="skw">wait</span>(<span class="dig">1</span>)
         <span class="skw">type</span>(<span class="str">"l"</span>, KeyModifier.CTRL)
-        <span class="skw">type</span>(config[<span class="str">"url"</span>] + Key.ENTER)
-        <span class="skw">wait</span>(<span class="dig">2</span>)
-        <span class="skw">click</span>(<img src="findUs.png" />)
-        <span class="skw">type</span>(<span class="str">"ketiesha elliott"</span>)
-        <span class="skw">click</span>(<img src="FindUs_Search_Button.png" />)
-        <span class="skw">click</span>(<img src="FindUs_AgentName_Result.png" />)
+        <span class="skw">type</span>(config[<span class="str">"url"</span>]+ <span class="str">"/k.elliott"</span> + Key.ENTER)
 
     <span class="kw">def</span> tearDown(self):
-
-        <span class="skw">click</span>(Pattern(<img src="closeButtonChrome.png" />).targetOffset(<span class="dig">20</span>,<span class="dig">0</span>))
+        configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
+        config = json.loads(open(configPath).read())
+        appTaskName = config[<span class="str">"appTaskName"</span>]
+        os.system(<span class="str">"taskkill /f /im "</span> +appTaskName)
 
         <span class="skw">wait</span>(<span class="dig">2</span>)
     <span class="kw">def</span> test_AgentDetail(self):
-        <span class="kw">if</span> exists(Pattern(<img src="AgentPage_AgentDetails.png" />).exact()):
+        <span class="kw">if</span> exists(Pattern(<img src="AgentPage_AgentDetails.png" />).similar(<span class="dig">0.94</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_AgentProperties(self):
         <span class="skw">click</span>(Pattern(<img src="AgentPage_Properties_Button.png" />).targetOffset(<span class="dig">37</span>,<span class="dig">1</span>))
-        <span class="kw">if</span> exists(Pattern(<img src="AgentPage_Properties_MoreDetailsSaveProperty.png" />).exact()):
+        <span class="kw">if</span> exists(<img src="OpenHome_MoreDetailsProperty_Button.png" />):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_AgentOpenHome(self):
         <span class="skw">click</span>(<img src="AgentPage_OpenHome_Button.png" />)
-        <span class="skw">click</span>(<img src="OpenHome_MoreDetailsProperty_Button.png" />)
+        <span class="skw">click</span>(Pattern(<img src="1454634416653.png" />).similar(<span class="dig">0.73</span>))
 
-        <span class="kw">if</span> exists(Pattern(<img src="PropertyDetailPage_OpenHomes.png" />).exact()):
+        <span class="kw">if</span> exists(Pattern(<img src="PropertyDetailPage_OpenHomes.png" />).similar(<span class="dig">0.77</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
@@ -124,12 +122,11 @@
             <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_AgentVideo(self):
-        <span class="skw">click</span>(<img src="AgentPage_Video_Button.png" />)
-        <span class="skw">click</span>(<img src="AgentPage_VideoPlay_Button.png" />)
+        <span class="skw">click</span>(Pattern(<img src="AgentPage_Video_Button.png" />).similar(<span class="dig">0.84</span>))
         <span class="skw">wait</span>(<span class="dig">4</span>)
         hover(<img src="AgentPage_AgentVideo.png" />)
 
-        <span class="kw">if</span> exists(Pattern(<img src="AgentPage_VideoControl.png" />).exact()):
+        <span class="kw">if</span> exists(<img src="1454633061357.png" />):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False

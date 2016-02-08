@@ -90,7 +90,7 @@
 <span class="kw">import</span> HTMLTestRunner
 reload(HTMLTestRunner)
 
-timestr = time.strftime(<span class="str">"%d%m%Y%H%M%S"</span>)<span class="cmt">#creates a unique username for testing</span>
+timestr = time.strftime(<span class="str">"%d%m%Y%H%M%S"</span>)<span class="cmt">#creates a unique username for testing/date and time as a file name</span>
 configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
 <span class="kw">with</span> open(configPath, <span class="str">"r"</span>) <span class="kw">as</span> config:
     data = json.load(config)
@@ -99,17 +99,28 @@ data[<span class="str">"username"</span>] = timestr + <span class="str">"@test.c
 <span class="kw">with</span> open(configPath, <span class="str">"w"</span>) <span class="kw">as</span> config:
     config.write(json.dumps(data))
 
-
-
 fileName = timestr + <span class="str">"Report.html"</span>
-
 dir=<span class="str">'C:\SikuliScripts\Results'</span>
 outfile=file(os.path.join(dir,fileName), <span class="str">"wb"</span>)
 
 
-suite=unittest.TestLoader().loadTestsFromTestCase(SavedProperties) <span class="cmt"># setup new test suite  - AlternateAgentProfile</span>
+suite=unittest.TestLoader().loadTestsFromTestCase(FindUsPage) <span class="cmt"># setup new test suite</span>
 <span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(AgentProfile1)) # add additional test cases</span>
-    <span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(BranchProfile)) co.nz site')</span>
+<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(BranchProfile))</span>
+<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(Content))</span>
+<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(FindUsBar))</span>
+<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(FindUsPage))</span>
+<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(FooterLinks))</span>
+<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(QuickSearch))</span>
+<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(WebsiteLoginComponent))</span>
+<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(SavedProperties))</span>
+<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(PasswordReset))</span>
+<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(GlobalMobileSignIn))</span>
+
+
+
+
+runner = HTMLTestRunner.HTMLTestRunner(stream = outfile, title = <span class="str">'Barfoot.co.nz Regression'</span>, description = <span class="str">'Test barfoot.co.nz site'</span>)
 <span class="cmt">#runner = HTMLTestRunner.HTMLTestRunner(stream = outfile, verbosity=2, dirTestScreenshots = 'C:\SikuliScripts\Results')</span>
 runner.run(suite)
 outfile.close()

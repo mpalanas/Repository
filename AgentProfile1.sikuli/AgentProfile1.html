@@ -73,6 +73,7 @@
 <span class="kw">from</span> sikuli <span class="kw">import</span>*
 <span class="kw">import</span> unittest
 <span class="kw">import</span> json
+<span class="kw">import</span> os
 
 
 
@@ -82,32 +83,30 @@
         configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
         config = json.loads(open(configPath).read())
         app = App(config[<span class="str">"application"</span>])
+        appTaskName = config[<span class="str">"appTaskName"</span>]
         openApp(app)
         <span class="skw">wait</span>(<span class="dig">1</span>)
         <span class="skw">type</span>(<span class="str">"l"</span>, KeyModifier.CTRL)
-        <span class="skw">type</span>(config[<span class="str">"url"</span>] + Key.ENTER)
-        <span class="skw">wait</span>(<span class="dig">2</span>)
-        <span class="skw">click</span>(<img src="findUs.png" />)
-        <span class="skw">type</span>(<span class="str">"nadja court"</span>)
-        <span class="skw">click</span>(<img src="FindUs_Search_Button.png" />)
-        <span class="skw">click</span>(<img src="AgentName_NadjaCourt_Result.png" />)
+        <span class="skw">type</span>(config[<span class="str">"url"</span>]+<span class="str">"/n.court"</span> + Key.ENTER)
 
     <span class="kw">def</span> tearDown(self):
-
-        <span class="skw">click</span>(Pattern(<img src="closeButtonChrome.png" />).targetOffset(<span class="dig">24</span>,<span class="dig">0</span>))
+        configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
+        config = json.loads(open(configPath).read())
+        appTaskName = config[<span class="str">"appTaskName"</span>]
+        os.system(<span class="str">"taskkill /f /im "</span> +appTaskName)
 
 
         <span class="skw">wait</span>(<span class="dig">2</span>)
 
     <span class="kw">def</span> test_AgentDetail(self):
-        <span class="kw">if</span> exists(Pattern(<img src="AgentPage_AgentDetail.png" />).exact()):
+        <span class="kw">if</span> exists(Pattern(<img src="AgentPage_AgentDetail.png" />).similar(<span class="dig">0.94</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_AgentProperties(self):
         <span class="skw">click</span>(Pattern(<img src="AgentPage_Properties_Button.png" />).targetOffset(<span class="dig">36</span>,<span class="dig">3</span>))
-        <span class="kw">if</span> exists(Pattern(<img src="AgentPage_Properties_MoreDetailsSaveProperty.png" />).exact()):
+        <span class="kw">if</span> exists(<img src="OpenHome_MoreDetailsProperty_Button.png" />):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
@@ -116,7 +115,7 @@
         <span class="skw">click</span>(<img src="AgentPage_OpenHome_Button.png" />)
         <span class="skw">click</span>(<img src="OpenHome_MoreDetailsProperty_Button.png" />)
 
-        <span class="kw">if</span> exists(Pattern(<img src="PropertyDetailPage_OpenHomes.png" />).exact()):
+        <span class="kw">if</span> exists(Pattern(<img src="PropertyDetailPage_OpenHomes.png" />).similar(<span class="dig">0.79</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False

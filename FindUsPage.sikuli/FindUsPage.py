@@ -1,6 +1,8 @@
 from sikuli import*
 import unittest
 import json
+import os
+
 
 class FindUsPage(unittest.TestCase):
     def setUp(self):
@@ -10,24 +12,25 @@ class FindUsPage(unittest.TestCase):
         openApp(app)
         wait(1)
         type("l", KeyModifier.CTRL)
-        type(config["url"] + Key.ENTER)
+        type(config["url"] + "/find-us" + Key.ENTER)
         wait(2)
-        click("FrontPage_FindUS_Button.png")
-        wait(1)
 
     def tearDown(self):
-        click(Pattern("closeButtonChrome-1.png").targetOffset(24,-2))           
+        configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
+        config = json.loads(open(configPath).read())
+        appTaskName = config["appTaskName"]
+        os.system("taskkill /f /im " +appTaskName)          
         wait(2)
 
     def test_FindABranch(self):
-        click(Pattern("FindUs_FindABranch_button.png").targetOffset(-85,-27))
+        click(Pattern("FindUs_FindABranch_button.png").similar(0.54).targetOffset(-85,-27))
         click(Pattern("findABranch_textSearch.png").targetOffset(-39,6))
         type("glenfield branch")
         wait(1)
         find("FindABranch_Glenfield_Button.png")
-        click("FindUs_SearchABranch_Button.png")
+        click(Pattern("FindUs_SearchABranch_Button.png").exact())
         wait(1)
-        if exists(Pattern("BranchTitle_Glenfield.png").exact()):
+        if exists(Pattern("BranchTitle_Glenfield.png").similar(0.86)):
             assert True
         else:
             assert False
@@ -36,17 +39,17 @@ class FindUsPage(unittest.TestCase):
         click("FindUs_FindASalesprson_Button.png")
         click("FindAsalesperson_SearchBar.png")
         type("Ketiesha")
-        click("FindAsalesperson_SearchResult.png")
+        click(Pattern("FindAsalesperson_SearchResult.png").similar(0.68))
         wait(1)
-        if exists(Pattern("AgentPage_AgentTitle.png").exact()):
+        if exists(Pattern("AgentPage_AgentTitle.png").similar(0.89)):
             assert True
         else:
             assert False
 
     def test_FindASalespersonDropdown(self):        
         click("FindUs_FindASalesprson_Button.png")
-        click("FindAsalesperson_Branch_Dropwdown.png")
-        if exists(Pattern("FindASalesperson_Dropdown_Results.png").exact()):
+        click(Pattern("FindAsalesperson_Branch_Dropwdown.png").similar(0.62))
+        if exists("FindAPropertyManager_Dropdown.png"):
             assert True
         else:
             assert False
@@ -58,16 +61,16 @@ class FindUsPage(unittest.TestCase):
         wait(1)
         click("FindApropertyManager_SearchResult.png")
         wait(1)
-        if exists(Pattern("PropertyManager_PageTitle.png").exact()):
+        if exists(Pattern("PropertyManager_PageTitle.png").similar(0.91)):
             assert True
         else:
             assert False
 
     def test_FindAPropertyManagerDropdown(self):
         click("FindUs_FindApropertyManager_Button.png")
-        click("FindAPropertyManager_Dropdown.png")
+        click(Pattern("FindAPropertyManager_Dropdown.png").similar(0.62))
         wait(1)
-        if exists(Pattern("FundApropertyManager_Dropdown_Result.png").exact()):
+        if exists("FindAPropertyManager_Dropdown.png"):
             assert True
         else:
             assert False
@@ -78,16 +81,16 @@ class FindUsPage(unittest.TestCase):
         type("cam paterson")
         wait(1)
         click("FindUs_FindACommercialAgent_Result.png")
-        if exists(Pattern("CommercialAgent_AgentName.png").exact()):
+        if exists(Pattern("CommercialAgent_AgentName.png").similar(0.95)):
             assert True
         else:
             assert False
 
     def test_FindACommercialSalespersonDropdown(self):
         click("FindUs_FindAcommercialSalesperson_Button.png")
-        click("FindACommercialAgent_Branch_Dropdown.png")
+        click(Pattern("FindACommercialAgent_Branch_Dropdown.png").similar(0.62))
         wait(1)
-        if exists(Pattern("FindACommercialSalesperson_Dropdown_Results.png").exact()):
+        if exists(Pattern("FindACommercialSalesperson_Dropdown.png").similar(0.63)):
             assert True
         else:
             assert False
@@ -97,12 +100,17 @@ class FindUsPage(unittest.TestCase):
         click("FindUs_FindACommercialPropertyManager_Button.png")
         click("FundAcommercialPropertyManager_SearchBar.png")
         type("Hannah")
+        click("FindAcommercialPRopertyManager_Search_Button.png")
+        if exists (Pattern("FindACommercialPropertyManager_Agent_Name.png").similar(0.67)):
+            assert True
+        else:
+            assert False
         
     def test_FindACommercialPropertyManagerDropdown(self):
         click("FindUs_FindACommercialPropertyManager_Button.png")
-        click("FindUs_FindAcommercialPropertyManager_Dropdown.png")
+        click(Pattern("FindUs_FindAcommercialPropertyManager_Dropdown.png").similar(0.62))
         wait(1)
-        if exists(Pattern("FindACommercialPorpertyManager_Dropdown_Results.png").exact()):
+        if exists(Pattern("FindACommercialPropertyManager_Dropdown.png").similar(0.65)):
             assert True
         else:
             assert False        
@@ -110,7 +118,7 @@ class FindUsPage(unittest.TestCase):
     def test_AuctionVenue(self):            
         click("FindUs_AuctionVenues_Button.png")
         wait(1)
-        if exists(Pattern("AuctionVenuesPage.png").exact()):
+        if exists("VenuePage_Map_Map.png"):
             assert True
         else:
             assert False
@@ -121,7 +129,7 @@ class FindUsPage(unittest.TestCase):
         find("Complaint_PageTitle.png")
         click("OurComplaintsProcess_Button.png")
         wait(1)
-        if exists(Pattern("ComplaintsProcess_TitlePage.png").exact()):
+        if exists(Pattern("ComplaintsProcess_TitlePage.png").similar(0.87)):
             assert True
         else:
             assert False

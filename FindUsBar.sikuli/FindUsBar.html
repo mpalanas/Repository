@@ -84,35 +84,37 @@
         <span class="skw">type</span>(<span class="str">"l"</span>, KeyModifier.CTRL)
         <span class="skw">type</span>(config[<span class="str">"url"</span>] + Key.ENTER)
         <span class="skw">wait</span>(<span class="dig">2</span>)
-        <span class="skw">find</span>(<img src="barfootLogo.png" />)
-        wheel(<img src="barfootLogo-1.png" />, WHEEL_DOWN, <span class="dig">3</span>)
 
     <span class="kw">def</span> tearDown(self):
 
-        <span class="skw">click</span>(Pattern(<img src="closeButtonChrome-1.png" />).targetOffset(<span class="dig">24</span>,<span class="dig">0</span>))
+        configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
+        config = json.loads(open(configPath).read())
+        appTaskName = config[<span class="str">"appTaskName"</span>]
+        os.system(<span class="str">"taskkill /f /im "</span> +appTaskName)
 
         <span class="skw">wait</span>(<span class="dig">2</span>)
 
 
     <span class="kw">def</span> test_FindABranch(self):
-        <span class="skw">click</span>(Pattern(<img src="findUs-2.png" />).targetOffset(-<span class="dig">86</span>,<span class="dig">38</span>))
-        <span class="kw">if</span> exists(Pattern(<img src="MainPage_FindABranch.png" />).exact()):
+        <span class="skw">click</span>(Pattern(<img src="findUs-2.png" />).targetOffset(-<span class="dig">90</span>,<span class="dig">37</span>))
+        <span class="kw">if</span> exists(Pattern(<img src="MainPage_FindABranch.png" />).similar(<span class="dig">0.89</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
     <span class="kw">def</span> test_OurTeam(self):
-        <span class="skw">click</span>(Pattern(<img src="findUs.png" />).targetOffset(-<span class="dig">8</span>,<span class="dig">37</span>))
-        <span class="kw">if</span> exists(Pattern(<img src="FindUs_FindASalesperson.png" />).exact()):
+        <span class="skw">click</span>(Pattern(<img src="findUs.png" />).targetOffset(-<span class="dig">10</span>,<span class="dig">38</span>))
+        <span class="kw">if</span> exists(Pattern(<img src="FindUs_FindASalesperson.png" />).similar(<span class="dig">0.89</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_FindPersonsName(self):
         <span class="skw">click</span>(Pattern(<img src="findUs-1.png" />).targetOffset(-<span class="dig">97</span>,<span class="dig">6</span>))
-        <span class="skw">click</span>(<img src="MainPage_FindUs_TextBox.png" />)
         <span class="skw">type</span>(<span class="str">"bob voss"</span>)
         <span class="skw">wait</span>(<span class="dig">2</span>)
-        <span class="kw">if</span> exists(Pattern(<img src="MainPage_FindUs_SearchResult.png" />).exact()):
+        <span class="skw">click</span>(Pattern(<img src="MainPage_FindUs_SearchResult.png" />).similar(<span class="dig">0.75</span>))
+
+        <span class="kw">if</span> exists(Pattern(<img src="BobVoss_ProfilePage_Title.png" />).similar(<span class="dig">0.79</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False

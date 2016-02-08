@@ -73,6 +73,8 @@
 <span class="kw">from</span> sikuli <span class="kw">import</span>*
 <span class="kw">import</span> unittest
 <span class="kw">import</span> json
+<span class="kw">import</span> os
+
 
 <span class="kw">class</span> Content(unittest.TestCase):
     <span class="kw">def</span> setUp(self):
@@ -88,25 +90,29 @@
 
     <span class="kw">def</span> tearDown(self):
 
-        <span class="skw">click</span>(Pattern(<img src="closeButtonChrome.png" />).targetOffset(<span class="dig">17</span>,-<span class="dig">1</span>))
+        configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
+        config = json.loads(open(configPath).read())
+        appTaskName = config[<span class="str">"appTaskName"</span>]
+        os.system(<span class="str">"taskkill /f /im "</span> +appTaskName)
+        <span class="skw">wait</span>(<span class="dig">2</span>)
 
     <span class="kw">def</span> test_BuyContent(self):
 
-        <span class="skw">click</span>(<img src="MainPage_Buy_Button.png" />)
-        <span class="kw">if</span> exists(Pattern(<img src="MainPage_Buy.png" />).exact()):
+        <span class="skw">click</span>(Pattern(<img src="MainPage_Buy_Button.png" />).similar(<span class="dig">0.76</span>))
+        <span class="kw">if</span> exists(Pattern(<img src="MainPage_Buy.png" />).similar(<span class="dig">0.92</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_SellContent(self):
         <span class="skw">click</span>(<img src="MainPage_Sell_Button.png" />)
-        <span class="kw">if</span> exists(Pattern(<img src="MainPage_Sell.png" />).exact()):
+        <span class="kw">if</span> exists(Pattern(<img src="MainPage_Sell.png" />).similar(<span class="dig">0.95</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_CommercialContent(self):
-        <span class="skw">click</span>(<img src="MainPage_Commercial_Button.png" />)
+        <span class="skw">click</span>(Pattern(<img src="MainPage_Commercial_Button.png" />).similar(<span class="dig">0.76</span>))
         <span class="kw">if</span> exists(<img src="MainPage_Commercial.png" />):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
@@ -114,21 +120,21 @@
 
     <span class="kw">def</span> test_RentContent(self):
         <span class="skw">click</span>(<img src="MainPage_Rent_Button.png" />)
-        <span class="kw">if</span> exists(Pattern(<img src="MainPage_Rent.png" />).exact()):
+        <span class="kw">if</span> exists(Pattern(<img src="MainPage_Rent.png" />).similar(<span class="dig">0.85</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_PropertyManagementContent(self):
         <span class="skw">click</span>(<img src="MainPage_PropertyManagement_Button.png" />)
-        <span class="kw">if</span> exists(Pattern(<img src="MainPage_PropertyManagement.png" />).exact()):
+        <span class="kw">if</span> exists(Pattern(<img src="MainPage_PropertyManagement.png" />).similar(<span class="dig">0.95</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_BodyCorporateContent(self):
         <span class="skw">click</span>(<img src="MainPage_BodyCorporate_Button.png" />)
-        <span class="kw">if</span> exists(Pattern(<img src="MainPage_BodyCorporate.png" />).exact()):
+        <span class="kw">if</span> exists(Pattern(<img src="MainPage_BodyCorporate.png" />).similar(<span class="dig">0.90</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
@@ -149,24 +155,24 @@
 
     <span class="kw">def</span> test_MarketReport(self):
         <span class="skw">click</span>(<img src="MainPage_MarketReports_Button.png" />)
-        <span class="skw">click</span>(<img src="MarketReport_2011_Button.png" />)
-        <span class="skw">click</span>(<img src="MarketReport_2011December_Button.png" />)
+        <span class="skw">click</span>(Pattern(<img src="MarketReport_2011_Button.png" />).similar(<span class="dig">0.79</span>))
+        <span class="skw">click</span>(Pattern(<img src="MarketReport_2011December_Button.png" />).similar(<span class="dig">0.83</span>))
         <span class="skw">click</span>(<img src="MarketReport_2011DecemberMarketUpdate_Button.png" />)
-        <span class="kw">if</span> exists(Pattern(<img src="MarketReport_MarketUpdate_Title.png" />).exact()):
+        <span class="kw">if</span> exists(Pattern(<img src="MarketReport_MarketUpdate_Title.png" />).similar(<span class="dig">0.91</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_News(self):
         <span class="skw">click</span>(<img src="MainPage_News_Button.png" />)
-        <span class="kw">if</span> exists(Pattern(<img src="NewsPage_Title.png" />).exact()):
+        <span class="kw">if</span> exists(Pattern(<img src="NewsPage_Title.png" />).similar(<span class="dig">0.80</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_News(self):
-        <span class="skw">click</span>(<img src="MainPage_FindUs_Button.png" />)
-        <span class="kw">if</span> exists(Pattern(<img src="FindUsPage_FindUs.png" />).exact()):
+    <span class="kw">def</span> test_FindUs(self):
+        <span class="skw">click</span>(Pattern(<img src="MainPage_FindUs_Button.png" />).similar(<span class="dig">0.82</span>))
+        <span class="kw">if</span> exists(Pattern(<img src="1454382321041.png" />).similar(<span class="dig">0.85</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False

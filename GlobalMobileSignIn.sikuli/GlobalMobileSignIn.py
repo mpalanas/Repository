@@ -15,11 +15,14 @@ class GlobalMobileSignIn(unittest.TestCase):
         type(config["globalsignin"] + Key.ENTER)
         wait(2)
 
-    def tearDown(self):       
-        click(Pattern("UsernameMyAccount.png").targetOffset(104,3))
-        click("MyAccount_SignOut_Button.png")
-        wait(3)
-        click(Pattern("closeButtonChrome.png").targetOffset(26,0))
+    def tearDown(self):
+        if exists(Pattern("MainPage_MyAccount_dropdown-1.png").exact()):
+            click(Pattern("MainPage_MyAccount_dropdown-1.png").exact())
+            click("MyAccount_SignOut_Button.png")
+            wait(3)
+            click(Pattern("closeButtonChrome.png").targetOffset(26,0))
+        else:
+            click(Pattern("closeButtonChrome.png").targetOffset(26,0))
 
 #    def test_invalidInputSignin(self):
 #        click("globalMobileSigninPage_signin_Button.png")
@@ -60,13 +63,14 @@ class GlobalMobileSignIn(unittest.TestCase):
         with open(configPath, "w") as config:
             config.write(json.dumps(data))
         config = json.loads(open(configPath).read())#reads the json file
-        click("1447891969153.png")
+        click("GlobalMobileSignin_CreateAccount_Button.png")
+        click(Pattern("GlobalMobileSigninCreateAccount_FirstName_Textbox.png").exact())
         type("FirstName")
-        click("1447892073664.png")
+        click(Pattern("GlobalMobileSigninCreateAccount_SurName_Textbox.png").exact())
         type("LastName")
-        click("1447892469068.png")
+        click(Pattern("GlobalMobileSigninCreateAccount_EmailAddress_Textbox.png").exact().targetOffset(-3,-2))
         type(config['username'])
-        click(Pattern("1447892483156.png").targetOffset(-2,102))
+        click(Pattern("GlobalMobileSigninCreateAccount_Password_Textbox.png").exact().targetOffset(-3,1))
         type(config['password'])
         click("1447892508827.png")
         wait(2)
@@ -74,6 +78,25 @@ class GlobalMobileSignIn(unittest.TestCase):
         click("globalMobileSigninPage_continue_Button.png")
         wait(4)
         if exists(Pattern("UsernameMyAccount.png").similar(0.86)):
+            assert True
+        else:
+            assert False
+
+    def test_googleLogin(self):
+        click(Pattern("globalMobileSignIn_Google+_button.png").exact())
+        wait(4)
+        click(Pattern("GlobalMobileSignIn_Allow_GoogleButton.png").similar(0.97))
+        wait(4)
+        click("globalMobileSigninPage_continue_Button.png")
+        if exists(Pattern("MainPage_MyAccount_dropdown-2.png").exact()):
+            assert True
+        else:
+            assert False
+
+    def test_haveAnAccountLink(self):
+        click("GlobalMobileSignin_CreateAccount_Button.png")
+        click(Pattern("GlobalMobileSignin_HaveAnAccount_Button.png").exact())
+        if exists(Pattern("GlobamMobileSignin_SignInPage.png").exact()):
             assert True
         else:
             assert False

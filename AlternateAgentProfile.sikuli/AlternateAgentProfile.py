@@ -1,6 +1,7 @@
 from sikuli import*
 import unittest
 import json
+import os
 
 class AlternateAgentProfile(unittest.TestCase):
     def setUp(self):
@@ -10,36 +11,33 @@ class AlternateAgentProfile(unittest.TestCase):
         openApp(app)
         wait(1)
         type("l", KeyModifier.CTRL)
-        type(config["url"] + Key.ENTER)
-        wait(2)
-        click("findUs.png")
-        type("ketiesha elliott")
-        click("FindUs_Search_Button.png")
-        click("FindUs_AgentName_Result.png")
+        type(config["url"]+ "/k.elliott" + Key.ENTER)
 
     def tearDown(self):
-
-        click(Pattern("closeButtonChrome.png").targetOffset(20,0))
+        configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
+        config = json.loads(open(configPath).read())
+        appTaskName = config["appTaskName"]
+        os.system("taskkill /f /im " +appTaskName)
            
         wait(2)
     def test_AgentDetail(self):
-        if exists(Pattern("AgentPage_AgentDetails.png").exact()):
+        if exists(Pattern("AgentPage_AgentDetails.png").similar(0.94)):
             assert True
         else:
             assert False
 
     def test_AgentProperties(self):
         click(Pattern("AgentPage_Properties_Button.png").targetOffset(37,1))
-        if exists(Pattern("AgentPage_Properties_MoreDetailsSaveProperty.png").exact()):
+        if exists("OpenHome_MoreDetailsProperty_Button.png"):
             assert True
         else:
             assert False
 
     def test_AgentOpenHome(self):
         click("AgentPage_OpenHome_Button.png")
-        click("OpenHome_MoreDetailsProperty_Button.png")
+        click(Pattern("1454634416653.png").similar(0.73))
         
-        if exists(Pattern("PropertyDetailPage_OpenHomes.png").exact()):
+        if exists(Pattern("PropertyDetailPage_OpenHomes.png").similar(0.77)):
             assert True
         else:
             assert False
@@ -52,12 +50,11 @@ class AlternateAgentProfile(unittest.TestCase):
             assert False
 
     def test_AgentVideo(self):
-        click("AgentPage_Video_Button.png")
-        click("AgentPage_VideoPlay_Button.png")
+        click(Pattern("AgentPage_Video_Button.png").similar(0.84))
         wait(4)
         hover("AgentPage_AgentVideo.png")
         
-        if exists(Pattern("AgentPage_VideoControl.png").exact()):
+        if exists("1454633061357.png"):
             assert True
         else:
             assert False

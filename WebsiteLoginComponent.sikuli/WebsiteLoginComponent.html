@@ -114,7 +114,8 @@
 
 
     <span class="kw">def</span> test_login(self):
-        config = json.loads(open(<span class="str">"C:\\SikuliScripts\\Repository\\config.json"</span>).read())
+        configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
+        config = json.loads(open(configPath).read())
         <span class="skw">click</span>(<img src="SigninPage_SignIn_Button.png" />)
         <span class="skw">click</span>(Pattern(<img src="SignInPopUp_emailAddress_field.png" />).targetOffset(-<span class="dig">84</span>,<span class="dig">48</span>))
         <span class="skw">type</span>(config[<span class="str">"username"</span>])

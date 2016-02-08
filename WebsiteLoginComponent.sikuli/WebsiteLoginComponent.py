@@ -42,7 +42,8 @@ class WebsiteLoginComponent(unittest.TestCase):
    
 
     def test_login(self):
-        config = json.loads(open("C:\\SikuliScripts\\Repository\\config.json").read())
+        configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
+        config = json.loads(open(configPath).read())
         click("SigninPage_SignIn_Button.png")
         click(Pattern("SignInPopUp_emailAddress_field.png").targetOffset(-84,48))
         type(config["username"])

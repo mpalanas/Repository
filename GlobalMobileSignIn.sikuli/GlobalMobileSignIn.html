@@ -88,10 +88,13 @@
         <span class="skw">wait</span>(<span class="dig">2</span>)
 
     <span class="kw">def</span> tearDown(self):
-        <span class="skw">click</span>(Pattern(<img src="UsernameMyAccount.png" />).targetOffset(<span class="dig">104</span>,<span class="dig">3</span>))
-        <span class="skw">click</span>(<img src="MyAccount_SignOut_Button.png" />)
-        <span class="skw">wait</span>(<span class="dig">3</span>)
-        <span class="skw">click</span>(Pattern(<img src="closeButtonChrome.png" />).targetOffset(<span class="dig">26</span>,<span class="dig">0</span>))
+        <span class="kw">if</span> exists(Pattern(<img src="MainPage_MyAccount_dropdown-1.png" />).exact()):
+            <span class="skw">click</span>(Pattern(<img src="MainPage_MyAccount_dropdown-1.png" />).exact())
+            <span class="skw">click</span>(<img src="MyAccount_SignOut_Button.png" />)
+            <span class="skw">wait</span>(<span class="dig">3</span>)
+            <span class="skw">click</span>(Pattern(<img src="closeButtonChrome.png" />).targetOffset(<span class="dig">26</span>,<span class="dig">0</span>))
+        <span class="kw">else</span>:
+            <span class="skw">click</span>(Pattern(<img src="closeButtonChrome.png" />).targetOffset(<span class="dig">26</span>,<span class="dig">0</span>))
 
 <span class="cmt">#    def test_invalidInputSignin(self):</span>
 <span class="cmt">#        click("globalMobileSigninPage_signin_Button.png")</span>
@@ -132,13 +135,14 @@
         <span class="kw">with</span> open(configPath, <span class="str">"w"</span>) <span class="kw">as</span> config:
             config.write(json.dumps(data))
         config = json.loads(open(configPath).read())<span class="cmt">#reads the json file</span>
-        <span class="skw">click</span>(<img src="1447891969153.png" />)
+        <span class="skw">click</span>(<img src="GlobalMobileSignin_CreateAccount_Button.png" />)
+        <span class="skw">click</span>(Pattern(<img src="GlobalMobileSigninCreateAccount_FirstName_Textbox.png" />).exact())
         <span class="skw">type</span>(<span class="str">"FirstName"</span>)
-        <span class="skw">click</span>(<img src="1447892073664.png" />)
+        <span class="skw">click</span>(Pattern(<img src="GlobalMobileSigninCreateAccount_SurName_Textbox.png" />).exact())
         <span class="skw">type</span>(<span class="str">"LastName"</span>)
-        <span class="skw">click</span>(<img src="1447892469068.png" />)
+        <span class="skw">click</span>(Pattern(<img src="GlobalMobileSigninCreateAccount_EmailAddress_Textbox.png" />).exact().targetOffset(-<span class="dig">3</span>,-<span class="dig">2</span>))
         <span class="skw">type</span>(config[<span class="str">'username'</span>])
-        <span class="skw">click</span>(Pattern(<img src="1447892483156.png" />).targetOffset(-<span class="dig">2</span>,<span class="dig">102</span>))
+        <span class="skw">click</span>(Pattern(<img src="GlobalMobileSigninCreateAccount_Password_Textbox.png" />).exact().targetOffset(-<span class="dig">3</span>,<span class="dig">1</span>))
         <span class="skw">type</span>(config[<span class="str">'password'</span>])
         <span class="skw">click</span>(<img src="1447892508827.png" />)
         <span class="skw">wait</span>(<span class="dig">2</span>)
@@ -146,6 +150,25 @@
         <span class="skw">click</span>(<img src="globalMobileSigninPage_continue_Button.png" />)
         <span class="skw">wait</span>(<span class="dig">4</span>)
         <span class="kw">if</span> exists(Pattern(<img src="UsernameMyAccount.png" />).similar(<span class="dig">0.86</span>)):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
+
+    <span class="kw">def</span> test_googleLogin(self):
+        <span class="skw">click</span>(Pattern(<img src="globalMobileSignIn_Google+_button.png" />).exact())
+        <span class="skw">wait</span>(<span class="dig">4</span>)
+        <span class="skw">click</span>(Pattern(<img src="GlobalMobileSignIn_Allow_GoogleButton.png" />).similar(<span class="dig">0.97</span>))
+        <span class="skw">wait</span>(<span class="dig">4</span>)
+        <span class="skw">click</span>(<img src="globalMobileSigninPage_continue_Button.png" />)
+        <span class="kw">if</span> exists(Pattern(<img src="MainPage_MyAccount_dropdown-2.png" />).exact()):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
+
+    <span class="kw">def</span> test_haveAnAccountLink(self):
+        <span class="skw">click</span>(<img src="GlobalMobileSignin_CreateAccount_Button.png" />)
+        <span class="skw">click</span>(Pattern(<img src="GlobalMobileSignin_HaveAnAccount_Button.png" />).exact())
+        <span class="kw">if</span> exists(Pattern(<img src="GlobamMobileSignin_SignInPage.png" />).exact()):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False

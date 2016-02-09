@@ -23,14 +23,13 @@ class FindUsPage(unittest.TestCase):
         wait(2)
 
     def test_FindABranch(self):
-        click(Pattern("FindUs_FindABranch_button.png").similar(0.54).targetOffset(-85,-27))
+        click(Pattern("1454959336180.png").similar(0.86).targetOffset(47,-27))
         click(Pattern("findABranch_textSearch.png").targetOffset(-39,6))
-        type("glenfield branch")
+        type("glen eden")
+        wait(2)
+        click(Pattern("FindUs_SearchABranch_Button.png").similar(0.79))
         wait(1)
-        find("FindABranch_Glenfield_Button.png")
-        click(Pattern("FindUs_SearchABranch_Button.png").exact())
-        wait(1)
-        if exists(Pattern("BranchTitle_Glenfield.png").similar(0.86)):
+        if exists(Pattern("1454975929067.png").similar(0.78)):
             assert True
         else:
             assert False
@@ -49,7 +48,7 @@ class FindUsPage(unittest.TestCase):
     def test_FindASalespersonDropdown(self):        
         click("FindUs_FindASalesprson_Button.png")
         click(Pattern("FindAsalesperson_Branch_Dropwdown.png").similar(0.62))
-        if exists("FindAPropertyManager_Dropdown.png"):
+        if exists("FindUs_Dropdown_ResultResRental.png"):
             assert True
         else:
             assert False
@@ -68,9 +67,9 @@ class FindUsPage(unittest.TestCase):
 
     def test_FindAPropertyManagerDropdown(self):
         click("FindUs_FindApropertyManager_Button.png")
-        click(Pattern("FindAPropertyManager_Dropdown.png").similar(0.62))
+        click(Pattern("FindAPropertyManager_Dropdown.png").similar(0.65))
         wait(1)
-        if exists("FindAPropertyManager_Dropdown.png"):
+        if exists("FindUs_Dropdown_ResultResRental.png"):
             assert True
         else:
             assert False
@@ -101,7 +100,7 @@ class FindUsPage(unittest.TestCase):
         click("FundAcommercialPropertyManager_SearchBar.png")
         type("Hannah")
         click("FindAcommercialPRopertyManager_Search_Button.png")
-        if exists (Pattern("FindACommercialPropertyManager_Agent_Name.png").similar(0.67)):
+        if exists (Pattern("FindACommercialPropertyManager_Agent_Name-1.png").similar(0.78)):
             assert True
         else:
             assert False

@@ -1,7 +1,7 @@
 from sikuli import*
 import unittest
 import json
-
+import os
 
 
 class SavedProperties(unittest.TestCase):
@@ -15,13 +15,12 @@ class SavedProperties(unittest.TestCase):
         type("l", KeyModifier.CTRL)
         type(config["url"] + Key.ENTER)
         wait(2)
-        find("barfootLogo-1.png")
         click("SigninPage_SignIn_Button.png")
-        click(Pattern("SignInPopUp_emailAddress_field.png").targetOffset(-84,48))
+        click(Pattern("SignInPopUp_emailAddress_field-1.png").similar(0.62).targetOffset(-100,15))
         type(config["username"])
-        click(Pattern("SignInPopUp_Password_field.png").targetOffset(-91,-16))
+        type(Key.TAB)
         type(config["password"])
-        click("SignInPopUp_SignIn_Button.png")
+        click(Pattern("SignInPopUp_SignIn_Button.png").similar(0.92))
         wait(3)
         find("UsernameMyAccount.png")
 
@@ -33,12 +32,15 @@ class SavedProperties(unittest.TestCase):
         click(Pattern("UsernameMyAccount-1.png").targetOffset(81,-2))
         click("MyAccountDropdown_SignOut_Button.png")
         wait(3)
-        click(Pattern("closeButtonChrome.png").targetOffset(24,-2))
+        configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
+        config = json.loads(open(configPath).read())
+        appTaskName = config["appTaskName"]
+        os.system("taskkill /f /im " +appTaskName)
 
         
     def test_CommercialSaveProperty(self):           
         wait(2)
-        click("FrontPage_Commercial_Button.png")
+        click(Pattern("FrontPage_Commercial_Button.png").similar(0.80))
         click("FrontPage_Search_Button-1.png")
         wait(2)
         find("FrontPage_CommercialFacet.png")

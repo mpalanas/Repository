@@ -95,14 +95,13 @@
         <span class="skw">wait</span>(<span class="dig">2</span>)
 
     <span class="kw">def</span> test_FindABranch(self):
-        <span class="skw">click</span>(Pattern(<img src="FindUs_FindABranch_button.png" />).similar(<span class="dig">0.54</span>).targetOffset(-<span class="dig">85</span>,-<span class="dig">27</span>))
+        <span class="skw">click</span>(Pattern(<img src="1454959336180.png" />).similar(<span class="dig">0.86</span>).targetOffset(<span class="dig">47</span>,-<span class="dig">27</span>))
         <span class="skw">click</span>(Pattern(<img src="findABranch_textSearch.png" />).targetOffset(-<span class="dig">39</span>,<span class="dig">6</span>))
-        <span class="skw">type</span>(<span class="str">"glenfield branch"</span>)
+        <span class="skw">type</span>(<span class="str">"glen eden"</span>)
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">click</span>(Pattern(<img src="FindUs_SearchABranch_Button.png" />).similar(<span class="dig">0.79</span>))
         <span class="skw">wait</span>(<span class="dig">1</span>)
-        <span class="skw">find</span>(<img src="FindABranch_Glenfield_Button.png" />)
-        <span class="skw">click</span>(Pattern(<img src="FindUs_SearchABranch_Button.png" />).exact())
-        <span class="skw">wait</span>(<span class="dig">1</span>)
-        <span class="kw">if</span> exists(Pattern(<img src="BranchTitle_Glenfield.png" />).similar(<span class="dig">0.86</span>)):
+        <span class="kw">if</span> exists(Pattern(<img src="1454975929067.png" />).similar(<span class="dig">0.78</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
@@ -121,7 +120,7 @@
     <span class="kw">def</span> test_FindASalespersonDropdown(self):
         <span class="skw">click</span>(<img src="FindUs_FindASalesprson_Button.png" />)
         <span class="skw">click</span>(Pattern(<img src="FindAsalesperson_Branch_Dropwdown.png" />).similar(<span class="dig">0.62</span>))
-        <span class="kw">if</span> exists(<img src="FindAPropertyManager_Dropdown.png" />):
+        <span class="kw">if</span> exists(<img src="FindUs_Dropdown_ResultResRental.png" />):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
@@ -140,9 +139,9 @@
 
     <span class="kw">def</span> test_FindAPropertyManagerDropdown(self):
         <span class="skw">click</span>(<img src="FindUs_FindApropertyManager_Button.png" />)
-        <span class="skw">click</span>(Pattern(<img src="FindAPropertyManager_Dropdown.png" />).similar(<span class="dig">0.62</span>))
+        <span class="skw">click</span>(Pattern(<img src="FindAPropertyManager_Dropdown.png" />).similar(<span class="dig">0.65</span>))
         <span class="skw">wait</span>(<span class="dig">1</span>)
-        <span class="kw">if</span> exists(<img src="FindAPropertyManager_Dropdown.png" />):
+        <span class="kw">if</span> exists(<img src="FindUs_Dropdown_ResultResRental.png" />):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
@@ -173,7 +172,7 @@
         <span class="skw">click</span>(<img src="FundAcommercialPropertyManager_SearchBar.png" />)
         <span class="skw">type</span>(<span class="str">"Hannah"</span>)
         <span class="skw">click</span>(<img src="FindAcommercialPRopertyManager_Search_Button.png" />)
-        <span class="kw">if</span> exists (Pattern(<img src="FindACommercialPropertyManager_Agent_Name.png" />).similar(<span class="dig">0.67</span>)):
+        <span class="kw">if</span> exists (Pattern(<img src="FindACommercialPropertyManager_Agent_Name-1.png" />).similar(<span class="dig">0.78</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False

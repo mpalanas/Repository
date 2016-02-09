@@ -18,15 +18,18 @@ class PasswordReset(unittest.TestCase):
         click(Pattern("UsernameMyAccount.png").targetOffset(78,-3))
         click("MyAccount_SignOut_Button.png")
         wait(3)
-        click(Pattern("closeButtonChrome.png").targetOffset(27,0))
+        configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
+        config = json.loads(open(configPath).read())
+        appTaskName = config["appTaskName"]
+        os.system("taskkill /f /im " +appTaskName)
 
-    def test_resetPassword(self):
+    def test_changePassword(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
         config = json.loads(open(configPath).read())
         click("SigninPage_SignIn_Button.png")
-        click(Pattern("SignInPopUp_emailAddress_field.png").targetOffset(-120,51))
+        click(Pattern("SignInPopUp_emailAddress_field-1.png").similar(0.62).targetOffset(-100,15))
         type(config["username"])
-        click(Pattern("SignInPopUp_Password_field.png").targetOffset(-89,-14))
+        type(Key.TAB)
         type(config["password"])
         click("SignInPopUp_SignIn_Button.png")
         wait(3)
@@ -38,9 +41,23 @@ class PasswordReset(unittest.TestCase):
         type(config["password2"])
         click("AccountSettings_changePassword_Button.png")
         wait(3)
-        if exists(Pattern("AccountSettings_PasswordChange_Confirmation.png").exact()):
+        if exists("AccountSettings_PasswordChange_Confirmation.png"):
             assert True
         else:
             assert False
 
+    def test_loginNewPassword(self):
+        configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
+        config = json.loads(open(configPath).read())
+        click("SigninPage_SignIn_Button.png")
+        click(Pattern("SignInPopUp_emailAddress_field-1.png").similar(0.62).targetOffset(-100,15))
+        type(config["username"])
+        type(Key.TAB)
+        type(config["password2"])
+        click("SignInPopUp_SignIn_Button.png")
+        wait(3)
+        if exists(Pattern("UsernameMyAccount-2.png").targetOffset(79,-1)):
+            assert True
+        else:
+            assert False
 

@@ -70,12 +70,39 @@
 <h2>PropertySearchResidential.sikuli</h2> <a href="PropertySearchResidential.zip">(Download this script)</a>
 </div>
 <pre class="sikuli-code">
-openApp(<span class="str">"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --start-maximized"</span>)
-<span class="skw">wait</span>(<span class="dig">2</span>)
-<span class="skw">type</span>(<span class="str">"l"</span>, KeyModifier.CTRL)
-<span class="skw">type</span>(<span class="str">"www-staging.barfoot.co.nz"</span> + Key.ENTER)
-<span class="skw">wait</span>(<span class="dig">1</span>)
-<span class="skw">find</span>(<img src="1447809363433.png" />)
+<span class="kw">from</span> sikuli <span class="kw">import</span>*
+<span class="kw">import</span> unittest
+<span class="kw">import</span> json
+<span class="kw">import</span> os
+
+<span class="kw">class</span> SavedSearch(unittest.TestCase):
+    <span class="kw">def</span> setUp(self):
+        configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
+        config = json.loads(open(configPath).read())
+        app = App(config[<span class="str">"application"</span>])
+        openApp(app)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="skw">type</span>(<span class="str">"l"</span>, KeyModifier.CTRL)
+        <span class="skw">type</span>(config[<span class="str">"url"</span>] + Key.ENTER)
+
+    <span class="kw">def</span> tearDown(self):
+        <span class="kw">if</span> exists(<img src="UsernameMyAccount.png" />):
+            <span class="skw">click</span>(Pattern(<img src="UsernameMyAccount.png" />).targetOffset(<span class="dig">104</span>,<span class="dig">3</span>))
+            <span class="skw">click</span>(<img src="MyAccount_SignOut_Button.png" />)
+            <span class="skw">wait</span>(<span class="dig">3</span>)
+            configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
+            config = json.loads(open(configPath).read())
+            appTaskName = config[<span class="str">"appTaskName"</span>]
+            os.system(<span class="str">"taskkill /f /im "</span> +appTaskName)
+        <span class="kw">else</span>:
+            configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
+            config = json.loads(open(configPath).read())
+            appTaskName = config[<span class="str">"appTaskName"</span>]
+            os.system(<span class="str">"taskkill /f /im "</span> +appTaskName)
+
+
+
+
 <span class="skw">click</span>(<img src="1447799314785.png" />)
 <span class="skw">click</span>(Pattern(<img src="1447799344745.png" />).targetOffset(-<span class="dig">20</span>,<span class="dig">44</span>))
 <span class="skw">type</span>(<span class="str">"test300@test.com"</span>)

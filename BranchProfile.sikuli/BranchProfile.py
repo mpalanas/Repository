@@ -31,9 +31,9 @@ class BranchProfile(unittest.TestCase):
                 assert False
                 
     def test_BranchStaffManager(self):
-            click(Pattern("BranchPage_OurTeam_Button.png").similar(0.83))
+            click("BranchPage_OurTeam_Button.png")
             wait(3)
-            if exists(Pattern("OurTeamPage_ManagersName.png").similar(0.50)):
+            if exists("OurTeamPage_ManagersName.png"):
                 assert True
             else:
                 assert False

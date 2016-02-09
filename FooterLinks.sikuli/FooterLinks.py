@@ -1,7 +1,7 @@
 from sikuli import*
 import unittest
 import json
-
+import os
 
 class FooterLinks(unittest.TestCase):
     def setUp(self):
@@ -13,65 +13,65 @@ class FooterLinks(unittest.TestCase):
         type("l", KeyModifier.CTRL)
         type(config["url"] + Key.ENTER)
         wait(2)
-        find("barfootLogo-1.png")
-        wheel("MainPage_FindUs.png", WHEEL_DOWN, 10)
+        type(Key.PAGE_DOWN + Key.PAGE_DOWN)
 
     def tearDown(self):
-        click(Pattern("closeButtonChrome-1.png").targetOffset(24,-2))
+        configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
+        config = json.loads(open(configPath).read())
+        appTaskName = config["appTaskName"]
+        os.system("taskkill /f /im " +appTaskName)
         wait(2)
 
     def test_FooterAuctions(self):
-        click("MainPage_Footer_Auctions.png")
+        click(Pattern("MainPage_Footer_Auctions.png").similar(0.76))
         wait(1)
-        if exists(Pattern("ThisWkAuctionPage_Title.png").exact()):
+        if exists(Pattern("ThisWkAuctionPage_Title.png").similar(0.68)):
             assert True
         else:
             assert False
 
     def test_FooterAuctionVenues(self):
-        click("MainPage_Footer_AuctionsVenues.png")
+        click(Pattern("MainPage_Footer_AuctionsVenues.png").similar(0.74))
         wait(1)
-        if exists(Pattern("AuctionVenuesPage_Title.png").exact()):
+        if exists(Pattern("1454961118035.png").similar(0.86)):
             assert True
         else:
             assert False
     
     def test_FooterMortgageeSales(self):
-        click("MainPage_Footer_MortgageeSales.png")
-        #find(Pattern("PropertySearch_MortgageeSales_CheckBox.png").exact())
+        click(Pattern("MainPage_Footer_MortgageeSales.png").similar(0.76))
         
-        if exists(Pattern("MainPageSearch_MortgageeSales_Title.png").exact()):
+        if exists(Pattern("MainPageSearch_MortgageeSales_Title.png").similar(0.85)):
             assert True
         else:
             assert False
             
     def test_FooterMortgageeSales(self):
-        click("MainPage_Footer_OpenHomes.png")
+        click(Pattern("MainPage_Footer_OpenHomes.png").similar(0.76))
         wait(1)
-        if exists(Pattern("PropertySearch_OpenHomes_CheckBox.png").exact()):
+        if exists(Pattern("PropertySearch_OpenHomes_CheckBox.png").similar(0.77)):
             assert True
         else:
             assert False
                     
     def test_FooterSearchSoldProperties(self):
-        click(Pattern("MainPage_Footer_SearchSoldProperties.png").targetOffset(-3,1))
+        click(Pattern("MainPage_Footer_SearchSoldProperties.png").similar(0.66).targetOffset(-3,1))
         wait(1)
-        find(Pattern("SearchSoldProperties_SoldSticker.png").exact())
-        if exists(Pattern("SoldPropertyPage_PropertyTitle.png").similar(0.91)):
+        if exists(Pattern("SearchSoldProperties_SoldSticker.png").exact()):
             assert True
         else:
             assert False
 
 
     def test_MobileSite(self):
-        click("MainPage_Footer_MobileSite.png")
+        click(Pattern("MainPage_Footer_MobileSite.png").similar(0.73))
         wait(1)
 
         if exists(Pattern("MobileSite_HamburgerButton.png").exact()):
             assert True
         else:
             assert False
-        click("MobileSite_DesktopSite_Button.png")
+        click(Pattern("MobileSite_DesktopSite_Button.png").similar(0.74))
         wait(4)
         
         

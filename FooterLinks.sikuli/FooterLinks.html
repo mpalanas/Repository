@@ -73,7 +73,7 @@
 <span class="kw">from</span> sikuli <span class="kw">import</span>*
 <span class="kw">import</span> unittest
 <span class="kw">import</span> json
-
+<span class="kw">import</span> os
 
 <span class="kw">class</span> FooterLinks(unittest.TestCase):
     <span class="kw">def</span> setUp(self):
@@ -85,65 +85,65 @@
         <span class="skw">type</span>(<span class="str">"l"</span>, KeyModifier.CTRL)
         <span class="skw">type</span>(config[<span class="str">"url"</span>] + Key.ENTER)
         <span class="skw">wait</span>(<span class="dig">2</span>)
-        <span class="skw">find</span>(<img src="barfootLogo-1.png" />)
-        wheel(<img src="MainPage_FindUs.png" />, WHEEL_DOWN, <span class="dig">10</span>)
+        <span class="skw">type</span>(Key.PAGE_DOWN + Key.PAGE_DOWN)
 
     <span class="kw">def</span> tearDown(self):
-        <span class="skw">click</span>(Pattern(<img src="closeButtonChrome-1.png" />).targetOffset(<span class="dig">24</span>,-<span class="dig">2</span>))
+        configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
+        config = json.loads(open(configPath).read())
+        appTaskName = config[<span class="str">"appTaskName"</span>]
+        os.system(<span class="str">"taskkill /f /im "</span> +appTaskName)
         <span class="skw">wait</span>(<span class="dig">2</span>)
 
     <span class="kw">def</span> test_FooterAuctions(self):
-        <span class="skw">click</span>(<img src="MainPage_Footer_Auctions.png" />)
+        <span class="skw">click</span>(Pattern(<img src="MainPage_Footer_Auctions.png" />).similar(<span class="dig">0.76</span>))
         <span class="skw">wait</span>(<span class="dig">1</span>)
-        <span class="kw">if</span> exists(Pattern(<img src="ThisWkAuctionPage_Title.png" />).exact()):
+        <span class="kw">if</span> exists(Pattern(<img src="ThisWkAuctionPage_Title.png" />).similar(<span class="dig">0.68</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_FooterAuctionVenues(self):
-        <span class="skw">click</span>(<img src="MainPage_Footer_AuctionsVenues.png" />)
+        <span class="skw">click</span>(Pattern(<img src="MainPage_Footer_AuctionsVenues.png" />).similar(<span class="dig">0.74</span>))
         <span class="skw">wait</span>(<span class="dig">1</span>)
-        <span class="kw">if</span> exists(Pattern(<img src="AuctionVenuesPage_Title.png" />).exact()):
+        <span class="kw">if</span> exists(Pattern(<img src="1454961118035.png" />).similar(<span class="dig">0.86</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_FooterMortgageeSales(self):
-        <span class="skw">click</span>(<img src="MainPage_Footer_MortgageeSales.png" />)
-        <span class="cmt">#find(Pattern("PropertySearch_MortgageeSales_CheckBox.png").exact())</span>
+        <span class="skw">click</span>(Pattern(<img src="MainPage_Footer_MortgageeSales.png" />).similar(<span class="dig">0.76</span>))
 
-        <span class="kw">if</span> exists(Pattern(<img src="MainPageSearch_MortgageeSales_Title.png" />).exact()):
+        <span class="kw">if</span> exists(Pattern(<img src="MainPageSearch_MortgageeSales_Title.png" />).similar(<span class="dig">0.85</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_FooterMortgageeSales(self):
-        <span class="skw">click</span>(<img src="MainPage_Footer_OpenHomes.png" />)
+        <span class="skw">click</span>(Pattern(<img src="MainPage_Footer_OpenHomes.png" />).similar(<span class="dig">0.76</span>))
         <span class="skw">wait</span>(<span class="dig">1</span>)
-        <span class="kw">if</span> exists(Pattern(<img src="PropertySearch_OpenHomes_CheckBox.png" />).exact()):
+        <span class="kw">if</span> exists(Pattern(<img src="PropertySearch_OpenHomes_CheckBox.png" />).similar(<span class="dig">0.77</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_FooterSearchSoldProperties(self):
-        <span class="skw">click</span>(Pattern(<img src="MainPage_Footer_SearchSoldProperties.png" />).targetOffset(-<span class="dig">3</span>,<span class="dig">1</span>))
+        <span class="skw">click</span>(Pattern(<img src="MainPage_Footer_SearchSoldProperties.png" />).similar(<span class="dig">0.66</span>).targetOffset(-<span class="dig">3</span>,<span class="dig">1</span>))
         <span class="skw">wait</span>(<span class="dig">1</span>)
-        <span class="skw">find</span>(Pattern(<img src="SearchSoldProperties_SoldSticker.png" />).exact())
-        <span class="kw">if</span> exists(Pattern(<img src="SoldPropertyPage_PropertyTitle.png" />).similar(<span class="dig">0.91</span>)):
+        <span class="kw">if</span> exists(Pattern(<img src="SearchSoldProperties_SoldSticker.png" />).exact()):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
 
     <span class="kw">def</span> test_MobileSite(self):
-        <span class="skw">click</span>(<img src="MainPage_Footer_MobileSite.png" />)
+        <span class="skw">click</span>(Pattern(<img src="MainPage_Footer_MobileSite.png" />).similar(<span class="dig">0.73</span>))
         <span class="skw">wait</span>(<span class="dig">1</span>)
 
         <span class="kw">if</span> exists(Pattern(<img src="MobileSite_HamburgerButton.png" />).exact()):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
-        <span class="skw">click</span>(<img src="MobileSite_DesktopSite_Button.png" />)
+        <span class="skw">click</span>(Pattern(<img src="MobileSite_DesktopSite_Button.png" />).similar(<span class="dig">0.74</span>))
         <span class="skw">wait</span>(<span class="dig">4</span>)
 
 

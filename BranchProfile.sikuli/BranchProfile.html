@@ -103,9 +103,9 @@
                 <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_BranchStaffManager(self):
-            <span class="skw">click</span>(Pattern(<img src="BranchPage_OurTeam_Button.png" />).similar(<span class="dig">0.83</span>))
+            <span class="skw">click</span>(<img src="BranchPage_OurTeam_Button.png" />)
             <span class="skw">wait</span>(<span class="dig">3</span>)
-            <span class="kw">if</span> exists(Pattern(<img src="OurTeamPage_ManagersName.png" />).similar(<span class="dig">0.50</span>)):
+            <span class="kw">if</span> exists(<img src="OurTeamPage_ManagersName.png" />):
                 <span class="kw">assert</span> True
             <span class="kw">else</span>:
                 <span class="kw">assert</span> False

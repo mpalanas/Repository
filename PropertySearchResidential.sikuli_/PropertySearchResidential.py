@@ -1,9 +1,36 @@
-openApp("C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --start-maximized")
-wait(2)
-type("l", KeyModifier.CTRL)
-type("www-staging.barfoot.co.nz" + Key.ENTER)
-wait(1)
-find("1447809363433.png")
+from sikuli import*
+import unittest
+import json
+import os
+
+class SavedSearch(unittest.TestCase):
+    def setUp(self):
+        configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
+        config = json.loads(open(configPath).read())
+        app = App(config["application"])
+        openApp(app)
+        wait(1)
+        type("l", KeyModifier.CTRL)
+        type(config["url"] + Key.ENTER)
+
+    def tearDown(self):
+        if exists("UsernameMyAccount.png"):
+            click(Pattern("UsernameMyAccount.png").targetOffset(104,3))
+            click("MyAccount_SignOut_Button.png")
+            wait(3)
+            configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
+            config = json.loads(open(configPath).read())
+            appTaskName = config["appTaskName"]
+            os.system("taskkill /f /im " +appTaskName)
+        else:
+            configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
+            config = json.loads(open(configPath).read())
+            appTaskName = config["appTaskName"]
+            os.system("taskkill /f /im " +appTaskName)
+
+        
+
+
 click("1447799314785.png")
 click(Pattern("1447799344745.png").targetOffset(-20,44))
 type("test300@test.com")

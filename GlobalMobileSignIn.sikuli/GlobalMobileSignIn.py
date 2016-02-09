@@ -1,7 +1,7 @@
 from sikuli import*
 import unittest
 import json
-
+import os
 
 
 class GlobalMobileSignIn(unittest.TestCase):
@@ -101,4 +101,5 @@ class GlobalMobileSignIn(unittest.TestCase):
         else:
             assert False
                 
-
+    #def test_resetPassword(self:
+    #(on its way)

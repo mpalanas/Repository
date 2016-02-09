@@ -1,10 +1,1 @@
-import json
-import time
-
-
-with open('.\config.json', "r") as config:
-    data = json.load(config)
-
-print(data["username"])
-
-
+find("1455061835326.png").left(15).click()

@@ -28,7 +28,7 @@ class AlternateAgentProfile(unittest.TestCase):
 
     def test_AgentProperties(self):
         click(Pattern("AgentPage_Properties_Button.png").targetOffset(37,1))
-        if exists("OpenHome_MoreDetailsProperty_Button.png"):
+        if exists("OpenHome_MoreDetailsProperty_Button-1.png"):
             assert True
         else:
             assert False

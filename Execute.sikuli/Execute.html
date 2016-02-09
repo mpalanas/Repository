@@ -104,18 +104,18 @@ dir=<span class="str">'C:\SikuliScripts\Results'</span>
 outfile=file(os.path.join(dir,fileName), <span class="str">"wb"</span>)
 
 
-suite=unittest.TestLoader().loadTestsFromTestCase(FindUsPage) <span class="cmt"># setup new test suite</span>
-<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(AgentProfile1)) # add additional test cases</span>
-<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(BranchProfile))</span>
-<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(Content))</span>
-<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(FindUsBar))</span>
-<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(FindUsPage))</span>
-<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(FooterLinks))</span>
-<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(QuickSearch))</span>
-<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(WebsiteLoginComponent))</span>
-<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(SavedProperties))</span>
-<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(PasswordReset))</span>
-<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(GlobalMobileSignIn))</span>
+suite=unittest.TestLoader().loadTestsFromTestCase(AlternateAgentProfile) <span class="cmt"># setup new test suite</span>
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(AgentProfile1)) <span class="cmt"># add additional test cases</span>
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(BranchProfile))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(Content))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(FindUsBar))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(FindUsPage))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(FooterLinks))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(QuickSearch))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(WebsiteLoginComponent))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(SavedProperties))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(PasswordReset))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(GlobalMobileSignIn))
 
 
 

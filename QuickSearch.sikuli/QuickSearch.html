@@ -73,7 +73,7 @@
 <span class="kw">from</span> sikuli <span class="kw">import</span>*
 <span class="kw">import</span> unittest
 <span class="kw">import</span> json
-
+<span class="kw">import</span> os
 
 <span class="kw">class</span> QuickSearch(unittest.TestCase):
     <span class="kw">def</span> setUp(self):
@@ -85,20 +85,22 @@
         <span class="skw">type</span>(<span class="str">"l"</span>, KeyModifier.CTRL)
         <span class="skw">type</span>(config[<span class="str">"url"</span>] + Key.ENTER)
         <span class="skw">wait</span>(<span class="dig">2</span>)
-        <span class="skw">find</span>(<img src="barfootLogo.png" />)
-        <span class="skw">click</span>(<img src="MainPage_quickSearch_textbox.png" />)
+        <span class="skw">click</span>(Pattern(<img src="MainPage_quickSearch_textbox.png" />).exact().targetOffset(-<span class="dig">20</span>,<span class="dig">25</span>))
 
     <span class="kw">def</span> tearDown(self):
-        <span class="skw">click</span>(Pattern(<img src="closeButtonChrome-1.png" />).targetOffset(<span class="dig">24</span>,-<span class="dig">2</span>))
+        configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
+        config = json.loads(open(configPath).read())
+        appTaskName = config[<span class="str">"appTaskName"</span>]
+        os.system(<span class="str">"taskkill /f /im "</span> +appTaskName)
         <span class="skw">wait</span>(<span class="dig">2</span>)
 
     <span class="kw">def</span> test_addressIDSearch(self):
 
         <span class="skw">type</span>(<span class="str">"Glenfield"</span>)
-        <span class="skw">find</span>(<img src="MainPage_quicksearch_listingHeadingResult.png" />)
-        <span class="skw">click</span>(Pattern(<img src="MainPage_quicksearch_Button.png" />).targetOffset(-<span class="dig">1</span>,<span class="dig">26</span>))
+        <span class="skw">find</span>(Pattern(<img src="1454961804257.png" />).similar(<span class="dig">0.50</span>))
+        <span class="skw">click</span>(Pattern(<img src="MainPage_quicksearch_Button.png" />).similar(<span class="dig">0.91</span>).targetOffset(-<span class="dig">1</span>,<span class="dig">26</span>))
         <span class="skw">wait</span>(<span class="dig">3</span>)
-        <span class="kw">if</span> exists(Pattern(<img src="PropertyDetailPage_saveProperty_Button.png" />).exact()):
+        <span class="kw">if</span> exists(Pattern(<img src="PropertyDetailPage_saveProperty_Button.png" />).similar(<span class="dig">0.82</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
@@ -106,18 +108,18 @@
     <span class="kw">def</span> test_branch(self):
         paste(<span class="str">"Manurewa branch"</span>)
         <span class="skw">wait</span> (<span class="dig">3</span>)
-        <span class="skw">find</span>(<img src="mainPage_quickSearch_resultHeading.png" />)
-        <span class="skw">click</span>(Pattern(<img src="MainPage_quicksearch_Button.png" />).targetOffset(-<span class="dig">1</span>,<span class="dig">26</span>))
+        <span class="cmt">#find("mainPage_quickSearch_resultHeading.png")</span>
+        <span class="skw">click</span>(Pattern(<img src="MainPage_quicksearch_Button.png" />).similar(<span class="dig">0.90</span>).targetOffset(-<span class="dig">1</span>,<span class="dig">26</span>))
 
-        <span class="kw">if</span> exists(Pattern(<img src="BranchPage_BranchHeading_Manurewa.png" />).exact()):
+        <span class="kw">if</span> exists(Pattern(<img src="BranchPage_BranchHeading_Manurewa.png" />).similar(<span class="dig">0.85</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_propertyID(self):
         <span class="skw">type</span>(<span class="str">"15000"</span>)
-        <span class="skw">click</span>(Pattern(<img src="MainPage_quicksearch_Button.png" />).targetOffset(-<span class="dig">1</span>,<span class="dig">26</span>))
-        <span class="kw">if</span> exists(Pattern(<img src="propertyDetail_rentalapplication_Button.png" />).exact()):
+        <span class="skw">click</span>(Pattern(<img src="MainPage_quicksearch_Button.png" />).similar(<span class="dig">0.89</span>).targetOffset(-<span class="dig">1</span>,<span class="dig">26</span>))
+        <span class="kw">if</span> exists(Pattern(<img src="propertyDetail_rentalapplication_Button.png" />).similar(<span class="dig">0.72</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
@@ -125,7 +127,14 @@
     <span class="kw">def</span> test_propertyID(self):
 
         <span class="skw">type</span>(<span class="str">"Ketiesha"</span> + Key.ENTER)
-        <span class="kw">if</span> exists(Pattern(<img src="AgentPage_AgentHeading.png" />).similar(<span class="dig">0.97</span>)):
+        <span class="kw">if</span> exists(Pattern(<img src="AgentPage_AgentHeading.png" />).similar(<span class="dig">0.85</span>)):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
+
+    <span class="kw">def</span> test_noResults(self):
+        <span class="skw">type</span>(<span class="str">"incorrect details"</span> + Key.ENTER)
+        <span class="kw">if</span> exists(<img src="quickSearch_noResult.png" />):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False

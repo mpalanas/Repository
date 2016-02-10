@@ -15,6 +15,7 @@ from WebsiteLoginComponent import*
 from SavedProperties import*
 from GlobalMobileSignIn import*
 from PasswordReset import*
+from SavedSearch import*
 import HTMLTestRunner
 reload(HTMLTestRunner)
 

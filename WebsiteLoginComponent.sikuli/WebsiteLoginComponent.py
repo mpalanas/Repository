@@ -10,10 +10,13 @@ class WebsiteLoginComponent(unittest.TestCase):
         config = json.loads(open(configPath).read())
         app = App(config["application"])
         openApp(app)
-        wait(1)
+        wait(2)
         type("l", KeyModifier.CTRL)
         type(config["url"] + Key.ENTER)
-        wait(2)
+        if exists("UsernameMyAccount.png"):
+            click(Pattern("UsernameMyAccount.png").targetOffset(104,3))
+            click("MyAccount_SignOut_Button.png")
+        wait(3)
         
     def tearDown(self):
 
@@ -55,6 +58,7 @@ class WebsiteLoginComponent(unittest.TestCase):
    
 
     def test_login(self):
+        wait(2)
         configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
         config = json.loads(open(configPath).read())
         click("SigninPage_SignIn_Button.png")

@@ -5,6 +5,8 @@ import json
 class PasswordReset(unittest.TestCase):
         
     def setUp(self):
+
+        wait(2)
         configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
         config = json.loads(open(configPath).read())
         app = App(config["application"])
@@ -12,6 +14,10 @@ class PasswordReset(unittest.TestCase):
         wait(1)
         type("l", KeyModifier.CTRL)
         type(config["url"] + Key.ENTER)
+        if exists("UsernameMyAccount-3.png"):
+            click(Pattern("UsernameMyAccount-3.png").targetOffset(104,3))
+            click("MyAccount_SignOut_Button-2.png")
+        wait(2)
         wait(2)
 
     def tearDown(self):       

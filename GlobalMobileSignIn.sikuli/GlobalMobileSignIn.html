@@ -86,15 +86,29 @@
         <span class="skw">type</span>(<span class="str">"l"</span>, KeyModifier.CTRL)
         <span class="skw">type</span>(config[<span class="str">"globalsignin"</span>] + Key.ENTER)
         <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="kw">if</span> exists(<img src="globalMobileSigninPage_continue_Button.png" />):
+            <span class="skw">click</span>(<img src="globalMobileSigninPage_continue_Button.png" />)
+            <span class="skw">wait</span>(<span class="dig">2</span>)
+            <span class="skw">click</span>(Pattern(<img src="MainPage_MyAccount_dropdown-1.png" />).exact())
+            <span class="skw">click</span>(<img src="MyAccount_SignOut_Button.png" />)
+            <span class="skw">wait</span>(<span class="dig">3</span>)
+            <span class="skw">type</span>(<span class="str">"l"</span>, KeyModifier.CTRL)
+            <span class="skw">type</span>(config[<span class="str">"globalsignin"</span>] + Key.ENTER)
 
     <span class="kw">def</span> tearDown(self):
         <span class="kw">if</span> exists(Pattern(<img src="MainPage_MyAccount_dropdown-1.png" />).exact()):
             <span class="skw">click</span>(Pattern(<img src="MainPage_MyAccount_dropdown-1.png" />).exact())
             <span class="skw">click</span>(<img src="MyAccount_SignOut_Button.png" />)
             <span class="skw">wait</span>(<span class="dig">3</span>)
-            <span class="skw">click</span>(Pattern(<img src="closeButtonChrome.png" />).targetOffset(<span class="dig">26</span>,<span class="dig">0</span>))
+            configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
+            config = json.loads(open(configPath).read())
+            appTaskName = config[<span class="str">"appTaskName"</span>]
+            os.system(<span class="str">"taskkill /f /im "</span> +appTaskName)
         <span class="kw">else</span>:
-            <span class="skw">click</span>(Pattern(<img src="closeButtonChrome.png" />).targetOffset(<span class="dig">26</span>,<span class="dig">0</span>))
+            configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
+            config = json.loads(open(configPath).read())
+            appTaskName = config[<span class="str">"appTaskName"</span>]
+            os.system(<span class="str">"taskkill /f /im "</span> +appTaskName)
 
 <span class="cmt">#    def test_invalidInputSignin(self):</span>
 <span class="cmt">#        click("globalMobileSigninPage_signin_Button.png")</span>

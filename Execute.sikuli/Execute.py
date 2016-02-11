@@ -15,6 +15,8 @@ from WebsiteLoginComponent import*
 from SavedProperties import*
 from GlobalMobileSignIn import*
 from PasswordReset import*
+from SavedSearch import*
+from PropertyDetail import*
 import HTMLTestRunner
 reload(HTMLTestRunner)
 
@@ -40,10 +42,16 @@ suite.addTests(unittest.TestLoader().loadTestsFromTestCase(FindUsBar))
 suite.addTests(unittest.TestLoader().loadTestsFromTestCase(FindUsPage))
 suite.addTests(unittest.TestLoader().loadTestsFromTestCase(FooterLinks))
 suite.addTests(unittest.TestLoader().loadTestsFromTestCase(QuickSearch))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(PropertyDetail))
 suite.addTests(unittest.TestLoader().loadTestsFromTestCase(WebsiteLoginComponent))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(SavedSearch))
 suite.addTests(unittest.TestLoader().loadTestsFromTestCase(SavedProperties))
 suite.addTests(unittest.TestLoader().loadTestsFromTestCase(PasswordReset))
-suite.addTests(unittest.TestLoader().loadTestsFromTestCase(GlobalMobileSignIn))
+
+
+browser = data["appTaskName"]
+if (browser == "chrome.exe"):
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(GlobalMobileSignIn))
 
 
 

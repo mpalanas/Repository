@@ -3,7 +3,7 @@ import unittest
 import json
 import os
 
-class SavedSearch(unittest.TestCase):
+class PropertyDetail(unittest.TestCase):
 
     def setUp(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
@@ -43,7 +43,7 @@ class SavedSearch(unittest.TestCase):
         else:
             assert False
 
-    def test_PropertyDetailPrintPage(self):
+    def test_ImageScroll(self):
         wait(2)
         click("FrontPage_Buy_Button.png")
         click("FrontPage_Search_Button.png")
@@ -53,8 +53,8 @@ class SavedSearch(unittest.TestCase):
         reg = Region(151,377,702,516)
         img = capture(reg) # take a shot
         click(Region(839,589,67,88))
-        wait(2)
+        wait(3)
         if (reg.exists(Pattern(img).similar(0.99),0)): 
-            assert True
-        else:
             assert False
+        else:
+            assert True

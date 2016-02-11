@@ -82,10 +82,13 @@
         config = json.loads(open(configPath).read())
         app = App(config[<span class="str">"application"</span>])
         openApp(app)
-        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="skw">wait</span>(<span class="dig">2</span>)
         <span class="skw">type</span>(<span class="str">"l"</span>, KeyModifier.CTRL)
         <span class="skw">type</span>(config[<span class="str">"url"</span>] + Key.ENTER)
-        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="kw">if</span> exists(<img src="UsernameMyAccount.png" />):
+            <span class="skw">click</span>(Pattern(<img src="UsernameMyAccount.png" />).targetOffset(<span class="dig">104</span>,<span class="dig">3</span>))
+            <span class="skw">click</span>(<img src="MyAccount_SignOut_Button.png" />)
+        <span class="skw">wait</span>(<span class="dig">3</span>)
 
     <span class="kw">def</span> tearDown(self):
 
@@ -127,6 +130,7 @@
 
 
     <span class="kw">def</span> test_login(self):
+        <span class="skw">wait</span>(<span class="dig">2</span>)
         configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
         config = json.loads(open(configPath).read())
         <span class="skw">click</span>(<img src="SigninPage_SignIn_Button.png" />)

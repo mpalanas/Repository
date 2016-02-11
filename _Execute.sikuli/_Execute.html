@@ -88,6 +88,7 @@
 <span class="kw">from</span> GlobalMobileSignIn <span class="kw">import</span>*
 <span class="kw">from</span> PasswordReset <span class="kw">import</span>*
 <span class="kw">from</span> SavedSearch <span class="kw">import</span>*
+<span class="kw">from</span> PropertyDetail <span class="kw">import</span>*
 <span class="kw">import</span> HTMLTestRunner
 reload(HTMLTestRunner)
 
@@ -105,7 +106,12 @@ dir=<span class="str">'C:\SikuliScripts\Results'</span>
 outfile=file(os.path.join(dir,fileName), <span class="str">"wb"</span>)
 
 
-suite=unittest.TestLoader().loadTestsFromTestCase(WebsiteLoginComponent) <span class="cmt"># setup new test suite</span>
+suite=unittest.TestLoader().loadTestsFromTestCase(GlobalMobileSignIn) <span class="cmt"># setup new test suite</span>
+<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(SavedSearch))</span>
+<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(SavedProperties))</span>
+<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(PasswordReset))</span>
+<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(PropertyDetail))</span>
+<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(GlobalMobileSignIn))</span>
 
 
 

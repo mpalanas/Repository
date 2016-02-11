@@ -87,6 +87,8 @@
 <span class="kw">from</span> SavedProperties <span class="kw">import</span>*
 <span class="kw">from</span> GlobalMobileSignIn <span class="kw">import</span>*
 <span class="kw">from</span> PasswordReset <span class="kw">import</span>*
+<span class="kw">from</span> SavedSearch <span class="kw">import</span>*
+<span class="kw">from</span> PropertyDetail <span class="kw">import</span>*
 <span class="kw">import</span> HTMLTestRunner
 reload(HTMLTestRunner)
 
@@ -112,10 +114,16 @@ suite.addTests(unittest.TestLoader().loadTestsFromTestCase(FindUsBar))
 suite.addTests(unittest.TestLoader().loadTestsFromTestCase(FindUsPage))
 suite.addTests(unittest.TestLoader().loadTestsFromTestCase(FooterLinks))
 suite.addTests(unittest.TestLoader().loadTestsFromTestCase(QuickSearch))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(PropertyDetail))
 suite.addTests(unittest.TestLoader().loadTestsFromTestCase(WebsiteLoginComponent))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(SavedSearch))
 suite.addTests(unittest.TestLoader().loadTestsFromTestCase(SavedProperties))
 suite.addTests(unittest.TestLoader().loadTestsFromTestCase(PasswordReset))
-suite.addTests(unittest.TestLoader().loadTestsFromTestCase(GlobalMobileSignIn))
+
+
+browser = data[<span class="str">"appTaskName"</span>]
+<span class="kw">if</span> (browser == <span class="str">"chrome.exe"</span>):
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(GlobalMobileSignIn))
 
 
 

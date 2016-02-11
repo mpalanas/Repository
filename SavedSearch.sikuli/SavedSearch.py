@@ -13,10 +13,20 @@ class SavedSearch(unittest.TestCase):
         wait(1)
         type("l", KeyModifier.CTRL)
         type(config["url"] + Key.ENTER)
-        wait(2)
+        wait(4)
+        if exists("UsernameMyAccount-1.png"):
+            wait(1)
+        else:
+            click("SigninPage_SignIn_Button-1.png")
+            click(Pattern("SignInPopUp_emailAddress_field-1.png").similar(0.62).targetOffset(-100,15))
+            type(config["username"])
+            type(Key.TAB)
+            type(config["password"])
+            click(Pattern("SignInPopUp_SignIn_Button-1.png").similar(0.94))
+
+        
 
     def tearDown(self):
-
         if exists("UsernameMyAccount.png"):
             click(Pattern("UsernameMyAccount.png").targetOffset(104,3))
             click("MyAccount_SignOut_Button.png")
@@ -37,15 +47,11 @@ class SavedSearch(unittest.TestCase):
             wait(2)
 
 
+
     def test_1createSavedSearch(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
         config = json.loads(open(configPath).read())
-        click("SigninPage_SignIn_Button-1.png")
-        click(Pattern("SignInPopUp_emailAddress_field-1.png").similar(0.62).targetOffset(-100,15))
-        type(config["username"])
-        type(Key.TAB)
-        type(config["password"])
-        click(Pattern("SignInPopUp_SignIn_Button-1.png").similar(0.94))
+        
         wait(2)
         click(Pattern("1447881615559.png").targetOffset(-23,4))
         click("1447881647079.png")
@@ -71,22 +77,11 @@ class SavedSearch(unittest.TestCase):
         else:
             assert False
 
-        click("1455067832182.png")
-        wait(2)
 
     def test_2EditSavedSearch(self): 
         configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
         config = json.loads(open(configPath).read())
-        if exists("UsernameMyAccount.png"):
-            click(Pattern("UsernameMyAccount.png").targetOffset(104,3))
-            click("MyAccount_SignOut_Button.png")
-            wait(3)
-        click("SigninPage_SignIn_Button-2.png")
-        click(Pattern("SignInPopUp_emailAddress_field-2.png").similar(0.62).targetOffset(-100,15))
-        type(config["username"])
-        type(Key.TAB)
-        type(config["password"])
-        click(Pattern("SignInPopUp_SignIn_Button-2.png").similar(0.94))
+        wait(3)
         click("1447799262013-1.png")
         click(Pattern("1455063340945.png").targetOffset(-29,10))
         click("1455063374783.png")
@@ -104,16 +99,7 @@ class SavedSearch(unittest.TestCase):
     def test_3SavedSearchEditSchedule(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
         config = json.loads(open(configPath).read())
-        if exists("UsernameMyAccount.png"):
-            click(Pattern("UsernameMyAccount.png").targetOffset(104,3))
-            click("MyAccount_SignOut_Button.png")
-            wait(3)
-        click("SigninPage_SignIn_Button.png")
-        click(Pattern("SignInPopUp_emailAddress_field.png").similar(0.62).targetOffset(-100,15))
-        type(config["username"])
-        type(Key.TAB)
-        type(config["password"])
-        click(Pattern("SignInPopUp_SignIn_Button.png").similar(0.94))
+        wait(3)
         click("1447799262013.png")
         click("1455068889282.png")
         click("1455068899168.png")
@@ -133,16 +119,7 @@ class SavedSearch(unittest.TestCase):
     def test_4SavedSearchRemove(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
         config = json.loads(open(configPath).read())
-        if exists("UsernameMyAccount.png"):
-            click(Pattern("UsernameMyAccount.png").targetOffset(104,3))
-            click("MyAccount_SignOut_Button.png")
-            wait(3)
-        click("SigninPage_SignIn_Button-3.png")
-        click(Pattern("SignInPopUp_emailAddress_field-3.png").similar(0.62).targetOffset(-100,15))
-        type(config["username"])
-        type(Key.TAB)
-        type(config["password"])
-        click(Pattern("SignInPopUp_SignIn_Button-3.png").similar(0.94))
+        wait(3)
         click("1447799262013.png")
         click("1455068889282.png")
         click("1455068899168.png")

@@ -16,6 +16,7 @@ from SavedProperties import*
 from GlobalMobileSignIn import*
 from PasswordReset import*
 from SavedSearch import*
+from PropertyDetail import*
 import HTMLTestRunner
 reload(HTMLTestRunner)
 
@@ -33,7 +34,12 @@ dir='C:\SikuliScripts\Results'
 outfile=file(os.path.join(dir,fileName), "wb")
 
 
-suite=unittest.TestLoader().loadTestsFromTestCase(WebsiteLoginComponent) # setup new test suite
+suite=unittest.TestLoader().loadTestsFromTestCase(GlobalMobileSignIn) # setup new test suite
+#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(SavedSearch))
+#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(SavedProperties))
+#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(PasswordReset))
+#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(PropertyDetail))
+#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(GlobalMobileSignIn))
 
 
 

@@ -85,10 +85,20 @@
         <span class="skw">wait</span>(<span class="dig">1</span>)
         <span class="skw">type</span>(<span class="str">"l"</span>, KeyModifier.CTRL)
         <span class="skw">type</span>(config[<span class="str">"url"</span>] + Key.ENTER)
-        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">wait</span>(<span class="dig">4</span>)
+        <span class="kw">if</span> exists(<img src="UsernameMyAccount-1.png" />):
+            <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="kw">else</span>:
+            <span class="skw">click</span>(<img src="SigninPage_SignIn_Button-1.png" />)
+            <span class="skw">click</span>(Pattern(<img src="SignInPopUp_emailAddress_field-1.png" />).similar(<span class="dig">0.62</span>).targetOffset(-<span class="dig">100</span>,<span class="dig">15</span>))
+            <span class="skw">type</span>(config[<span class="str">"username"</span>])
+            <span class="skw">type</span>(Key.TAB)
+            <span class="skw">type</span>(config[<span class="str">"password"</span>])
+            <span class="skw">click</span>(Pattern(<img src="SignInPopUp_SignIn_Button-1.png" />).similar(<span class="dig">0.94</span>))
+
+
 
     <span class="kw">def</span> tearDown(self):
-
         <span class="kw">if</span> exists(<img src="UsernameMyAccount.png" />):
             <span class="skw">click</span>(Pattern(<img src="UsernameMyAccount.png" />).targetOffset(<span class="dig">104</span>,<span class="dig">3</span>))
             <span class="skw">click</span>(<img src="MyAccount_SignOut_Button.png" />)
@@ -109,15 +119,11 @@
             <span class="skw">wait</span>(<span class="dig">2</span>)
 
 
+
     <span class="kw">def</span> test_1createSavedSearch(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
         config = json.loads(open(configPath).read())
-        <span class="skw">click</span>(<img src="SigninPage_SignIn_Button-1.png" />)
-        <span class="skw">click</span>(Pattern(<img src="SignInPopUp_emailAddress_field-1.png" />).similar(<span class="dig">0.62</span>).targetOffset(-<span class="dig">100</span>,<span class="dig">15</span>))
-        <span class="skw">type</span>(config[<span class="str">"username"</span>])
-        <span class="skw">type</span>(Key.TAB)
-        <span class="skw">type</span>(config[<span class="str">"password"</span>])
-        <span class="skw">click</span>(Pattern(<img src="SignInPopUp_SignIn_Button-1.png" />).similar(<span class="dig">0.94</span>))
+
         <span class="skw">wait</span>(<span class="dig">2</span>)
         <span class="skw">click</span>(Pattern(<img src="1447881615559.png" />).targetOffset(-<span class="dig">23</span>,<span class="dig">4</span>))
         <span class="skw">click</span>(<img src="1447881647079.png" />)
@@ -143,22 +149,11 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-        <span class="skw">click</span>(<img src="1455067832182.png" />)
-        <span class="skw">wait</span>(<span class="dig">2</span>)
 
     <span class="kw">def</span> test_2EditSavedSearch(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
         config = json.loads(open(configPath).read())
-        <span class="kw">if</span> exists(<img src="UsernameMyAccount.png" />):
-            <span class="skw">click</span>(Pattern(<img src="UsernameMyAccount.png" />).targetOffset(<span class="dig">104</span>,<span class="dig">3</span>))
-            <span class="skw">click</span>(<img src="MyAccount_SignOut_Button.png" />)
-            <span class="skw">wait</span>(<span class="dig">3</span>)
-        <span class="skw">click</span>(<img src="SigninPage_SignIn_Button-2.png" />)
-        <span class="skw">click</span>(Pattern(<img src="SignInPopUp_emailAddress_field-2.png" />).similar(<span class="dig">0.62</span>).targetOffset(-<span class="dig">100</span>,<span class="dig">15</span>))
-        <span class="skw">type</span>(config[<span class="str">"username"</span>])
-        <span class="skw">type</span>(Key.TAB)
-        <span class="skw">type</span>(config[<span class="str">"password"</span>])
-        <span class="skw">click</span>(Pattern(<img src="SignInPopUp_SignIn_Button-2.png" />).similar(<span class="dig">0.94</span>))
+        <span class="skw">wait</span>(<span class="dig">3</span>)
         <span class="skw">click</span>(<img src="1447799262013-1.png" />)
         <span class="skw">click</span>(Pattern(<img src="1455063340945.png" />).targetOffset(-<span class="dig">29</span>,<span class="dig">10</span>))
         <span class="skw">click</span>(<img src="1455063374783.png" />)
@@ -176,16 +171,7 @@
     <span class="kw">def</span> test_3SavedSearchEditSchedule(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
         config = json.loads(open(configPath).read())
-        <span class="kw">if</span> exists(<img src="UsernameMyAccount.png" />):
-            <span class="skw">click</span>(Pattern(<img src="UsernameMyAccount.png" />).targetOffset(<span class="dig">104</span>,<span class="dig">3</span>))
-            <span class="skw">click</span>(<img src="MyAccount_SignOut_Button.png" />)
-            <span class="skw">wait</span>(<span class="dig">3</span>)
-        <span class="skw">click</span>(<img src="SigninPage_SignIn_Button.png" />)
-        <span class="skw">click</span>(Pattern(<img src="SignInPopUp_emailAddress_field.png" />).similar(<span class="dig">0.62</span>).targetOffset(-<span class="dig">100</span>,<span class="dig">15</span>))
-        <span class="skw">type</span>(config[<span class="str">"username"</span>])
-        <span class="skw">type</span>(Key.TAB)
-        <span class="skw">type</span>(config[<span class="str">"password"</span>])
-        <span class="skw">click</span>(Pattern(<img src="SignInPopUp_SignIn_Button.png" />).similar(<span class="dig">0.94</span>))
+        <span class="skw">wait</span>(<span class="dig">3</span>)
         <span class="skw">click</span>(<img src="1447799262013.png" />)
         <span class="skw">click</span>(<img src="1455068889282.png" />)
         <span class="skw">click</span>(<img src="1455068899168.png" />)
@@ -205,16 +191,7 @@
     <span class="kw">def</span> test_4SavedSearchRemove(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
         config = json.loads(open(configPath).read())
-        <span class="kw">if</span> exists(<img src="UsernameMyAccount.png" />):
-            <span class="skw">click</span>(Pattern(<img src="UsernameMyAccount.png" />).targetOffset(<span class="dig">104</span>,<span class="dig">3</span>))
-            <span class="skw">click</span>(<img src="MyAccount_SignOut_Button.png" />)
-            <span class="skw">wait</span>(<span class="dig">3</span>)
-        <span class="skw">click</span>(<img src="SigninPage_SignIn_Button-3.png" />)
-        <span class="skw">click</span>(Pattern(<img src="SignInPopUp_emailAddress_field-3.png" />).similar(<span class="dig">0.62</span>).targetOffset(-<span class="dig">100</span>,<span class="dig">15</span>))
-        <span class="skw">type</span>(config[<span class="str">"username"</span>])
-        <span class="skw">type</span>(Key.TAB)
-        <span class="skw">type</span>(config[<span class="str">"password"</span>])
-        <span class="skw">click</span>(Pattern(<img src="SignInPopUp_SignIn_Button-3.png" />).similar(<span class="dig">0.94</span>))
+        <span class="skw">wait</span>(<span class="dig">3</span>)
         <span class="skw">click</span>(<img src="1447799262013.png" />)
         <span class="skw">click</span>(<img src="1455068889282.png" />)
         <span class="skw">click</span>(<img src="1455068899168.png" />)

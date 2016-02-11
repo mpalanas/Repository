@@ -75,7 +75,7 @@
 <span class="kw">import</span> json
 <span class="kw">import</span> os
 
-<span class="kw">class</span> SavedSearch(unittest.TestCase):
+<span class="kw">class</span> PropertyDetail(unittest.TestCase):
 
     <span class="kw">def</span> setUp(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
@@ -115,7 +115,7 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_PropertyDetailPrintPage(self):
+    <span class="kw">def</span> test_ImageScroll(self):
         <span class="skw">wait</span>(<span class="dig">2</span>)
         <span class="skw">click</span>(<img src="FrontPage_Buy_Button.png" />)
         <span class="skw">click</span>(<img src="FrontPage_Search_Button.png" />)
@@ -125,11 +125,11 @@
         reg = Region(<span class="dig">151</span>,<span class="dig">377</span>,<span class="dig">702</span>,<span class="dig">516</span>)
         img = <span class="skw">capture</span>(reg) <span class="cmt"># take a shot</span>
         <span class="skw">click</span>(Region(<span class="dig">839</span>,<span class="dig">589</span>,<span class="dig">67</span>,<span class="dig">88</span>))
-        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">wait</span>(<span class="dig">3</span>)
         <span class="kw">if</span> (reg.exists(Pattern(img).similar(<span class="dig">0.99</span>),<span class="dig">0</span>)):
-            <span class="kw">assert</span> True
-        <span class="kw">else</span>:
             <span class="kw">assert</span> False
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> True
 </pre>
 </body>
 </html>

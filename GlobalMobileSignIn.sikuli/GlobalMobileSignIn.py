@@ -14,15 +14,29 @@ class GlobalMobileSignIn(unittest.TestCase):
         type("l", KeyModifier.CTRL)
         type(config["globalsignin"] + Key.ENTER)
         wait(2)
+        if exists("globalMobileSigninPage_continue_Button.png"):
+            click("globalMobileSigninPage_continue_Button.png")
+            wait(2)
+            click(Pattern("MainPage_MyAccount_dropdown-1.png").exact())
+            click("MyAccount_SignOut_Button.png")
+            wait(3)
+            type("l", KeyModifier.CTRL)
+            type(config["globalsignin"] + Key.ENTER)
 
     def tearDown(self):
         if exists(Pattern("MainPage_MyAccount_dropdown-1.png").exact()):
             click(Pattern("MainPage_MyAccount_dropdown-1.png").exact())
             click("MyAccount_SignOut_Button.png")
             wait(3)
-            click(Pattern("closeButtonChrome.png").targetOffset(26,0))
+            configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
+            config = json.loads(open(configPath).read())
+            appTaskName = config["appTaskName"]
+            os.system("taskkill /f /im " +appTaskName)
         else:
-            click(Pattern("closeButtonChrome.png").targetOffset(26,0))
+            configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
+            config = json.loads(open(configPath).read())
+            appTaskName = config["appTaskName"]
+            os.system("taskkill /f /im " +appTaskName)
 
 #    def test_invalidInputSignin(self):
 #        click("globalMobileSigninPage_signin_Button.png")

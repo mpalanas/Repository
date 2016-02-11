@@ -70,29 +70,15 @@
 <h2>Beta.sikuli</h2> <a href="Beta.zip">(Download this script)</a>
 </div>
 <pre class="sikuli-code">
-<span class="kw">def</span> test_SaveSearchEdit(self):
-        configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
-        config = json.loads(open(configPath).read())
-        <span class="skw">click</span>(<img src="SigninPage_SignIn_Button-2.png" />)
-        <span class="skw">click</span>(Pattern(<img src="SignInPopUp_emailAddress_field-2.png" />).similar(<span class="dig">0.62</span>).targetOffset(-<span class="dig">100</span>,<span class="dig">15</span>))
-        <span class="cmt">#type(config["username"])</span>
-        <span class="skw">type</span>(<span class="str">"test405@test.com"</span>)
-        <span class="skw">type</span>(Key.TAB)
-        <span class="cmt">#type(config["password"])</span>
-        <span class="skw">type</span>(<span class="str">"ayroso235"</span>)
-        <span class="skw">click</span>(Pattern(<img src="SignInPopUp_SignIn_Button-2.png" />).similar(<span class="dig">0.94</span>))
-        <span class="skw">click</span>(<img src="1447799262013-1.png" />)
-        <span class="skw">click</span>(Pattern(<img src="1455063340945.png" />).targetOffset(-<span class="dig">29</span>,<span class="dig">10</span>))
-        <span class="skw">click</span>(<img src="1455063374783.png" />)
-        <span class="skw">click</span>(<img src="1455063406796.png" />)
-        <span class="skw">type</span>(<span class="str">"a"</span>, KEY_CTRL)
-        <span class="skw">type</span>(Key.DELETE)
-        <span class="skw">type</span>(<span class="str">"Saved Search Blockhouse Bay"</span>)
-        <span class="skw">click</span>(<img src="1455063436229.png" />)
-        <span class="kw">if</span> exists(<img src="1455063448150.png" />):
-            <span class="kw">assert</span> True
-        <span class="kw">else</span>:
-            <span class="kw">assert</span> False
-</pre>
-</body>
-</html>
+<span class="kw">if</span> exists(<img src="UsernameMyAccount.png" />):
+            <span class="skw">click</span>(Pattern(<img src="UsernameMyAccount.png" />).targetOffset(<span class="dig">104</span>,<span class="dig">3</span>))
+            <span class="skw">click</span>(<img src="MyAccount_SignOut_Button.png" />)
+            <span class="skw">wait</span>(<span class="dig">3</span>)
+
+            configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
+            config = json.loads(open(configPath).read())
+            appTaskName = config[<span class="str">"appTaskName"</span>]
+            os.system(<span class="str">"taskkill /f /im "</span> +appTaskName)
+
+            <span class="skw">wait</span>(<span class="dig">2</span>)
+

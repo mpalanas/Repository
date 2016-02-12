@@ -97,76 +97,84 @@
 
 
     <span class="kw">def</span> test_BranchDetails(self):
-            <span class="kw">if</span> exists(Pattern(<img src="BranchPage_BranchDetails.png" />).similar(<span class="dig">0.61</span>)):
-                <span class="kw">assert</span> True
-            <span class="kw">else</span>:
-                <span class="kw">assert</span> False
+        <span class="kw">if</span> exists(Pattern(<img src="BranchPage_BranchDetails.png" />).similar(<span class="dig">0.61</span>)):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_BranchStaffManager(self):
-            <span class="skw">click</span>(<img src="BranchPage_OurTeam_Button.png" />)
-            <span class="skw">wait</span>(<span class="dig">3</span>)
-            <span class="kw">if</span> exists(<img src="OurTeamPage_ManagersName.png" />):
-                <span class="kw">assert</span> True
-            <span class="kw">else</span>:
-                <span class="kw">assert</span> False
+        <span class="skw">click</span>(<img src="BranchPage_OurTeam_Button.png" />)
+        <span class="skw">wait</span>(<span class="dig">3</span>)
+        <span class="kw">if</span> exists(<img src="OurTeamPage_ManagersName.png" />):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_BranchStaffPropertyManagement(self):
-            <span class="skw">click</span>(<img src="BranchPage_OurTeam_Button.png" />)
-            <span class="kw">if</span> exists(Pattern(<img src="OurTeamPage_PropertyManagement.png" />).similar(<span class="dig">0.85</span>)):
-                <span class="kw">assert</span> True
-            <span class="kw">else</span>:
-                <span class="kw">assert</span> False
+        <span class="skw">click</span>(<img src="BranchPage_OurTeam_Button.png" />)
+        <span class="kw">if</span> exists(Pattern(<img src="OurTeamPage_PropertyManagement.png" />).similar(<span class="dig">0.85</span>)):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_BranchStaffResidentialSalespeople(self):
-            <span class="skw">click</span>(<img src="BranchPage_OurTeam_Button.png" />)
-            wheel(Pattern(<img src="OurTeamPage_PropertyManagement.png" />).similar(<span class="dig">0.76</span>), WHEEL_DOWN, <span class="dig">4</span>)
+        <span class="skw">click</span>(<img src="BranchPage_OurTeam_Button.png" />)
+        wheel(Pattern(<img src="OurTeamPage_PropertyManagement.png" />).similar(<span class="dig">0.76</span>), WHEEL_DOWN, <span class="dig">4</span>)
 
-            <span class="kw">if</span> exists(Pattern(<img src="OurTeam_ResidentialSalespeople.png" />).similar(<span class="dig">0.87</span>)):
-                <span class="kw">assert</span> True
-            <span class="kw">else</span>:
-                <span class="kw">assert</span> False
+        <span class="kw">if</span> exists(Pattern(<img src="OurTeam_ResidentialSalespeople.png" />).similar(<span class="dig">0.87</span>)):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_BranchStaffRuralSalespeople(self):
-            <span class="skw">click</span>(<img src="BranchPage_OurTeam_Button.png" />)
-            wheel(Pattern(<img src="OurTeamPage_PropertyManagement.png" />).similar(<span class="dig">0.76</span>), WHEEL_DOWN, <span class="dig">80</span>)
+        <span class="skw">click</span>(<img src="BranchPage_OurTeam_Button.png" />)
+        wheel(Pattern(<img src="OurTeamPage_PropertyManagement.png" />).similar(<span class="dig">0.76</span>), WHEEL_DOWN, <span class="dig">80</span>)
 
-            <span class="kw">if</span> exists(Pattern(<img src="OurTeam_RuralSalespeople.png.png" />).similar(<span class="dig">0.89</span>)):
-                <span class="kw">assert</span> True
-            <span class="kw">else</span>:
-                <span class="kw">assert</span> False
+        <span class="kw">if</span> exists(Pattern(<img src="OurTeam_RuralSalespeople.png.png" />).similar(<span class="dig">0.89</span>)):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_BranchProperties(self):
-            <span class="skw">click</span>(Pattern(<img src="BranchPage_Properties_Button.png" />).similar(<span class="dig">0.76</span>))
-            <span class="skw">find</span>(<img src="BranchPage_AlbanyProperties.png" />)
-            <span class="kw">if</span> exists(Pattern(<img src="BranchPage_PropertiesMoreDetail_Button.png" />).similar(<span class="dig">0.71</span>)):
-                <span class="kw">assert</span> True
-            <span class="kw">else</span>:
-                <span class="kw">assert</span> False
+        <span class="skw">click</span>(Pattern(<img src="BranchPage_Properties_Button.png" />).similar(<span class="dig">0.76</span>))
+        <span class="skw">find</span>(<img src="BranchPage_AlbanyProperties.png" />)
+        <span class="kw">if</span> exists(Pattern(<img src="BranchPage_PropertiesMoreDetail_Button.png" />).similar(<span class="dig">0.71</span>)):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_BranchRentals(self):
-            <span class="skw">click</span>(<img src="BranchPage_Rentals_Button.png" />)
-            <span class="skw">find</span>(<img src="BranchPage_AlbanyRentals.png" />)
-            <span class="skw">click</span>(<img src="BranchPage_PropertiesMoreDetail_Button.png" />)
-            <span class="kw">if</span> exists(Pattern(<img src="BranchRetal_PropertyDetailApplyOnlineToRent_Button.png" />).similar(<span class="dig">0.64</span>)):
-                <span class="kw">assert</span> True
-            <span class="kw">else</span>:
-                <span class="kw">assert</span> False
+        <span class="skw">click</span>(<img src="BranchPage_Rentals_Button.png" />)
+        <span class="skw">find</span>(<img src="BranchPage_AlbanyRentals.png" />)
+        <span class="skw">click</span>(<img src="BranchPage_PropertiesMoreDetail_Button.png" />)
+        <span class="kw">if</span> exists(Pattern(<img src="BranchRetal_PropertyDetailApplyOnlineToRent_Button.png" />).similar(<span class="dig">0.64</span>)):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_BranchSold(self):
-            <span class="skw">click</span>(<img src="BranchPage_SoldProperties_Button.png" />)
-            <span class="skw">find</span>(<img src="BranchPAge_AlbanySoldProperties.png" />)
-            <span class="kw">if</span> exists(Pattern(<img src="BranchPage_SoldSticker.png" />).exact()):
-                <span class="kw">assert</span> True
-            <span class="kw">else</span>:
-                <span class="kw">assert</span> False
+        <span class="skw">click</span>(<img src="BranchPage_SoldProperties_Button.png" />)
+        <span class="skw">find</span>(<img src="BranchPAge_AlbanySoldProperties.png" />)
+        <span class="kw">if</span> exists(Pattern(<img src="BranchPage_SoldSticker.png" />).exact()):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_branchOpenHome(self):
-            <span class="skw">click</span>(<img src="BranchPage_OpenHome_Button.png" />)
-            <span class="skw">find</span>(<img src="BranchPage_AlbanyOpenHomes.png" />)
-            <span class="skw">click</span>(<img src="BranchPage_OpenHomeMoreDetails.png" />)
-            <span class="skw">wait</span>(<span class="dig">2</span>)
-            <span class="kw">if</span> exists(Pattern(<img src="PropertyDetail_OpenHome.png" />).similar(<span class="dig">0.82</span>)):
+        <span class="skw">click</span>(<img src="BranchPage_OpenHome_Button.png" />)
+        <span class="skw">find</span>(<img src="BranchPage_AlbanyOpenHomes.png" />)
+        <span class="skw">click</span>(<img src="BranchPage_OpenHomeMoreDetails.png" />)
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="kw">if</span> exists(Pattern(<img src="PropertyDetail_OpenHome.png" />).similar(<span class="dig">0.82</span>)):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
+
+    <span class="kw">def</span> test_branchSorroundingSuburbs(self):
+        <span class="skw">find</span>(<img src="BrancPage_SorroundingSuburbs.png" />).below(<span class="dig">30</span>).left(-<span class="dig">15</span>).<span class="skw">click</span>()
+            <span class="kw">if</span> exists(Pattern(<img src="ResultsPage_Title.png" />).similar(<span class="dig">0.79</span>)):
                 <span class="kw">assert</span> True
+
             <span class="kw">else</span>:
                 <span class="kw">assert</span> False
 </pre>

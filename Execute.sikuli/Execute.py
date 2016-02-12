@@ -29,8 +29,8 @@ data["username"] = timestr + "@test.com"
 with open(configPath, "w") as config:
     config.write(json.dumps(data))
 
-fileName = timestr + "Report.html"
-dir='C:\SikuliScripts\Results'
+fileName = timestr + data["appTaskName"] + "Report.html"
+dir=os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Results")
 outfile=file(os.path.join(dir,fileName), "wb")
 
 

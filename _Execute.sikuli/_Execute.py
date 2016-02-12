@@ -34,7 +34,7 @@ dir='C:\SikuliScripts\Results'
 outfile=file(os.path.join(dir,fileName), "wb")
 
 
-suite=unittest.TestLoader().loadTestsFromTestCase(GlobalMobileSignIn) # setup new test suite
+suite=unittest.TestLoader().loadTestsFromTestCase(QuickSearch) # setup new test suite
 #suite.addTests(unittest.TestLoader().loadTestsFromTestCase(SavedSearch))
 #suite.addTests(unittest.TestLoader().loadTestsFromTestCase(SavedProperties))
 #suite.addTests(unittest.TestLoader().loadTestsFromTestCase(PasswordReset))
@@ -45,6 +45,6 @@ suite=unittest.TestLoader().loadTestsFromTestCase(GlobalMobileSignIn) # setup ne
 
 
 runner = HTMLTestRunner.HTMLTestRunner(stream = outfile, title = 'Barfoot.co.nz Regression', description = 'Test barfoot.co.nz site')
-#runner = HTMLTestRunner.HTMLTestRunner(stream = outfile, verbosity=2, dirTestScreenshots = 'C:\SikuliScripts\Results')
+#runner = HTMLTestRunner.HTMLTestRunner(stream = outfile, verbosity=2, dirTestScreenshots = 'c:\\SikuliScripts\\Results')
 runner.run(suite)
 outfile.close()

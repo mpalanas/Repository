@@ -70,15 +70,12 @@
 <h2>Beta.sikuli</h2> <a href="Beta.zip">(Download this script)</a>
 </div>
 <pre class="sikuli-code">
-<span class="kw">if</span> exists(<img src="UsernameMyAccount.png" />):
-            <span class="skw">click</span>(Pattern(<img src="UsernameMyAccount.png" />).targetOffset(<span class="dig">104</span>,<span class="dig">3</span>))
-            <span class="skw">click</span>(<img src="MyAccount_SignOut_Button.png" />)
-            <span class="skw">wait</span>(<span class="dig">3</span>)
-
-            configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
-            config = json.loads(open(configPath).read())
-            appTaskName = config[<span class="str">"appTaskName"</span>]
-            os.system(<span class="str">"taskkill /f /im "</span> +appTaskName)
-
-            <span class="skw">wait</span>(<span class="dig">2</span>)
-
+wheel(<img src="1455070857902.png" />, WHEEL_DOWN, <span class="dig">10</span>)
+<span class="skw">find</span>(<img src="BrancPage_SorroundingSuburbs.png" />).below(<span class="dig">30</span>).left(-<span class="dig">15</span>).<span class="skw">click</span>()
+<span class="kw">if</span> exists(Pattern(<img src="ResultsPage_Title.png" />).similar(<span class="dig">0.79</span>)):
+    <span class="kw">assert</span> True
+<span class="kw">else</span>:
+    <span class="kw">assert</span> False
+</pre>
+</body>
+</html>

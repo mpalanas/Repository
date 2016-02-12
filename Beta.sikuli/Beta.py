@@ -1,18 +1,6 @@
-if exists("UsernameMyAccount.png"):
-            click(Pattern("UsernameMyAccount.png").targetOffset(104,3))
-            click("MyAccount_SignOut_Button.png")
-            wait(3)
-
-            configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
-            config = json.loads(open(configPath).read())
-            appTaskName = config["appTaskName"]
-            os.system("taskkill /f /im " +appTaskName)
-
-            wait(2)
-            
-        else:
-            configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
-            config = json.loads(open(configPath).read())
-            appTaskName = config["appTaskName"]
-            os.system("taskkill /f /im " +appTaskName)
-            wait(2)
+wheel("1455070857902.png", WHEEL_DOWN, 10)
+find("BrancPage_SorroundingSuburbs.png").below(30).left(-15).click()
+if exists(Pattern("ResultsPage_Title.png").similar(0.79)):
+    assert True
+else:
+    assert False

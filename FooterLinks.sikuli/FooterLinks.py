@@ -33,7 +33,7 @@ class FooterLinks(unittest.TestCase):
     def test_FooterAuctionVenues(self):
         click(Pattern("MainPage_Footer_AuctionsVenues.png").similar(0.74))
         wait(1)
-        if exists(Pattern("1454961118035.png").similar(0.86)):
+        if exists(Pattern("AuctionVenue_Map.png").similar(0.86)):
             assert True
         else:
             assert False
@@ -76,9 +76,17 @@ class FooterLinks(unittest.TestCase):
         
         
     def test_AppStoreLink(self):
-        click("MainPage_DownloadApp.png")
+        click("MainPage_DownloadAppIos.png")
         wait(3)
         if exists(Pattern("AppStore_BarfootAppLogo.png").exact()):
+            assert True
+        else:
+            assert False
+
+    def test_AppStoreLink(self):
+        click("MainPage_DownloadAppAndroid.png")
+        wait(3)
+        if exists(Pattern("AndroidStore_BarfootAppLogo.png").exact()):
             assert True
         else:
             assert False

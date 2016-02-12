@@ -13,7 +13,7 @@ class QuickSearch(unittest.TestCase):
         type("l", KeyModifier.CTRL)
         type(config["url"] + Key.ENTER)
         wait(2)
-        click(Pattern("MainPage_quickSearch_textbox.png").exact().targetOffset(-20,25))
+        click(Pattern("MainPage_quickSearch_textbox.png").similar(0.94).targetOffset(-24,19))
 
     def tearDown(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
@@ -25,7 +25,7 @@ class QuickSearch(unittest.TestCase):
     def test_addressIDSearch(self):        
         
         type("Glenfield")
-        find(Pattern("1454961804257.png").similar(0.50))
+        find(Pattern("MainPage_SearchBar_Results.png").similar(0.50))
         click(Pattern("MainPage_quicksearch_Button.png").similar(0.91).targetOffset(-1,26))
         wait(3)
         if exists(Pattern("PropertyDetailPage_saveProperty_Button.png").similar(0.82)):

@@ -13,12 +13,12 @@ class PropertyDetail(unittest.TestCase):
         wait(1)
         type("l", KeyModifier.CTRL)
         type(config["url"] + Key.ENTER)
-        wait(2)
+        wait("MainPage_residentialSearch_Button.png")
+        click("MainPage_residentialSearch_Button.png")
         wait(2)
         click("FrontPage_Search_Button.png")
         wait(2)
-        find("1447889264312.png")
-        click("1455070789944.png")
+        click("ResultsPage_moreDetails_Button.png")
 
     def tearDown(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
@@ -28,17 +28,17 @@ class PropertyDetail(unittest.TestCase):
 
 
     def test_PropertyDetailAgentProperties(self):
-        wheel("1455070857902.png", WHEEL_DOWN, 40)
-        click("1455070876266.png")
-        if exists("1455070888622.png"):
+        wheel("PropertyDetail_Detail_Tab.png", WHEEL_DOWN, 40)
+        click("PropertyDetail_AgentProperties_Button.png")
+        if exists("AgentPage_PropertiesPage_Title.png"):
             assert True
         else:
             assert False
 
     def test_PropertyDetailPrintPage(self):
-        wheel("1455070857902.png", WHEEL_DOWN, 4)
-        click("1455070946211.png")
-        if exists("1455070967717.png"):
+        wheel("PropertyDetail_Detail_Tab.png", WHEEL_DOWN, 4)
+        click("PropertyDetail_PrintPage_Button.png")
+        if exists("PropertyDetail_Print_Page.png"):
             assert True
         else:
             assert False
@@ -48,8 +48,8 @@ class PropertyDetail(unittest.TestCase):
         click("FrontPage_Buy_Button.png")
         click("FrontPage_Search_Button.png")
         wait(2)
-        find("1447889264312.png")
-        click("1455070789944.png")
+        find("MainPage_residentialSearch_Button.png")
+        click("ResultsPage_moreDetails_Button.png")
         reg = Region(151,377,702,516)
         img = capture(reg) # take a shot
         click(Region(839,589,67,88))
@@ -58,3 +58,11 @@ class PropertyDetail(unittest.TestCase):
             assert False
         else:
             assert True
+
+    def test_SurroundingSuburbs(self):
+        wheel("PropertyDetail_Detail_Title.png", WHEEL_DOWN, 10)
+        find("PropertyDetail_SurroundingSuburbs.png").below(30).left(-15).click()
+        if exists(Pattern("ResultsPage_Title.png").similar(0.79)):
+            assert True
+        else:
+            assert False

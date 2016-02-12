@@ -124,27 +124,25 @@
         configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
         config = json.loads(open(configPath).read())
 
-        <span class="skw">wait</span>(<span class="dig">2</span>)
-        <span class="skw">click</span>(Pattern(<img src="1447881615559.png" />).targetOffset(-<span class="dig">23</span>,<span class="dig">4</span>))
-        <span class="skw">click</span>(<img src="1447881647079.png" />)
-        <span class="skw">wait</span>(<img src="1447881739750.png" />)
-        <span class="skw">click</span>(<img src="1447881739750.png" />)
+        <span class="skw">wait</span>(<img src="MainPage_MyAccount_Dropdown.png" />)
+        <span class="skw">click</span>(<img src="SearchBar_Region_Dropdown.png" />)
+        <span class="skw">click</span>(<img src="Region_AucklandCity_Dropdown.png" />)
+        <span class="skw">find</span>(<img src="SearchBar_Suburb_DropdownName.png" />).below(<span class="dig">20</span>).<span class="skw">click</span>()
         <span class="skw">click</span>(<img src="1455054875641.png" />)
-        <span class="skw">wait</span>(<img src="1447882027042.png" />)
-        <span class="skw">click</span>(<img src="1447882027042.png" />)
-        <span class="skw">click</span>(Pattern(<img src="1447881820472.png" />).targetOffset(-<span class="dig">65</span>,<span class="dig">2</span>))
-        <span class="skw">click</span>(<img src="1447882327038.png" />)
-        <span class="skw">click</span>(<img src="1455054900783.png" />)
-        <span class="skw">click</span>(<img src="1455054918572.png" />)
+        <span class="skw">find</span>(<img src="SearchBar_SurroundingSuburbs_DropdownName.png" />).below(<span class="dig">20</span>).<span class="skw">click</span>()
+        <span class="skw">find</span>(<img src="SurroundingSuburb_Avondale_DropdownName.png" />).left(<span class="dig">15</span>).<span class="skw">click</span>()
+        <span class="skw">click</span>(<img src="FrontPAge_Search_Button.png" />)
+        <span class="skw">click</span>(<img src="MainPage_SaveSearch_Button.png" />)
+        <span class="skw">click</span>(Pattern(<img src="SaveSearchWindow_ClearName_Button.png" />).similar(<span class="dig">0.74</span>))
         <span class="skw">type</span>(<span class="str">"SavedSearch"</span>)
-        <span class="skw">click</span>(<img src="1455055124658.png" />)
-        <span class="skw">click</span>(<img src="1455055148229.png" />)
-        <span class="skw">click</span>(<img src="1455055160570.png" />)
-        <span class="skw">click</span>(<img src="1447799262013.png" />)
-        <span class="skw">click</span>(<img src="1455065452632.png" />)
-        <span class="skw">click</span>(<img src="1455065462352.png" />)
+        <span class="skw">click</span>(Pattern(<img src="SavedSearch_Never_EmailAlertDropdown.png" />).similar(<span class="dig">0.72</span>))
+        <span class="skw">click</span>(<img src="SavedSearch_Weekly_EmailAlertDropdown.png" />)
+        <span class="skw">click</span>(<img src="SaveSearchWindow_SaveSearch_Button.png" />)
+        <span class="skw">click</span>(<img src="MainPage_MyAccount_Dropdown.png" />)
+        <span class="skw">click</span>(<img src="AccountDropdown_Profile_Button.png" />)
+        <span class="skw">click</span>(<img src="Profilepage_SaveSearches_Button.png" />)
 
-        <span class="kw">if</span> exists(<img src="1455065478316.png" />):
+        <span class="kw">if</span> exists(Pattern(<img src="ProfilePage_SaveSavesearch_Details.png" />).similar(<span class="dig">0.76</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
@@ -153,16 +151,17 @@
     <span class="kw">def</span> test_2EditSavedSearch(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
         config = json.loads(open(configPath).read())
-        <span class="skw">wait</span>(<span class="dig">3</span>)
-        <span class="skw">click</span>(<img src="1447799262013-1.png" />)
-        <span class="skw">click</span>(Pattern(<img src="1455063340945.png" />).targetOffset(-<span class="dig">29</span>,<span class="dig">10</span>))
-        <span class="skw">click</span>(<img src="1455063374783.png" />)
-        <span class="skw">click</span>(<img src="1455063406796.png" />)
+        <span class="skw">wait</span>(<img src="MainPage_MyAccount_Dropdown.png" />)
+        <span class="skw">click</span>(<img src="MainPage_MyAccount_Dropdown.png" />)
+        <span class="skw">click</span>(Pattern(<img src="AccountDropdown_SaveSearch_Dropdown.png" />).similar(<span class="dig">0.74</span>).targetOffset(-<span class="dig">29</span>,<span class="dig">10</span>))
+        <span class="skw">click</span>(Pattern(<img src="SaveSearchPage_ChangeName_Button.png" />).similar(<span class="dig">0.76</span>))
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="skw">click</span>(<img src="SaveSearchPAge_SaveSearchName_Textbox.png" />)
         <span class="skw">type</span>(<span class="str">"a"</span>, KEY_CTRL)
         <span class="skw">type</span>(Key.DELETE)
         <span class="skw">type</span>(<span class="str">"Saved Search Blockhouse Bay"</span>)
-        <span class="skw">click</span>(<img src="1455063436229.png" />)
-        <span class="kw">if</span> exists(<img src="1455063448150.png" />):
+        <span class="skw">click</span>(<img src="SaveSearchPage_SaveChanges_Button.png" />)
+        <span class="kw">if</span> exists(Pattern(<img src="SaveSearchPage_SaveSearch_Name.png" />).similar(<span class="dig">0.84</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
@@ -171,18 +170,19 @@
     <span class="kw">def</span> test_3SavedSearchEditSchedule(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
         config = json.loads(open(configPath).read())
-        <span class="skw">wait</span>(<span class="dig">3</span>)
-        <span class="skw">click</span>(<img src="1447799262013.png" />)
-        <span class="skw">click</span>(<img src="1455068889282.png" />)
-        <span class="skw">click</span>(<img src="1455068899168.png" />)
-        <span class="skw">click</span>(<img src="1455068908391.png" />)
-        <span class="skw">click</span>(<img src="1455068919787.png" />)
-        <span class="skw">click</span>(<img src="1455068946142.png" />)
-        <span class="skw">find</span>(<img src="1455068959954.png" />).left(<span class="dig">15</span>).<span class="skw">click</span>()
-        <span class="skw">click</span>(<img src="1455069008738.png" />)
+        <span class="skw">wait</span>(<img src="MainPage_MyAccount_Dropdown.png" />)
+        <span class="skw">click</span>(<img src="MainPage_MyAccount_Dropdown.png" />)
+        <span class="skw">click</span>(<img src="AccountDropdown_Profile_Button.png" />)
+        <span class="skw">click</span>(<img src="Profilepage_SaveSearches_Button.png" />)
+        <span class="skw">click</span>(<img src="SavedSearch_ViewAndEdit_Button.png" />)
+        <span class="skw">click</span>(<img src="SavedSearch_EmailAlertWeekly_Dropdown.png" />)
+        <span class="skw">click</span>(<img src="SavedSearch_EmailAlertDaily_Dropdown.png" />)
+        <span class="skw">find</span>(Pattern(<img src="SavedSearch_OpenHome_Checkbox.png" />).similar(<span class="dig">0.80</span>)).left(<span class="dig">15</span>).<span class="skw">click</span>()
+        <span class="skw">click</span>(<img src="SaveSearchPage_SaveChanges_Button.png" />)
+        <span class="skw">wait</span>(<span class="dig">2</span>)
         <span class="skw">type</span>(Key.F5)
         <span class="skw">wait</span>(<span class="dig">3</span>)
-        <span class="kw">if</span> exists(<img src="1455069021326.png" />):
+        <span class="kw">if</span> exists(<img src="SaveSearchPage_ScheduleOpenHome_Details.png" />):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
@@ -191,15 +191,17 @@
     <span class="kw">def</span> test_4SavedSearchRemove(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
         config = json.loads(open(configPath).read())
-        <span class="skw">wait</span>(<span class="dig">3</span>)
-        <span class="skw">click</span>(<img src="1447799262013.png" />)
-        <span class="skw">click</span>(<img src="1455068889282.png" />)
-        <span class="skw">click</span>(<img src="1455068899168.png" />)
-        <span class="skw">click</span>(<img src="1455069528701.png" />)
+        <span class="skw">wait</span>(<img src="MainPage_MyAccount_Dropdown.png" />)
+        <span class="skw">click</span>(<img src="MainPage_MyAccount_Dropdown.png" />)
+        <span class="skw">click</span>(<img src="AccountDropdown_Profile_Button.png" />)
+        <span class="skw">click</span>(<img src="Profilepage_SaveSearches_Button.png" />)
+        <span class="skw">click</span>(<img src="SavedSearchPage_Delete_Button.png" />)
         <span class="skw">wait</span>(<span class="dig">1</span>)
         <span class="skw">type</span>(Key.F5)
         <span class="skw">wait</span>(<span class="dig">1</span>)
-        <span class="kw">if</span> exists(<img src="1455069562217.png" />):
+        <span class="kw">if</span> exists(<img src="SavedSearch_NoSavedSearch_IE.png" />):
+            <span class="kw">assert</span> True
+        <span class="kw">elif</span> exists(<img src="SavedSearch_NoSavedSearch_Chrome.png" />):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False

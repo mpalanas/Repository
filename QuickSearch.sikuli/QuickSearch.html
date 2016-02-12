@@ -85,7 +85,7 @@
         <span class="skw">type</span>(<span class="str">"l"</span>, KeyModifier.CTRL)
         <span class="skw">type</span>(config[<span class="str">"url"</span>] + Key.ENTER)
         <span class="skw">wait</span>(<span class="dig">2</span>)
-        <span class="skw">click</span>(Pattern(<img src="MainPage_quickSearch_textbox.png" />).exact().targetOffset(-<span class="dig">20</span>,<span class="dig">25</span>))
+        <span class="skw">click</span>(Pattern(<img src="MainPage_quickSearch_textbox.png" />).similar(<span class="dig">0.94</span>).targetOffset(-<span class="dig">24</span>,<span class="dig">19</span>))
 
     <span class="kw">def</span> tearDown(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
@@ -97,7 +97,7 @@
     <span class="kw">def</span> test_addressIDSearch(self):
 
         <span class="skw">type</span>(<span class="str">"Glenfield"</span>)
-        <span class="skw">find</span>(Pattern(<img src="1454961804257.png" />).similar(<span class="dig">0.50</span>))
+        <span class="skw">find</span>(Pattern(<img src="MainPage_SearchBar_Results.png" />).similar(<span class="dig">0.50</span>))
         <span class="skw">click</span>(Pattern(<img src="MainPage_quicksearch_Button.png" />).similar(<span class="dig">0.91</span>).targetOffset(-<span class="dig">1</span>,<span class="dig">26</span>))
         <span class="skw">wait</span>(<span class="dig">3</span>)
         <span class="kw">if</span> exists(Pattern(<img src="PropertyDetailPage_saveProperty_Button.png" />).similar(<span class="dig">0.82</span>)):

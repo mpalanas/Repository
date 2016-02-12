@@ -23,13 +23,13 @@ class FindUsPage(unittest.TestCase):
         wait(2)
 
     def test_FindABranch(self):
-        click(Pattern("1454959336180.png").similar(0.86).targetOffset(47,-27))
+        click(Pattern("FindUsPage_FindABranch_Button.png").similar(0.86).targetOffset(47,-27))
         click(Pattern("findABranch_textSearch.png").targetOffset(-39,6))
         type("glen eden")
         wait(2)
         click(Pattern("FindUs_SearchABranch_Button.png").similar(0.79))
         wait(1)
-        if exists(Pattern("1454975929067.png").similar(0.78)):
+        if exists(Pattern("BranchProfile_GlenEden_Title.png").similar(0.78)):
             assert True
         else:
             assert False

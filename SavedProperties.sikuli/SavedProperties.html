@@ -97,7 +97,7 @@
             <span class="skw">type</span>(config[<span class="str">"password"</span>])
             <span class="skw">click</span>(Pattern(<img src="SignInPopUp_SignIn_Button.png" />).similar(<span class="dig">0.92</span>))
             <span class="skw">wait</span>(<span class="dig">3</span>)
-            <span class="skw">find</span>(<img src="UsernameMyAccount.png" />)
+
         <span class="kw">else</span>:
 
             <span class="skw">click</span>(<img src="SigninPage_SignIn_Button.png" />)
@@ -107,7 +107,6 @@
             <span class="skw">type</span>(config[<span class="str">"password"</span>])
             <span class="skw">click</span>(Pattern(<img src="SignInPopUp_SignIn_Button.png" />).similar(<span class="dig">0.92</span>))
             <span class="skw">wait</span>(<span class="dig">3</span>)
-            <span class="skw">find</span>(<img src="UsernameMyAccount.png" />)
 
     <span class="kw">def</span> tearDown(self):
         <span class="skw">type</span>(Key.BACKSPACE)
@@ -124,8 +123,9 @@
 
 
     <span class="kw">def</span> test_CommercialSaveProperty(self):
-        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">wait</span>(Pattern(<img src="UsernameMyAccount-1.png" />).targetOffset(<span class="dig">81</span>,-<span class="dig">2</span>))
         <span class="skw">click</span>(Pattern(<img src="FrontPage_Commercial_Button.png" />).similar(<span class="dig">0.80</span>))
+        <span class="skw">wait</span>(<span class="dig">2</span>)
         <span class="skw">click</span>(<img src="FrontPage_Search_Button-1.png" />)
         <span class="skw">wait</span>(<span class="dig">2</span>)
         <span class="skw">find</span>(<img src="FrontPage_CommercialFacet.png" />)
@@ -134,6 +134,7 @@
         <span class="skw">click</span>(Pattern(<img src="UsernameMyAccount-2.png" />).targetOffset(<span class="dig">86</span>,-<span class="dig">5</span>))
         <span class="skw">click</span>(<img src="AccountDropdown_Profile_Button-1.png" />)
         <span class="skw">click</span>(<img src="ProfilePage_SavedProperties_Button-1.png" />)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
         <span class="skw">find</span>(<img src="SavedPropertiesPage_MoreDetailsRemove_Button-1.png" />)
         <span class="skw">click</span>(<img src="SavedPropertiesPage_MoreDetails_Button.png" />)
         <span class="skw">wait</span>(<span class="dig">1</span>)
@@ -143,16 +144,18 @@
             <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_ResidentialSavedProperties(self):
-        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">wait</span>(Pattern(<img src="UsernameMyAccount-1.png" />).targetOffset(<span class="dig">81</span>,-<span class="dig">2</span>))
         <span class="skw">click</span>(<img src="FrontPage_Buy_Button.png" />)
+        <span class="skw">wait</span>(<span class="dig">2</span>)
         <span class="skw">click</span>(<img src="FrontPage_Search_Button.png" />)
         <span class="skw">wait</span>(<span class="dig">2</span>)
-        <span class="skw">find</span>(<img src="1447889264312.png" />)
+        <span class="skw">find</span>(<img src="FrontPage_ResidentialFacet.png" />)
         <span class="skw">click</span>(<img src="FrontPageSearchResults_SaveProperty_Button.png" />)
         <span class="skw">find</span>(<img src="SaveProperty_Check_Button.png" />)
         <span class="skw">click</span>(Pattern(<img src="UsernameMyAccount-3.png" />).targetOffset(<span class="dig">85</span>,-<span class="dig">5</span>))
         <span class="skw">click</span>(<img src="AccountDropdown_Profile_Button.png" />)
         <span class="skw">click</span>(<img src="ProfilePage_SavedProperties_Button.png" />)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
         <span class="skw">find</span>(<img src="SavedPropertiesPage_MoreDetailsRemove_Button.png" />)
         <span class="skw">click</span>(<img src="SavedPropertiesPage_MoreDetails_Button-2.png" />)
         <span class="skw">wait</span>(<span class="dig">1</span>)
@@ -162,18 +165,20 @@
             <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_RuralSavedProperties(self):
+        <span class="skw">wait</span>(Pattern(<img src="UsernameMyAccount-1.png" />).targetOffset(<span class="dig">81</span>,-<span class="dig">2</span>))
+        <span class="skw">click</span>(<img src="FrontPage_RuralSearch_Button.png" />)
         <span class="skw">wait</span>(<span class="dig">2</span>)
-        <span class="skw">click</span>(<img src="1447889176530.png" />)
-        <span class="skw">click</span>(<img src="1447882327038.png" />)
+        <span class="skw">click</span>(<img src="FrontPage_Search_Button.png" />)
         <span class="skw">wait</span>(<span class="dig">2</span>)
-        <span class="skw">find</span>(<img src="1447889247040.png" />)
-        <span class="skw">click</span>(<img src="1447888350266.png" />)
-        <span class="skw">find</span>(<img src="1447888392634.png" />)
-        <span class="skw">click</span>(<img src="1447799262013.png" />)
-        <span class="skw">click</span>(<img src="1447884837635.png" />)
-        <span class="skw">click</span>(<img src="1447888701806.png" />)
-        <span class="skw">find</span>(<img src="1447888720119.png" />)
-        <span class="skw">click</span>(<img src="1447888759150.png" />)
+        <span class="skw">find</span>(<img src="FrontPage_RuralFacet.png" />)
+        <span class="skw">click</span>(<img src="FrontPageSearchResults_SaveProperty_Button.png" />)
+        <span class="skw">find</span>(<img src="SaveProperty_Check_Button.png" />)
+        <span class="skw">click</span>(Pattern(<img src="UsernameMyAccount-3.png" />).targetOffset(<span class="dig">85</span>,-<span class="dig">5</span>))
+        <span class="skw">click</span>(<img src="AccountDropdown_Profile_Button.png" />)
+        <span class="skw">click</span>(<img src="ProfilePage_SavedProperties_Button.png" />)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="skw">find</span>(<img src="SavedPropertiesPage_MoreDetailsRemove_Button.png" />)
+        <span class="skw">click</span>(<img src="SavedPropertiesPage_MoreDetails_Button-2.png" />)
         <span class="skw">wait</span>(<span class="dig">1</span>)
         <span class="kw">if</span> exists(<img src="PropertyDetailPage_SavedProperty_Button-1.png" />):
             <span class="kw">assert</span> True
@@ -181,18 +186,20 @@
             <span class="kw">assert</span> False
 
     <span class="kw">def</span> test_RentalSavedProperties(self):
+        <span class="skw">wait</span>(Pattern(<img src="UsernameMyAccount-1.png" />).targetOffset(<span class="dig">81</span>,-<span class="dig">2</span>))
+        <span class="skw">click</span>(<img src="FrontPage_Rent_Button.png" />)
         <span class="skw">wait</span>(<span class="dig">2</span>)
-        <span class="skw">click</span>(<img src="1447889347592.png" />)
-        <span class="skw">click</span>(<img src="1447882327038-1.png" />)
+        <span class="skw">click</span>(<img src="FrontPage_Search_Button.png" />)
         <span class="skw">wait</span>(<span class="dig">2</span>)
-        <span class="skw">find</span>(<img src="1447889368574.png" />)
-        <span class="skw">click</span>(<img src="1447888350266-1.png" />)
-        <span class="skw">find</span>(<img src="1447888392634-1.png" />)
-        <span class="skw">click</span>(<img src="1447799262013-1.png" />)
-        <span class="skw">click</span>(<img src="1447884837635-1.png" />)
-        <span class="skw">click</span>(<img src="1447888701806-1.png" />)
-        <span class="skw">find</span>(<img src="1447888720119-1.png" />)
-        <span class="skw">click</span>(<img src="1447888759150-1.png" />)
+        <span class="skw">find</span>(<img src="FrontPage_RentalFacet.png" />)
+        <span class="skw">click</span>(<img src="FrontPageSearchResults_SaveProperty_Button.png" />)
+        <span class="skw">find</span>(<img src="SaveProperty_Check_Button.png" />)
+        <span class="skw">click</span>(Pattern(<img src="UsernameMyAccount-3.png" />).targetOffset(<span class="dig">85</span>,-<span class="dig">5</span>))
+        <span class="skw">click</span>(<img src="AccountDropdown_Profile_Button.png" />)
+        <span class="skw">click</span>(<img src="ProfilePage_SavedProperties_Button.png" />)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="skw">find</span>(<img src="SavedPropertiesPage_MoreDetailsRemove_Button.png" />)
+        <span class="skw">click</span>(<img src="SavedPropertiesPage_MoreDetails_Button-2.png" />)
         <span class="skw">wait</span>(<span class="dig">1</span>)
         <span class="kw">if</span> exists(<img src="PropertyDetailPage_SavedProperty_Button-1.png" />):
             <span class="kw">assert</span> True

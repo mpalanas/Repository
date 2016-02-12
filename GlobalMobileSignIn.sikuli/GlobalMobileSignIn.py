@@ -14,7 +14,7 @@ class GlobalMobileSignIn(unittest.TestCase):
         type("l", KeyModifier.CTRL)
         type(config["globalsignin"] + Key.ENTER)
         wait(2)
-        if exists("globalMobileSigninPage_continue_Button.png"):
+        if exists(Pattern("globalMobileSigninPage_continue_Button.png").exact()):
             click("globalMobileSigninPage_continue_Button.png")
             wait(2)
             click(Pattern("MainPage_MyAccount_dropdown-1.png").exact())
@@ -86,9 +86,9 @@ class GlobalMobileSignIn(unittest.TestCase):
         type(config['username'])
         click(Pattern("GlobalMobileSigninCreateAccount_Password_Textbox.png").exact().targetOffset(-3,1))
         type(config['password'])
-        click("1447892508827.png")
+        click("globalMobileSigninPage_registerNow_Button.png")
         wait(2)
-        find("1447891263803.png")
+        find("globalMobileSigninPage_ThankYou_Page.png")
         click("globalMobileSigninPage_continue_Button.png")
         wait(4)
         if exists(Pattern("UsernameMyAccount.png").similar(0.86)):

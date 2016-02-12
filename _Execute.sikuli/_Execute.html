@@ -67,7 +67,7 @@
    </head>
 <body>
 <div class="info">
-<h2>_Execute.sikuli</h2> <a href="_Execute.zip">(Download this script)</a>
+<h2>HTMLTestRunner.sikuli</h2> <a href="HTMLTestRunner.zip">(Download this script)</a>
 </div>
 <pre class="sikuli-code">
 <span class="kw">import</span> unittest
@@ -106,7 +106,7 @@ dir=<span class="str">'C:\SikuliScripts\Results'</span>
 outfile=file(os.path.join(dir,fileName), <span class="str">"wb"</span>)
 
 
-suite=unittest.TestLoader().loadTestsFromTestCase(GlobalMobileSignIn) <span class="cmt"># setup new test suite</span>
+suite=unittest.TestLoader().loadTestsFromTestCase(QuickSearch) <span class="cmt"># setup new test suite</span>
 <span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(SavedSearch))</span>
 <span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(SavedProperties))</span>
 <span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(PasswordReset))</span>
@@ -117,7 +117,7 @@ suite=unittest.TestLoader().loadTestsFromTestCase(GlobalMobileSignIn) <span clas
 
 
 runner = HTMLTestRunner.HTMLTestRunner(stream = outfile, title = <span class="str">'Barfoot.co.nz Regression'</span>, description = <span class="str">'Test barfoot.co.nz site'</span>)
-<span class="cmt">#runner = HTMLTestRunner.HTMLTestRunner(stream = outfile, verbosity=2, dirTestScreenshots = 'C:\SikuliScripts\Results')</span>
+<span class="cmt">#runner = HTMLTestRunner.HTMLTestRunner(stream = outfile, verbosity=2, dirTestScreenshots = 'c:\\SikuliScripts\\Results')</span>
 runner.run(suite)
 outfile.close()
 </pre>

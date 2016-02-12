@@ -101,8 +101,8 @@ data[<span class="str">"username"</span>] = timestr + <span class="str">"@test.c
 <span class="kw">with</span> open(configPath, <span class="str">"w"</span>) <span class="kw">as</span> config:
     config.write(json.dumps(data))
 
-fileName = timestr + <span class="str">"Report.html"</span>
-dir=<span class="str">'C:\SikuliScripts\Results'</span>
+fileName = timestr + data[<span class="str">"appTaskName"</span>] + <span class="str">"Report.html"</span>
+dir=os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Results"</span>)
 outfile=file(os.path.join(dir,fileName), <span class="str">"wb"</span>)
 
 

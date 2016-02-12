@@ -95,13 +95,13 @@
         <span class="skw">wait</span>(<span class="dig">2</span>)
 
     <span class="kw">def</span> test_FindABranch(self):
-        <span class="skw">click</span>(Pattern(<img src="1454959336180.png" />).similar(<span class="dig">0.86</span>).targetOffset(<span class="dig">47</span>,-<span class="dig">27</span>))
+        <span class="skw">click</span>(Pattern(<img src="FindUsPage_FindABranch_Button.png" />).similar(<span class="dig">0.86</span>).targetOffset(<span class="dig">47</span>,-<span class="dig">27</span>))
         <span class="skw">click</span>(Pattern(<img src="findABranch_textSearch.png" />).targetOffset(-<span class="dig">39</span>,<span class="dig">6</span>))
         <span class="skw">type</span>(<span class="str">"glen eden"</span>)
         <span class="skw">wait</span>(<span class="dig">2</span>)
         <span class="skw">click</span>(Pattern(<img src="FindUs_SearchABranch_Button.png" />).similar(<span class="dig">0.79</span>))
         <span class="skw">wait</span>(<span class="dig">1</span>)
-        <span class="kw">if</span> exists(Pattern(<img src="1454975929067.png" />).similar(<span class="dig">0.78</span>)):
+        <span class="kw">if</span> exists(Pattern(<img src="BranchProfile_GlenEden_Title.png" />).similar(<span class="dig">0.78</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False

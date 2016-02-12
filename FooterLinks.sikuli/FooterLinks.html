@@ -105,7 +105,7 @@
     <span class="kw">def</span> test_FooterAuctionVenues(self):
         <span class="skw">click</span>(Pattern(<img src="MainPage_Footer_AuctionsVenues.png" />).similar(<span class="dig">0.74</span>))
         <span class="skw">wait</span>(<span class="dig">1</span>)
-        <span class="kw">if</span> exists(Pattern(<img src="1454961118035.png" />).similar(<span class="dig">0.86</span>)):
+        <span class="kw">if</span> exists(Pattern(<img src="AuctionVenue_Map.png" />).similar(<span class="dig">0.86</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
@@ -148,9 +148,17 @@
 
 
     <span class="kw">def</span> test_AppStoreLink(self):
-        <span class="skw">click</span>(<img src="MainPage_DownloadApp.png" />)
+        <span class="skw">click</span>(<img src="MainPage_DownloadAppIos.png" />)
         <span class="skw">wait</span>(<span class="dig">3</span>)
         <span class="kw">if</span> exists(Pattern(<img src="AppStore_BarfootAppLogo.png" />).exact()):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
+
+    <span class="kw">def</span> test_AppStoreLink(self):
+        <span class="skw">click</span>(<img src="MainPage_DownloadAppAndroid.png" />)
+        <span class="skw">wait</span>(<span class="dig">3</span>)
+        <span class="kw">if</span> exists(Pattern(<img src="AndroidStore_BarfootAppLogo.png" />).exact()):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False

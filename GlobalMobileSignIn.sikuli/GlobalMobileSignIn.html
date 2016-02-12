@@ -86,7 +86,7 @@
         <span class="skw">type</span>(<span class="str">"l"</span>, KeyModifier.CTRL)
         <span class="skw">type</span>(config[<span class="str">"globalsignin"</span>] + Key.ENTER)
         <span class="skw">wait</span>(<span class="dig">2</span>)
-        <span class="kw">if</span> exists(<img src="globalMobileSigninPage_continue_Button.png" />):
+        <span class="kw">if</span> exists(Pattern(<img src="globalMobileSigninPage_continue_Button.png" />).exact()):
             <span class="skw">click</span>(<img src="globalMobileSigninPage_continue_Button.png" />)
             <span class="skw">wait</span>(<span class="dig">2</span>)
             <span class="skw">click</span>(Pattern(<img src="MainPage_MyAccount_dropdown-1.png" />).exact())
@@ -158,9 +158,9 @@
         <span class="skw">type</span>(config[<span class="str">'username'</span>])
         <span class="skw">click</span>(Pattern(<img src="GlobalMobileSigninCreateAccount_Password_Textbox.png" />).exact().targetOffset(-<span class="dig">3</span>,<span class="dig">1</span>))
         <span class="skw">type</span>(config[<span class="str">'password'</span>])
-        <span class="skw">click</span>(<img src="1447892508827.png" />)
+        <span class="skw">click</span>(<img src="globalMobileSigninPage_registerNow_Button.png" />)
         <span class="skw">wait</span>(<span class="dig">2</span>)
-        <span class="skw">find</span>(<img src="1447891263803.png" />)
+        <span class="skw">find</span>(<img src="globalMobileSigninPage_ThankYou_Page.png" />)
         <span class="skw">click</span>(<img src="globalMobileSigninPage_continue_Button.png" />)
         <span class="skw">wait</span>(<span class="dig">4</span>)
         <span class="kw">if</span> exists(Pattern(<img src="UsernameMyAccount.png" />).similar(<span class="dig">0.86</span>)):

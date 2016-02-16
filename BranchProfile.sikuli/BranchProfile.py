@@ -100,11 +100,11 @@ class BranchProfile(unittest.TestCase):
 
     def test_branchSorroundingSuburbs(self): 
         find("BrancPage_SorroundingSuburbs.png").below(30).left(-15).click()
-            if exists(Pattern("ResultsPage_Title.png").similar(0.79)):
-                assert True
-            
-            else:
-                assert False
+        if exists(Pattern("ResultsPage_Title.png").similar(0.79)):
+            assert True
+        
+        else:
+            assert False
     
     
 

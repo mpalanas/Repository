@@ -34,12 +34,10 @@ dir='C:\SikuliScripts\Results'
 outfile=file(os.path.join(dir,fileName), "wb")
 
 
-suite=unittest.TestLoader().loadTestsFromTestCase(QuickSearch) # setup new test suite
-#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(SavedSearch))
-#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(SavedProperties))
-#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(PasswordReset))
-#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(PropertyDetail))
-#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(GlobalMobileSignIn))
+suite=unittest.TestLoader().loadTestsFromTestCase(FooterLinks) # setup new test suite
+#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(FooterLinks))
+
+
 
 
 

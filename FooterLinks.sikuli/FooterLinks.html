@@ -94,13 +94,30 @@
         os.system(<span class="str">"taskkill /f /im "</span> +appTaskName)
         <span class="skw">wait</span>(<span class="dig">2</span>)
 
-    <span class="kw">def</span> test_FooterAuctions(self):
-        <span class="skw">click</span>(Pattern(<img src="MainPage_Footer_Auctions.png" />).similar(<span class="dig">0.76</span>))
-        <span class="skw">wait</span>(<span class="dig">1</span>)
-        <span class="kw">if</span> exists(Pattern(<img src="ThisWkAuctionPage_Title.png" />).similar(<span class="dig">0.68</span>)):
-            <span class="kw">assert</span> True
-        <span class="kw">else</span>:
+    <span class="kw">def</span> test_AuctionsAndOrderOfSaleDropdown(self):
+        <span class="skw">click</span>(Pattern(<img src="MainPage_Footer_Auctions-1.png" />).similar(<span class="dig">0.76</span>))
+        reg = Region(<span class="dig">135</span>,<span class="dig">540</span>,<span class="dig">290</span>,<span class="dig">181</span>)
+        img = <span class="skw">capture</span>(reg)
+        <span class="skw">click</span>(<img src="AuctionsPage_Venue_Dropdown.png" />)
+        <span class="skw">find</span>(<img src="AuctionsPage_Venue_Dropdown.png" />).below(<span class="dig">60</span>).<span class="skw">click</span>()
+        <span class="skw">wait</span>(<span class="dig">3</span>)
+        <span class="kw">if</span> (reg.exists(Pattern(img).similar(<span class="dig">0.99</span>),<span class="dig">0</span>)):
             <span class="kw">assert</span> False
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> True
+
+    <span class="kw">def</span> test_AuctionsAndOrderOfSaleSessions(self):
+        <span class="skw">click</span>(Pattern(<img src="MainPage_Footer_Auctions-2.png" />).similar(<span class="dig">0.76</span>))
+        reg = Region(<span class="dig">135</span>,<span class="dig">540</span>,<span class="dig">290</span>,<span class="dig">181</span>)
+        img = <span class="skw">capture</span>(reg)
+        <span class="skw">find</span>(<img src="AuctionsPage_Venue_Dropdown-1.png" />).right(<span class="dig">800</span>).<span class="skw">click</span>()
+        <span class="skw">wait</span>(<span class="dig">3</span>)
+        <span class="kw">if</span> (reg.exists(Pattern(img).similar(<span class="dig">0.99</span>),<span class="dig">0</span>)):
+            <span class="kw">assert</span> False
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> True
+
+
 
     <span class="kw">def</span> test_FooterAuctionVenues(self):
         <span class="skw">click</span>(Pattern(<img src="MainPage_Footer_AuctionsVenues.png" />).similar(<span class="dig">0.74</span>))
@@ -126,13 +143,52 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_FooterSearchSoldProperties(self):
+    <span class="kw">def</span> test_FooterSoldProperties(self):
         <span class="skw">click</span>(Pattern(<img src="MainPage_Footer_SearchSoldProperties.png" />).similar(<span class="dig">0.66</span>).targetOffset(-<span class="dig">3</span>,<span class="dig">1</span>))
         <span class="skw">wait</span>(<span class="dig">1</span>)
         <span class="kw">if</span> exists(Pattern(<img src="SearchSoldProperties_SoldSticker.png" />).exact()):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
+
+    <span class="kw">def</span> test_FooterSearchSoldProperties(self):
+        reg = Region(<span class="dig">159</span>,<span class="dig">570</span>,<span class="dig">265</span>,<span class="dig">187</span>)
+        img = <span class="skw">capture</span>(reg)
+        <span class="skw">click</span>(<img src="SearchSoldProperties_Region_Dropdown.png" />)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="skw">click</span>(<img src="SearchSoldProperties_Auckland_Region.png" />)
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">click</span>(<img src="SearchSoldProperties_Suburb_Dropdown.png" />)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="skw">click</span>(<img src="SearchSoldProperties_Epsom_Suburb.png" />)
+        <span class="skw">click</span>(Pattern(<img src="SearchSoldProperties_PropertyType_Dropdownv.png" />).targetOffset(-<span class="dig">7</span>,<span class="dig">10</span>))
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="skw">find</span>(<img src="SearchSoldProperties_House_PropertyType.png" />).left(<span class="dig">15</span>).<span class="skw">click</span>()
+        <span class="skw">find</span>(<img src="SearchSoldProperties_Unit_PropertyType.png" />).left(<span class="dig">15</span>).<span class="skw">click</span>()
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="skw">click</span>(Pattern(<img src="SearchSoldProperties_Bedrooms_Dropdown.png" />).targetOffset(-<span class="dig">4</span>,<span class="dig">7</span>))
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="skw">click</span>(Pattern(<img src="SearchSoldProperties_2_Bedrooms.png" />).similar(<span class="dig">0.81</span>))
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="skw">find</span>(<img src="SearchSoldProperties_PropertyType2Selected_Dropdown.png" />).right(<span class="dig">500</span>).<span class="skw">click</span>()
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="skw">click</span>(<img src="SearchSoldProperties_2_PropertyType.png" />)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="skw">click</span>(<img src="SearchSoldProperties_Bathrooms_Dropdown.png" />)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="skw">click</span>(<img src="SearchSoldProperties_1_Bathroom.png" />)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="skw">find</span>(Pattern(<img src="SearchSoldProperties_SoldBy_PageName.png" />).similar(<span class="dig">0.78</span>)).below(<span class="dig">310</span>).<span class="skw">click</span>()
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="skw">click</span>(Pattern(<img src="SearchSoldProperties_345_Bathroom.png" />).similar(<span class="dig">0.59</span>).targetOffset(-<span class="dig">30</span>,<span class="dig">1</span>))
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="skw">click</span>(<img src="SearchSoldProperties_Search_Button.png" />)
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="kw">if</span> (reg.exists(Pattern(img).similar(<span class="dig">0.99</span>),<span class="dig">0</span>)):
+            <span class="kw">assert</span> False
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> True
+
 
 
     <span class="kw">def</span> test_MobileSite(self):

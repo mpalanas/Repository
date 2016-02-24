@@ -99,7 +99,7 @@
         os.system(<span class="str">"taskkill /f /im "</span> +appTaskName)
 
 
-    <span class="kw">def</span> test_PropertyDetailAgentProperties(self):
+    <span class="kw">def</span> test_PropertyDetailAgentProperties_BW42(self):
         wheel(<img src="PropertyDetail_Detail_Tab.png" />, WHEEL_DOWN, <span class="dig">40</span>)
         <span class="skw">click</span>(<img src="PropertyDetail_AgentProperties_Button.png" />)
         <span class="kw">if</span> exists(<img src="AgentPage_PropertiesPage_Title.png" />):
@@ -107,7 +107,7 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_PropertyDetailPrintPage(self):
+    <span class="kw">def</span> test_PropertyDetailPrintPage_BW58(self):
         wheel(<img src="PropertyDetail_Detail_Tab.png" />, WHEEL_DOWN, <span class="dig">4</span>)
         <span class="skw">click</span>(<img src="PropertyDetail_PrintPage_Button.png" />)
         <span class="kw">if</span> exists(<img src="PropertyDetail_Print_Page.png" />):
@@ -115,7 +115,7 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_ImageScroll(self):
+    <span class="kw">def</span> test_ImageScroll_BW88(self):
         <span class="skw">wait</span>(<span class="dig">2</span>)
         <span class="skw">click</span>(<img src="FrontPage_Buy_Button.png" />)
         <span class="skw">click</span>(<img src="FrontPage_Search_Button.png" />)
@@ -131,7 +131,7 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> True
 
-    <span class="kw">def</span> test_SurroundingSuburbs(self):
+    <span class="kw">def</span> test_SurroundingSuburbs_BW180(self):
         wheel(<img src="PropertyDetail_Detail_Title.png" />, WHEEL_DOWN, <span class="dig">10</span>)
         <span class="skw">find</span>(<img src="PropertyDetail_SurroundingSuburbs.png" />).below(<span class="dig">30</span>).left(-<span class="dig">15</span>).<span class="skw">click</span>()
         <span class="kw">if</span> exists(Pattern(<img src="ResultsPage_Title.png" />).similar(<span class="dig">0.79</span>)):

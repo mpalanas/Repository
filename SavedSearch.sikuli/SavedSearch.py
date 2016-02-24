@@ -48,7 +48,7 @@ class SavedSearch(unittest.TestCase):
 
 
 
-    def test_1createSavedSearch(self):
+    def test_1createSavedSearch_BW132(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
         config = json.loads(open(configPath).read())
         
@@ -76,7 +76,7 @@ class SavedSearch(unittest.TestCase):
             assert False
 
 
-    def test_2EditSavedSearch(self): 
+    def test_2EditSavedSearch_BW136(self): 
         configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
         config = json.loads(open(configPath).read())
         wait("MainPage_MyAccount_Dropdown.png")
@@ -95,7 +95,7 @@ class SavedSearch(unittest.TestCase):
             assert False
 
         
-    def test_3SavedSearchEditSchedule(self):
+    def test_3SavedSearchEditSchedule_BW136(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
         config = json.loads(open(configPath).read())
         wait("MainPage_MyAccount_Dropdown.png")
@@ -116,7 +116,7 @@ class SavedSearch(unittest.TestCase):
             assert False  
 
 
-    def test_4SavedSearchRemove(self):
+    def test_4SavedSearchRemove_BW141(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
         config = json.loads(open(configPath).read())
         wait("MainPage_MyAccount_Dropdown.png")

@@ -22,7 +22,7 @@ class FindUsPage(unittest.TestCase):
         os.system("taskkill /f /im " +appTaskName)          
         wait(2)
 
-    def test_FindABranch(self):
+    def test_FindABranch_BW107(self):
         click(Pattern("FindUsPage_FindABranch_Button.png").similar(0.86).targetOffset(47,-27))
         click(Pattern("findABranch_textSearch.png").targetOffset(-39,6))
         type("glen eden")
@@ -34,7 +34,7 @@ class FindUsPage(unittest.TestCase):
         else:
             assert False
 
-    def test_FindASalesperson(self):        
+    def test_FindASalesperson_BW103(self):        
         click("FindUs_FindASalesprson_Button.png")
         click("FindAsalesperson_SearchBar.png")
         type("Ketiesha")
@@ -45,7 +45,7 @@ class FindUsPage(unittest.TestCase):
         else:
             assert False
 
-    def test_FindASalespersonDropdown(self):        
+    def test_FindASalespersonDropdown_BW103(self):        
         click("FindUs_FindASalesprson_Button.png")
         click(Pattern("FindAsalesperson_Branch_Dropwdown.png").similar(0.62))
         if exists("FindUs_Dropdown_ResultResRental.png"):
@@ -53,7 +53,7 @@ class FindUsPage(unittest.TestCase):
         else:
             assert False
            
-    def test_FindAPropertyManager(self):
+    def test_FindAPropertyManager_BW104(self):
         click("FindUs_FindApropertyManager_Button.png")
         click("FindApropertyManager_SearchBar.png")
         type("Jane Auret")
@@ -65,7 +65,7 @@ class FindUsPage(unittest.TestCase):
         else:
             assert False
 
-    def test_FindAPropertyManagerDropdown(self):
+    def test_FindAPropertyManagerDropdown_BW104(self):
         click("FindUs_FindApropertyManager_Button.png")
         click(Pattern("FindAPropertyManager_Dropdown.png").similar(0.65))
         wait(1)
@@ -74,7 +74,7 @@ class FindUsPage(unittest.TestCase):
         else:
             assert False
        
-    def test_FindACommercialSalesperson(self):
+    def test_FindACommercialSalesperson_BW105(self):
         click("FindUs_FindAcommercialSalesperson_Button.png")
         click("FindUs_FindACommercialSalesperson_SearchBar.png")
         type("cam paterson")
@@ -85,7 +85,7 @@ class FindUsPage(unittest.TestCase):
         else:
             assert False
 
-    def test_FindACommercialSalespersonDropdown(self):
+    def test_FindACommercialSalespersonDropdown_BW105(self):
         click("FindUs_FindAcommercialSalesperson_Button.png")
         click(Pattern("FindACommercialAgent_Branch_Dropdown.png").similar(0.62))
         wait(1)
@@ -95,7 +95,7 @@ class FindUsPage(unittest.TestCase):
             assert False
             
       
-    def test_FindACommercialPropertyManager(self):
+    def test_FindACommercialPropertyManager_BW106(self):
         click("FindUs_FindACommercialPropertyManager_Button.png")
         click("FundAcommercialPropertyManager_SearchBar.png")
         type("Hannah")
@@ -105,7 +105,7 @@ class FindUsPage(unittest.TestCase):
         else:
             assert False
         
-    def test_FindACommercialPropertyManagerDropdown(self):
+    def test_FindACommercialPropertyManagerDropdown_BW106(self):
         click("FindUs_FindACommercialPropertyManager_Button.png")
         click(Pattern("FindUs_FindAcommercialPropertyManager_Dropdown.png").similar(0.62))
         wait(1)
@@ -114,7 +114,7 @@ class FindUsPage(unittest.TestCase):
         else:
             assert False        
 
-    def test_AuctionVenue(self):            
+    def test_AuctionVenue_BW108(self):            
         click("FindUs_AuctionVenues_Button.png")
         wait(1)
         if exists("VenuePage_Map_Map.png"):
@@ -122,7 +122,7 @@ class FindUsPage(unittest.TestCase):
         else:
             assert False
 
-    def test_AuctionVenue(self): 
+    def test_Complaints_BW109(self): 
         click("FindUs_Complaints_Button.png")
         wait(1)
         find("Complaint_PageTitle.png")

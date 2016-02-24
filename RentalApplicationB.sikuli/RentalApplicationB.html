@@ -1,0 +1,228 @@
+
+<html>
+   <head>
+      <style type="text/css">
+         .sikuli-code {
+            font-size: 20px;
+            font-family: "Osaka-mono", Monospace;
+            line-height: 1.5em;
+            display:table-cell;
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            width: 99%;   /* remove horizontal scroll-bar when viewing in IE7 */
+         }
+         .sikuli-code img {
+            vertical-align: middle;
+            margin: 2px;
+            border: 1px solid #ccc;
+            padding: 2px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-box-shadow: 1px 1px 1px gray;
+            -webkit-box-shadow: 1px 1px 2px gray;
+         }
+         .kw {
+            color: blue;
+         }
+         .skw {
+            color: rgb(63, 127, 127);
+         }
+
+         .str {
+            color: rgb(128, 0, 0);
+         }
+
+         .dig {
+            color: rgb(128, 64, 0);
+         }
+
+         .cmt {
+            color: rgb(200, 0, 200);
+         }
+
+         h2 {
+            display: inline;
+            font-weight: normal;
+         }
+
+         .info {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: none;
+         }
+
+         a {
+            color: #9D2900;
+         }
+
+         body {
+            font-family: "Trebuchet MS", Arial, Sans-Serif;
+         }
+
+      </style>
+   </head>
+<body>
+<div class="info">
+<h2>RentalApplicationB.sikuli</h2> <a href="RentalApplicationB.zip">(Download this script)</a>
+</div>
+<pre class="sikuli-code">
+<span class="kw">import</span> time
+timestr = time.strftime(<span class="str">"%d%m%Y%H%M%S"</span>)
+applicantName = timestr + <span class="str">" LastName"</span>
+<span class="skw">find</span>(Pattern(<img src="1455655966582.png" />).similar(<span class="dig">0.55</span>)).left(<span class="dig">30</span>).<span class="skw">click</span>()
+<span class="skw">click</span>(<img src="1455656038270.png" />)
+<span class="skw">wait</span>(<span class="dig">2</span>)
+<span class="skw">click</span>(Pattern(<img src="1455656921387.png" />).similar(<span class="dig">0.77</span>))
+<span class="skw">type</span>(<span class="str">"11000957"</span>)
+<span class="skw">wait</span>(<span class="dig">1</span>)
+<span class="cmt">#find("1455656302174.png").below(30).click()</span>
+<span class="skw">find</span>(<img src="1456185817505.png" />).below(<span class="dig">30</span>).<span class="skw">click</span>()
+<span class="skw">click</span>(<img src="1455656339947.png" />)
+<span class="skw">wait</span>(<span class="dig">2</span>)
+<span class="kw">if</span> exists(Pattern(<img src="1455657408589.png" />).similar(<span class="dig">0.60</span>)):
+    <span class="skw">click</span>(Pattern(<img src="1455657408589.png" />).similar(<span class="dig">0.60</span>).targetOffset(-<span class="dig">21</span>,<span class="dig">8</span>))
+
+<span class="skw">find</span>(<img src="1455656385633.png" />)
+<span class="skw">click</span>(Pattern(<img src="1455657761656.png" />).similar(<span class="dig">0.65</span>).targetOffset(<span class="dig">28</span>,<span class="dig">13</span>))
+wheel(<img src="1455681983074.png" />,WHEEL_DOWN,<span class="dig">5</span>)
+<span class="skw">wait</span>(<span class="dig">1</span>)
+<span class="skw">click</span>(Pattern(<img src="1455656413899.png" />).similar(<span class="dig">0.77</span>))
+<span class="skw">click</span>(<img src="1455656458134.png" />)
+<span class="skw">click</span>(<img src="1455656477945.png" />)
+
+<span class="cmt">#Step2</span>
+
+<span class="skw">click</span>(Pattern(<img src="1455659246497-2.png" />).similar(<span class="dig">0.68</span>).targetOffset(<span class="dig">4</span>,-<span class="dig">20</span>))
+<span class="skw">click</span>(<img src="1455659447729-2.png" />)
+<span class="skw">click</span>(Pattern(<img src="1455659246497-2.png" />).similar(<span class="dig">0.68</span>).targetOffset(<span class="dig">1</span>,<span class="dig">39</span>))
+<span class="skw">type</span>(applicantName)
+
+<span class="skw">click</span>(Pattern(<img src="1455660142024-2.png" />).similar(<span class="dig">0.84</span>).targetOffset(-<span class="dig">3</span>,<span class="dig">7</span>))
+<span class="skw">type</span>(<span class="str">"1 Glenfield Road"</span>)
+<span class="skw">click</span>(Pattern(<img src="1455660184558-2.png" />).similar(<span class="dig">0.76</span>).targetOffset(-<span class="dig">3</span>,<span class="dig">13</span>))
+<span class="skw">type</span>(<span class="str">"Glenfield"</span>)
+<span class="skw">click</span>(Pattern(<img src="1455660225944-2.png" />).similar(<span class="dig">0.77</span>).targetOffset(<span class="dig">2</span>,<span class="dig">7</span>))
+<span class="skw">type</span>(<span class="str">"Auckland"</span>)
+wheel(<img src="1455660359664-5.png" />, WHEEL_DOWN,<span class="dig">5</span>)
+<span class="skw">wait</span>(<span class="dig">1</span>)
+<span class="skw">click</span>(Pattern(<img src="1455660502565-4.png" />).similar(<span class="dig">0.82</span>).targetOffset(-<span class="dig">4</span>,<span class="dig">13</span>))
+<span class="skw">type</span>(<span class="str">"Two Years"</span>)
+<span class="skw">click</span>(Pattern(<img src="1455660552249-4.png" />).similar(<span class="dig">0.82</span>).targetOffset(<span class="dig">4</span>,<span class="dig">15</span>))
+<span class="skw">type</span>(<span class="str">"as soon as possible"</span>)
+<span class="skw">click</span>(Pattern(<img src="1455660538873-4.png" />).similar(<span class="dig">0.86</span>).targetOffset(-<span class="dig">3</span>,<span class="dig">4</span>))
+<span class="skw">type</span>(<span class="str">"as long as possible!"</span>)
+
+<span class="skw">click</span>(Pattern(<img src="1455660783646-4.png" />).similar(<span class="dig">0.80</span>).targetOffset(<span class="dig">2</span>,<span class="dig">17</span>))
+<span class="skw">type</span>(<span class="str">"09 444 3586"</span>)
+<span class="skw">click</span>(Pattern(<img src="1455660813952-4.png" />).targetOffset(<span class="dig">1</span>,<span class="dig">10</span>))
+<span class="skw">type</span>(<span class="str">"0211145786"</span>)
+
+wheel(<img src="1455661017292-2.png" />, WHEEL_DOWN,<span class="dig">3</span>)
+<span class="skw">wait</span>(<span class="dig">1</span>)
+<span class="skw">click</span>(<img src="1455661206608-3.png" />)
+<span class="skw">type</span>(<span class="str">"testApplication@barfoot.co.nz"</span>)
+<span class="skw">click</span>(Pattern(<img src="1455661240112-3.png" />).targetOffset(<span class="dig">0</span>,<span class="dig">13</span>))
+<span class="skw">type</span>(<span class="str">"testApplication@barfoot.co.nz"</span>)
+<span class="skw">click</span>(Pattern(<img src="1455662832628-2.png" />).similar(<span class="dig">0.77</span>))
+<span class="skw">click</span>(<img src="1455661682162-3.png" />)
+<span class="skw">click</span>(Pattern(<img src="1455662855965-2.png" />).similar(<span class="dig">0.78</span>))
+<span class="skw">click</span>(<img src="1455661716212-2.png" />)
+<span class="skw">click</span>(Pattern(<img src="1455662878820-2.png" />).similar(<span class="dig">0.82</span>))
+<span class="skw">click</span>(<img src="1455662032323-2.png" />)
+<span class="skw">click</span>(Pattern(<img src="1455681860026.png" />).targetOffset(-<span class="dig">31</span>,-<span class="dig">35</span>))
+wheel(<img src="1455673062585-1.png" />, WHEEL_DOWN,<span class="dig">5</span>)
+<span class="skw">find</span>(Pattern(<img src="1455662171681-2.png" />).similar(<span class="dig">0.80</span>)).left(<span class="dig">15</span>).<span class="skw">click</span>()
+<span class="skw">click</span>(Pattern(<img src="1455662466135-2.png" />).similar(<span class="dig">0.82</span>).targetOffset(-<span class="dig">3</span>,<span class="dig">9</span>))
+<span class="skw">type</span>(<span class="str">"PassportTest NDER12354"</span>)
+<span class="skw">click</span>(<img src="1455673329856-2.png" />)
+
+<span class="cmt">#Step3</span>
+<span class="skw">click</span>(Pattern(<img src="1455674896081-1.png" />).similar(<span class="dig">0.67</span>).targetOffset(-<span class="dig">30</span>,<span class="dig">21</span>))
+
+<span class="skw">click</span>(Pattern(<img src="1455675044240-1.png" />).targetOffset(-<span class="dig">14</span>,<span class="dig">14</span>))
+wheel(<img src="1455675282089-1.png" />, WHEEL_DOWN,<span class="dig">5</span>)
+<span class="skw">wait</span>(<span class="dig">1</span>)
+<span class="skw">click</span>(Pattern(<img src="1455675060320-1.png" />).similar(<span class="dig">0.73</span>).targetOffset(-<span class="dig">9</span>,<span class="dig">20</span>))
+
+wheel(<img src="1455675562883-1.png" />, WHEEL_DOWN,<span class="dig">3</span>)
+
+<span class="skw">wait</span>(<span class="dig">1</span>)
+<span class="skw">click</span>(Pattern(<img src="1455675676709-1.png" />).similar(<span class="dig">0.63</span>))
+
+<span class="cmt">#step4</span>
+
+<span class="skw">click</span>(Pattern(<img src="1455677614717-5.png" />).targetOffset(-<span class="dig">16</span>,<span class="dig">21</span>))
+<span class="skw">find</span>(<img src="1456100413941-2.png" />).below(<span class="dig">170</span>).left(-<span class="dig">80</span>).<span class="skw">click</span>()
+<span class="skw">find</span>(<img src="1456100586243.png" />).below(<span class="dig">170</span>).left(-<span class="dig">80</span>).<span class="skw">click</span>()
+<span class="skw">find</span>(<img src="1456100597372.png" />).below(<span class="dig">170</span>).left(-<span class="dig">80</span>).<span class="skw">click</span>()
+
+<span class="skw">click</span>(Pattern(<img src="1455679905486-8.png" />).similar(<span class="dig">0.57</span>))
+
+<span class="cmt">#step5</span>
+
+<span class="skw">click</span>(Pattern(<img src="1455759702970-2.png" />).similar(<span class="dig">0.66</span>).targetOffset(-<span class="dig">62</span>,<span class="dig">16</span>))
+<span class="skw">wait</span>(<span class="dig">1</span>)
+<span class="skw">find</span>(<img src="1456100812877-1.png" />).below(<span class="dig">170</span>).left(-<span class="dig">80</span>).<span class="skw">click</span>()
+<span class="skw">wait</span>(<span class="dig">1</span>)
+<span class="skw">type</span>(<span class="str">"Contract work"</span>)
+<span class="skw">click</span>(<img src="1456100859888-1.png" />)
+<span class="skw">wait</span>(<span class="dig">1</span>)
+<span class="skw">click</span>(Pattern(<img src="1456102204827-1.png" />).similar(<span class="dig">0.54</span>))
+<span class="skw">wait</span>(<span class="dig">1</span>)
+<span class="skw">find</span>(<img src="1456101029615.png" />).below(<span class="dig">150</span>).<span class="skw">click</span>()
+<span class="skw">wait</span>(<span class="dig">1</span>)
+wheel(<img src="1455761100673-2.png" />, WHEEL_DOWN,<span class="dig">5</span>)
+<span class="skw">wait</span>(<span class="dig">1</span>)
+<span class="skw">click</span>(Pattern(<img src="1456086792446-1.png" />).similar(<span class="dig">0.71</span>).targetOffset(-<span class="dig">1</span>,<span class="dig">11</span>))
+<span class="skw">type</span>(<span class="str">"Voda"</span>)
+<span class="skw">wait</span>(<span class="dig">1</span>)
+<span class="skw">click</span>(Pattern(<img src="1456086801834-1.png" />).similar(<span class="dig">0.69</span>))
+<span class="skw">type</span>(<span class="str">"Tier 2 Tech"</span>)
+<span class="skw">wait</span>(<span class="dig">1</span>)
+<span class="skw">click</span>(Pattern(<img src="1456086899636-1.png" />).similar(<span class="dig">0.65</span>))
+<span class="skw">type</span>(<span class="str">"2 years"</span>)
+wheel(<img src="1456101341357.png" />, WHEEL_DOWN,<span class="dig">3</span>)
+<span class="skw">wait</span>(<span class="dig">2</span>)
+<span class="skw">click</span>(<img src="1455760150000-1.png" />)
+<span class="skw">type</span>(<span class="str">"Previous Manager"</span>)
+<span class="skw">click</span>(<img src="1455760179837-1.png" />)
+<span class="skw">type</span>(<span class="str">"0900 586 321"</span>)
+<span class="skw">click</span>(<img src="1455760727159-1.png" />)
+<span class="skw">type</span>(<span class="str">"simon@test.com"</span>)
+<span class="skw">click</span>(Pattern(<img src="1456087338568.png" />).similar(<span class="dig">0.55</span>))
+
+<span class="cmt">#Step6</span>
+<span class="skw">find</span>(Pattern(<img src="1456088158446.png" />).similar(<span class="dig">0.75</span>)).below(<span class="dig">30</span>).<span class="skw">click</span>()
+<span class="skw">type</span>(<span class="str">"Joe Bloggs"</span>)
+<span class="skw">find</span>(Pattern(<img src="1456088187639.png" />).similar(<span class="dig">0.78</span>)).below(<span class="dig">30</span>).<span class="skw">click</span>()
+<span class="skw">type</span>( <span class="str">"Colin Wild Place Glenfield"</span>)
+<span class="skw">find</span>(Pattern(<img src="1456088209202.png" />).similar(<span class="dig">0.67</span>)).below(<span class="dig">30</span>).<span class="skw">click</span>()
+<span class="skw">type</span>(<span class="str">"Brother"</span>)
+<span class="skw">find</span>(Pattern(<img src="1456088230246.png" />).similar(<span class="dig">0.75</span>)).below(<span class="dig">30</span>).<span class="skw">click</span>()
+<span class="skw">type</span>(<span class="str">"09 358 1236"</span>)
+<span class="skw">find</span>(Pattern(<img src="1456088463164.png" />).similar(<span class="dig">0.75</span>)).below(<span class="dig">30</span>).<span class="skw">click</span>()
+<span class="skw">type</span>(<span class="str">"test@Contact.com"</span>)
+<span class="skw">click</span>(<img src="1456087793261.png" />)
+
+<span class="cmt">#Step7</span>
+<span class="skw">click</span>(Pattern(<img src="1456089231619.png" />).similar(<span class="dig">0.52</span>).targetOffset(-<span class="dig">127</span>,<span class="dig">26</span>))
+<span class="skw">type</span>(<span class="str">"Referee 1 Test"</span>)
+<span class="skw">type</span>(Key.TAB)
+<span class="skw">type</span>(<span class="str">"referee@email.com"</span>)
+
+<span class="skw">wait</span>(<span class="dig">1</span>)
+<span class="skw">click</span>(Pattern(<img src="1456090427512.png" />).similar(<span class="dig">0.91</span>).targetOffset(<span class="dig">33</span>,-<span class="dig">4</span>))
+<span class="skw">wait</span>(<span class="dig">1</span>)
+wheel(<img src="1456090484018.png" />, WHEEL_DOWN, <span class="dig">2</span>)
+<span class="skw">wait</span>(<span class="dig">1</span>)
+<span class="skw">click</span>(Pattern(<img src="1456089711355.png" />).similar(<span class="dig">0.77</span>).targetOffset(-<span class="dig">68</span>,-<span class="dig">15</span>))
+<span class="skw">click</span>(<img src="1456091721790.png" />)
+
+<span class="kw">print</span>(applicantName)
+</pre>
+</body>
+</html>

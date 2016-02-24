@@ -22,7 +22,7 @@ class FooterLinks(unittest.TestCase):
         os.system("taskkill /f /im " +appTaskName)
         wait(2)
 
-    def test_AuctionsAndOrderOfSaleDropdown(self):
+    def test_AuctionsAndOrderOfSaleDropdown_BW12(self):
         click(Pattern("MainPage_Footer_Auctions-1.png").similar(0.76))
         reg = Region(135,540,290,181)
         img = capture(reg)
@@ -34,7 +34,7 @@ class FooterLinks(unittest.TestCase):
         else:
             assert True
 
-    def test_AuctionsAndOrderOfSaleSessions(self):
+    def test_AuctionsAndOrderOfSaleSessions_BW12(self):
         click(Pattern("MainPage_Footer_Auctions-2.png").similar(0.76))
         reg = Region(135,540,290,181)
         img = capture(reg)
@@ -47,7 +47,7 @@ class FooterLinks(unittest.TestCase):
 
         
 
-    def test_FooterAuctionVenues(self):
+    def test_FooterAuctionVenues_BW13(self):
         click(Pattern("MainPage_Footer_AuctionsVenues.png").similar(0.74))
         wait(1)
         if exists(Pattern("AuctionVenue_Map.png").similar(0.86)):
@@ -55,7 +55,7 @@ class FooterLinks(unittest.TestCase):
         else:
             assert False
     
-    def test_FooterMortgageeSales(self):
+    def test_FooterMortgageeSales_BW14(self):
         click(Pattern("MainPage_Footer_MortgageeSales.png").similar(0.76))
         
         if exists(Pattern("MainPageSearch_MortgageeSales_Title.png").similar(0.85)):
@@ -63,7 +63,7 @@ class FooterLinks(unittest.TestCase):
         else:
             assert False
             
-    def test_FooterMortgageeSales(self):
+    def test_FooterMortgageeSales_BW183(self):
         click(Pattern("MainPage_Footer_OpenHomes.png").similar(0.76))
         wait(1)
         if exists(Pattern("PropertySearch_OpenHomes_CheckBox.png").similar(0.77)):
@@ -71,7 +71,7 @@ class FooterLinks(unittest.TestCase):
         else:
             assert False
                     
-    def test_FooterSoldProperties(self):
+    def test_FooterSoldProperties_BW15(self):
         click(Pattern("MainPage_Footer_SearchSoldProperties.png").similar(0.66).targetOffset(-3,1))
         wait(1)
         if exists(Pattern("SearchSoldProperties_SoldSticker.png").exact()):
@@ -79,7 +79,7 @@ class FooterLinks(unittest.TestCase):
         else:
             assert False
 
-    def test_FooterSearchSoldProperties(self):
+    def test_FooterSearchSoldProperties_BW16(self):
         reg = Region(159,570,265,187)
         img = capture(reg)
         click("SearchSoldProperties_Region_Dropdown.png")
@@ -119,7 +119,7 @@ class FooterLinks(unittest.TestCase):
 
 
 
-    def test_MobileSite(self):
+    def test_MobileSite_BW20(self):
         click(Pattern("MainPage_Footer_MobileSite.png").similar(0.73))
         wait(1)
 
@@ -131,7 +131,7 @@ class FooterLinks(unittest.TestCase):
         wait(4)
         
         
-    def test_AppStoreLink(self):
+    def test_AppStoreLink_BW20(self):
         click("MainPage_DownloadAppIos.png")
         wait(3)
         if exists(Pattern("AppStore_BarfootAppLogo.png").exact()):
@@ -139,7 +139,7 @@ class FooterLinks(unittest.TestCase):
         else:
             assert False
 
-    def test_AppStoreLink(self):
+    def test_AppStoreLink_BW20(self):
         click("MainPage_DownloadAppAndroid.png")
         wait(3)
         if exists(Pattern("AndroidStore_BarfootAppLogo.png").exact()):

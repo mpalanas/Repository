@@ -36,7 +36,7 @@ class WebsiteLoginComponent(unittest.TestCase):
 
         
 
-    def test_CreateAccount(self): 
+    def test_1CreateAccount_BW21(self): 
         configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
         config = json.loads(open(configPath).read())
         click("Account_Register_Button.png")
@@ -60,22 +60,6 @@ class WebsiteLoginComponent(unittest.TestCase):
         else:
             assert False
    
-
-    def test_login(self):
-        wait(2)
-        configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
-        config = json.loads(open(configPath).read())
-        click("SigninPage_SignIn_Button.png")
-        click(Pattern("SignInPopUp_emailAddress_field.png").similar(0.62).targetOffset(-100,15))
-        type(config["username"])
-        type(Key.TAB)
-        type(config["password"])
-        click(Pattern("SignInPopUp_SignIn_Button.png").similar(0.94))
-        wait(3)
-        if exists("UsernameMyAccount-1.png"):
-            assert True
-        else:
-            assert False
 
     
 

@@ -29,7 +29,7 @@ class PasswordReset(unittest.TestCase):
         appTaskName = config["appTaskName"]
         os.system("taskkill /f /im " +appTaskName)
 
-    def test_changePassword(self):
+    def test_changePassword_BW126(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
         config = json.loads(open(configPath).read())
         click("SigninPage_SignIn_Button.png")
@@ -52,7 +52,7 @@ class PasswordReset(unittest.TestCase):
         else:
             assert False
 
-    def test_loginNewPassword(self):
+    def test_loginNewPassword_BW126(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
         config = json.loads(open(configPath).read())
         click("SigninPage_SignIn_Button.png")

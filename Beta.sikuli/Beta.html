@@ -70,29 +70,39 @@
 <h2>Beta.sikuli</h2> <a href="Beta.zip">(Download this script)</a>
 </div>
 <pre class="sikuli-code">
-<span class="skw">click</span>(Pattern(<img src="1455759702970.png" />).targetOffset(-<span class="dig">7</span>,<span class="dig">15</span>))
-<span class="skw">click</span>(<img src="1455759733498.png" />)
-<span class="skw">type</span>(<span class="str">"Barfoot"</span>)
-<span class="skw">click</span>(<img src="1455759760088.png" />)
-<span class="skw">type</span>(<span class="str">"TestAnalyst"</span>)
-<span class="skw">click</span>(Pattern(<img src="1455759777861.png" />).targetOffset(-<span class="dig">14</span>,-<span class="dig">6</span>))
-<span class="skw">type</span>(<span class="str">"3 years"</span>)
-<span class="skw">click</span>(<img src="1455759828241.png" />)
-<span class="skw">click</span>(Pattern(<img src="1455759848453.png" />).targetOffset(-<span class="dig">14</span>,-<span class="dig">43</span>))
-wheel(<img src="1455760115161.png" />, WHEEL_DOWN,<span class="dig">3</span>)
-<span class="skw">wait</span>(<span class="dig">2</span>)
-<span class="skw">click</span>(<img src="1455760150000.png" />)
-<span class="skw">type</span>(<span class="str">"Simon Casey"</span>)
-<span class="skw">click</span>(<img src="1455760179837.png" />)
-<span class="skw">type</span>(<span class="str">"09 444 6320"</span>)
-<span class="skw">click</span>(<img src="1455760705886.png" />)
-<span class="skw">type</span>(<span class="str">"09 444 6321"</span>)
-<span class="skw">click</span>(<img src="1455760727159.png" />)
-<span class="skw">type</span>(<span class="str">"simon@test.com"</span>)
-wheel(<img src="1455761100673.png" />, WHEEL_DOWN,<span class="dig">2</span>)
+<span class="kw">import</span> json
+<span class="kw">import</span> os
+
+configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
+config = json.loads(open(configPath).read())
+
+<span class="skw">type</span>(<span class="str">"l"</span>, KeyModifier.CTRL)
+<span class="skw">type</span>(config[<span class="str">"url"</span>]+<span class="str">"/sell/property-appraisal"</span> + Key.ENTER)
 <span class="skw">wait</span>(<span class="dig">1</span>)
-<span class="skw">click</span>(Pattern(<img src="1455761114715.png" />).targetOffset(-<span class="dig">16</span>,<span class="dig">18</span>))
-<span class="skw">click</span>(<img src="1455761138197.png" />)
+wheel(Pattern(<img src="1456279042865-1.png" />).similar(<span class="dig">0.89</span>), WHEEL_DOWN,<span class="dig">2</span>)
+<span class="skw">wait</span>(<span class="dig">1</span>)
+<span class="skw">click</span>(Pattern(<img src="1456278494997-1.png" />).similar(<span class="dig">0.68</span>).targetOffset(-<span class="dig">29</span>,<span class="dig">13</span>))
+<span class="skw">type</span>(<span class="str">"Lambrown drive"</span>)
+<span class="skw">type</span>(Key.TAB)
+<span class="skw">type</span>(<span class="str">"TestName"</span>)
+<span class="skw">type</span>(Key.TAB)
+<span class="skw">type</span>(<span class="str">"TestEmail@test.com"</span>)
+<span class="skw">type</span>(Key.TAB)
+<span class="skw">type</span>(<span class="str">"09 123 5689"</span>)
+<span class="skw">type</span>(Key.TAB)
+<span class="skw">wait</span>(<span class="dig">1</span>)
+wheel(Pattern(<img src="1456279554509-1.png" />).targetOffset(-<span class="dig">35</span>,-<span class="dig">1</span>), WHEEL_DOWN,<span class="dig">2</span>)
+<span class="skw">click</span>(Pattern(<img src="1456279554509-1.png" />).targetOffset(-<span class="dig">35</span>,-<span class="dig">1</span>))
+<span class="skw">click</span>(Pattern(<img src="1456280641894.png" />).targetOffset(-<span class="dig">27</span>,<span class="dig">7</span>))
+<span class="skw">type</span>(<span class="str">"anytime"</span>)
+
+<span class="skw">click</span>(<img src="1456280363910.png" />)
+<span class="skw">type</span>(<span class="str">"albany"</span> + Key.ENTER)
+<span class="skw">wait</span>(<span class="dig">2</span>)
+<span class="skw">click</span>(<img src="1456280938856.png" />)
+
+<span class="skw">type</span>(<span class="str">"amber"</span> + Key.ENTER)
+<span class="skw">click</span>(<img src="1456278623428-1.png" />)
 </pre>
 </body>
 </html>

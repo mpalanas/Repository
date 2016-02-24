@@ -50,7 +50,7 @@ class SavedProperties(unittest.TestCase):
         os.system("taskkill /f /im " +appTaskName)
 
         
-    def test_CommercialSaveProperty(self):           
+    def test_CommercialSaveProperty_BW131(self):           
         wait(Pattern("UsernameMyAccount-1.png").targetOffset(81,-2))
         click(Pattern("FrontPage_Commercial_Button.png").similar(0.80))
         wait(2)
@@ -71,7 +71,7 @@ class SavedProperties(unittest.TestCase):
         else:
             assert False
 
-    def test_ResidentialSavedProperties(self):
+    def test_ResidentialSavedProperties_BW128(self):
         wait(Pattern("UsernameMyAccount-1.png").targetOffset(81,-2))
         click("FrontPage_Buy_Button.png")
         wait(2)
@@ -92,7 +92,7 @@ class SavedProperties(unittest.TestCase):
         else:
             assert False
 
-    def test_RuralSavedProperties(self):
+    def test_RuralSavedProperties_BW129(self):
         wait(Pattern("UsernameMyAccount-1.png").targetOffset(81,-2))
         click("FrontPage_RuralSearch_Button.png")
         wait(2)
@@ -113,7 +113,7 @@ class SavedProperties(unittest.TestCase):
         else:
             assert False
 
-    def test_RentalSavedProperties(self):
+    def test_RentalSavedProperties_130(self):
         wait(Pattern("UsernameMyAccount-1.png").targetOffset(81,-2))
         click("FrontPage_Rent_Button.png")
         wait(2)

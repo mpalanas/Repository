@@ -34,9 +34,9 @@ dir='C:\SikuliScripts\Results'
 outfile=file(os.path.join(dir,fileName), "wb")
 
 
-suite=unittest.TestLoader().loadTestsFromTestCase(FooterLinks) # setup new test suite
-#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(FooterLinks))
-
+suite=unittest.TestLoader().loadTestsFromTestCase(WebsiteLoginComponent) # setup new test suite
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(SavedProperties))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(SavedSearch))
 
 
 

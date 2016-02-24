@@ -92,20 +92,20 @@
         os.system(<span class="str">"taskkill /f /im "</span> +appTaskName)
 
         <span class="skw">wait</span>(<span class="dig">2</span>)
-    <span class="kw">def</span> test_AgentDetail(self):
+    <span class="kw">def</span> test_AgentDetail_BW112(self):
         <span class="kw">if</span> exists(Pattern(<img src="AgentPage_AgentDetails.png" />).similar(<span class="dig">0.94</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_AgentProperties(self):
+    <span class="kw">def</span> test_AgentProperties_BW113(self):
         <span class="skw">click</span>(Pattern(<img src="AgentPage_Properties_Button.png" />).targetOffset(<span class="dig">37</span>,<span class="dig">1</span>))
         <span class="kw">if</span> exists(<img src="OpenHome_MoreDetailsProperty_Button-1.png" />):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_AgentOpenHome(self):
+    <span class="kw">def</span> test_AgentOpenHome_BW115(self):
         <span class="skw">click</span>(<img src="AgentPage_OpenHome_Button.png" />)
         <span class="skw">click</span>(Pattern(<img src="1454634416653.png" />).similar(<span class="dig">0.73</span>))
 
@@ -114,14 +114,14 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_AgentSoldProperties(self):
+    <span class="kw">def</span> test_AgentSoldProperties_BW114(self):
         <span class="skw">click</span>(<img src="AgentPage_SoldProperties_Button.png" />)
         <span class="kw">if</span> exists(Pattern(<img src="SoldProperty_SoldSticker.png" />).exact()):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_AgentVideo(self):
+    <span class="kw">def</span> test_AgentVideo_BW118(self):
         <span class="skw">click</span>(Pattern(<img src="AgentPage_Video_Button.png" />).similar(<span class="dig">0.84</span>))
         <span class="skw">wait</span>(<span class="dig">4</span>)
         hover(<img src="AgentPage_AgentVideo.png" />)

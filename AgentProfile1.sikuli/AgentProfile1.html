@@ -98,20 +98,20 @@
 
         <span class="skw">wait</span>(<span class="dig">2</span>)
 
-    <span class="kw">def</span> test_AgentDetail(self):
+    <span class="kw">def</span> test_AgentDetail_BW112(self):
         <span class="kw">if</span> exists(Pattern(<img src="AgentPage_AgentDetail.png" />).similar(<span class="dig">0.94</span>)):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_AgentProperties(self):
+    <span class="kw">def</span> test_AgentProperties_BW113(self):
         <span class="skw">click</span>(Pattern(<img src="AgentPage_Properties_Button.png" />).targetOffset(<span class="dig">36</span>,<span class="dig">3</span>))
         <span class="kw">if</span> exists(<img src="OpenHome_MoreDetailsProperty_Button.png" />):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_AgentOpenHome(self):
+    <span class="kw">def</span> test_AgentOpenHome_BW115(self):
         <span class="skw">click</span>(<img src="AgentPage_OpenHome_Button.png" />)
         <span class="skw">click</span>(<img src="OpenHome_MoreDetailsProperty_Button.png" />)
 
@@ -120,9 +120,29 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_AgentSoldProperties(self):
+    <span class="kw">def</span> test_AgentSoldPropertiesBW114(self):
         <span class="skw">click</span>(<img src="AgentPage_SoldProperties_Button.png" />)
         <span class="kw">if</span> exists(Pattern(<img src="SoldProperty_SoldSticker.png" />).exact()):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
+
+    <span class="kw">def</span> test_RequestAnAppraisal(self):
+        <span class="skw">click</span>(Pattern(<img src="AgentPage_RequestAnAppraisal_Button.png" />).similar(<span class="dig">0.68</span>))
+        wheel(Pattern(<img src="Title_PropertyAppraisal.png" />).similar(<span class="dig">0.89</span>), WHEEL_DOWN,<span class="dig">2</span>)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="skw">click</span>(Pattern(<img src="RequestAppraisalPage_AddressField_Text.png" />).similar(<span class="dig">0.68</span>).targetOffset(-<span class="dig">29</span>,<span class="dig">13</span>))
+        <span class="skw">type</span>(<span class="str">"Lambrown drive"</span>)
+        <span class="skw">type</span>(Key.TAB)
+        <span class="skw">type</span>(<span class="str">"TestName"</span>)
+        <span class="skw">type</span>(Key.TAB)
+        <span class="skw">type</span>(<span class="str">"TestEmail@test.com"</span>)
+        <span class="skw">type</span>(Key.TAB)
+        <span class="skw">type</span>(<span class="str">"09 123 5689"</span>)
+        <span class="skw">type</span>(Key.TAB)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="skw">click</span>(<img src="RequestAppraisalPage_Submit_Button.png" />)
+        <span class="kw">if</span> exists(<img src="RequestAppraisalPage_EmailConfirmation.png" />):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:
             <span class="kw">assert</span> False

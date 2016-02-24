@@ -94,7 +94,7 @@
         os.system(<span class="str">"taskkill /f /im "</span> +appTaskName)
         <span class="skw">wait</span>(<span class="dig">2</span>)
 
-    <span class="kw">def</span> test_AuctionsAndOrderOfSaleDropdown(self):
+    <span class="kw">def</span> test_AuctionsAndOrderOfSaleDropdown_BW12(self):
         <span class="skw">click</span>(Pattern(<img src="MainPage_Footer_Auctions-1.png" />).similar(<span class="dig">0.76</span>))
         reg = Region(<span class="dig">135</span>,<span class="dig">540</span>,<span class="dig">290</span>,<span class="dig">181</span>)
         img = <span class="skw">capture</span>(reg)
@@ -106,7 +106,7 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> True
 
-    <span class="kw">def</span> test_AuctionsAndOrderOfSaleSessions(self):
+    <span class="kw">def</span> test_AuctionsAndOrderOfSaleSessions_BW12(self):
         <span class="skw">click</span>(Pattern(<img src="MainPage_Footer_Auctions-2.png" />).similar(<span class="dig">0.76</span>))
         reg = Region(<span class="dig">135</span>,<span class="dig">540</span>,<span class="dig">290</span>,<span class="dig">181</span>)
         img = <span class="skw">capture</span>(reg)
@@ -119,7 +119,7 @@
 
 
 
-    <span class="kw">def</span> test_FooterAuctionVenues(self):
+    <span class="kw">def</span> test_FooterAuctionVenues_BW13(self):
         <span class="skw">click</span>(Pattern(<img src="MainPage_Footer_AuctionsVenues.png" />).similar(<span class="dig">0.74</span>))
         <span class="skw">wait</span>(<span class="dig">1</span>)
         <span class="kw">if</span> exists(Pattern(<img src="AuctionVenue_Map.png" />).similar(<span class="dig">0.86</span>)):
@@ -127,7 +127,7 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_FooterMortgageeSales(self):
+    <span class="kw">def</span> test_FooterMortgageeSales_BW14(self):
         <span class="skw">click</span>(Pattern(<img src="MainPage_Footer_MortgageeSales.png" />).similar(<span class="dig">0.76</span>))
 
         <span class="kw">if</span> exists(Pattern(<img src="MainPageSearch_MortgageeSales_Title.png" />).similar(<span class="dig">0.85</span>)):
@@ -135,7 +135,7 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_FooterMortgageeSales(self):
+    <span class="kw">def</span> test_FooterMortgageeSales_BW183(self):
         <span class="skw">click</span>(Pattern(<img src="MainPage_Footer_OpenHomes.png" />).similar(<span class="dig">0.76</span>))
         <span class="skw">wait</span>(<span class="dig">1</span>)
         <span class="kw">if</span> exists(Pattern(<img src="PropertySearch_OpenHomes_CheckBox.png" />).similar(<span class="dig">0.77</span>)):
@@ -143,7 +143,7 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_FooterSoldProperties(self):
+    <span class="kw">def</span> test_FooterSoldProperties_BW15(self):
         <span class="skw">click</span>(Pattern(<img src="MainPage_Footer_SearchSoldProperties.png" />).similar(<span class="dig">0.66</span>).targetOffset(-<span class="dig">3</span>,<span class="dig">1</span>))
         <span class="skw">wait</span>(<span class="dig">1</span>)
         <span class="kw">if</span> exists(Pattern(<img src="SearchSoldProperties_SoldSticker.png" />).exact()):
@@ -151,7 +151,7 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_FooterSearchSoldProperties(self):
+    <span class="kw">def</span> test_FooterSearchSoldProperties_BW16(self):
         reg = Region(<span class="dig">159</span>,<span class="dig">570</span>,<span class="dig">265</span>,<span class="dig">187</span>)
         img = <span class="skw">capture</span>(reg)
         <span class="skw">click</span>(<img src="SearchSoldProperties_Region_Dropdown.png" />)
@@ -191,7 +191,7 @@
 
 
 
-    <span class="kw">def</span> test_MobileSite(self):
+    <span class="kw">def</span> test_MobileSite_BW20(self):
         <span class="skw">click</span>(Pattern(<img src="MainPage_Footer_MobileSite.png" />).similar(<span class="dig">0.73</span>))
         <span class="skw">wait</span>(<span class="dig">1</span>)
 
@@ -203,7 +203,7 @@
         <span class="skw">wait</span>(<span class="dig">4</span>)
 
 
-    <span class="kw">def</span> test_AppStoreLink(self):
+    <span class="kw">def</span> test_AppStoreLink_BW20(self):
         <span class="skw">click</span>(<img src="MainPage_DownloadAppIos.png" />)
         <span class="skw">wait</span>(<span class="dig">3</span>)
         <span class="kw">if</span> exists(Pattern(<img src="AppStore_BarfootAppLogo.png" />).exact()):
@@ -211,7 +211,7 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_AppStoreLink(self):
+    <span class="kw">def</span> test_AppStoreLink_BW20(self):
         <span class="skw">click</span>(<img src="MainPage_DownloadAppAndroid.png" />)
         <span class="skw">wait</span>(<span class="dig">3</span>)
         <span class="kw">if</span> exists(Pattern(<img src="AndroidStore_BarfootAppLogo.png" />).exact()):

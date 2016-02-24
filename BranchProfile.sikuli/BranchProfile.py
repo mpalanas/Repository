@@ -24,13 +24,13 @@ class BranchProfile(unittest.TestCase):
         wait(2)
         
            
-    def test_BranchDetails(self):   
+    def test_BranchProfile_BW119(self):   
         if exists(Pattern("BranchPage_BranchDetails.png").similar(0.61)):
             assert True
         else:
             assert False
                 
-    def test_BranchStaffManager(self):
+    def test_BranchStaffManager_BW120(self):
         click("BranchPage_OurTeam_Button.png")
         wait(3)
         if exists("OurTeamPage_ManagersName.png"):
@@ -38,14 +38,14 @@ class BranchProfile(unittest.TestCase):
         else:
             assert False
                 
-    def test_BranchStaffPropertyManagement(self):
+    def test_BranchStaffPropertyManagement_BW120(self):
         click("BranchPage_OurTeam_Button.png")   
         if exists(Pattern("OurTeamPage_PropertyManagement.png").similar(0.85)):
             assert True
         else:
             assert False
 
-    def test_BranchStaffResidentialSalespeople(self):
+    def test_BranchStaffResidentialSalespeople_BW120(self):
         click("BranchPage_OurTeam_Button.png")
         wheel(Pattern("OurTeamPage_PropertyManagement.png").similar(0.76), WHEEL_DOWN, 4)
         
@@ -54,7 +54,7 @@ class BranchProfile(unittest.TestCase):
         else:
             assert False    
 
-    def test_BranchStaffRuralSalespeople(self):    
+    def test_BranchStaffRuralSalespeople_BW120(self):    
         click("BranchPage_OurTeam_Button.png")
         wheel(Pattern("OurTeamPage_PropertyManagement.png").similar(0.76), WHEEL_DOWN, 80)
         
@@ -63,7 +63,7 @@ class BranchProfile(unittest.TestCase):
         else:
             assert False    
                 
-    def test_BranchProperties(self):
+    def test_BranchProperties_BW121(self):
         click(Pattern("BranchPage_Properties_Button.png").similar(0.76))
         find("BranchPage_AlbanyProperties.png")
         if exists(Pattern("BranchPage_PropertiesMoreDetail_Button.png").similar(0.71)):
@@ -71,7 +71,7 @@ class BranchProfile(unittest.TestCase):
         else:
             assert False
 
-    def test_BranchRentals(self):            
+    def test_BranchRentals_BW181(self):            
         click("BranchPage_Rentals_Button.png")
         find("BranchPage_AlbanyRentals.png")
         click("BranchPage_PropertiesMoreDetail_Button.png")
@@ -80,7 +80,7 @@ class BranchProfile(unittest.TestCase):
         else:
             assert False
 
-    def test_BranchSold(self):                
+    def test_BranchSold_BW122(self):                
         click("BranchPage_SoldProperties_Button.png")
         find("BranchPAge_AlbanySoldProperties.png")
         if exists(Pattern("BranchPage_SoldSticker.png").exact()):
@@ -88,7 +88,7 @@ class BranchProfile(unittest.TestCase):
         else:
             assert False
 
-    def test_branchOpenHome(self):                
+    def test_branchOpenHome_BW182(self):                
         click("BranchPage_OpenHome_Button.png")
         find("BranchPage_AlbanyOpenHomes.png")
         click("BranchPage_OpenHomeMoreDetails.png")
@@ -98,7 +98,7 @@ class BranchProfile(unittest.TestCase):
         else:
             assert False
 
-    def test_branchSorroundingSuburbs(self): 
+    def test_branchSorroundingSuburbs_BW179(self): 
         find("BrancPage_SorroundingSuburbs.png").below(30).left(-15).click()
         if exists(Pattern("ResultsPage_Title.png").similar(0.79)):
             assert True
@@ -106,5 +106,25 @@ class BranchProfile(unittest.TestCase):
         else:
             assert False
     
-    
+    def test_requestAnAppraisal_BW124(self):
+        click(Pattern("AgentPage_RequestAnAppraisal_Button.png").similar(0.68))
+        wheel(Pattern("Title_PropertyAppraisal.png").similar(0.89), WHEEL_DOWN,2)
+        wait(1)
+        click(Pattern("RequestAppraisalPage_AddressField_Text.png").similar(0.68).targetOffset(-29,13))
+        type("Lambrown drive")
+        type(Key.TAB)
+        type("TestName")
+        type(Key.TAB)
+        type("TestEmail@test.com")
+        type(Key.TAB)
+        type("09 123 5689")
+        type(Key.TAB)
+        wait(1)
+        
+        click("RequestAppraisalPage_Submit_Button.png")
+        
+        if exists("RequestAppraisalPage_EmailConfirmation.png"):
+            assert True
+        else:
+            assert False
 

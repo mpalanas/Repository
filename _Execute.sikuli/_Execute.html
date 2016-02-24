@@ -106,9 +106,9 @@ dir=<span class="str">'C:\SikuliScripts\Results'</span>
 outfile=file(os.path.join(dir,fileName), <span class="str">"wb"</span>)
 
 
-suite=unittest.TestLoader().loadTestsFromTestCase(FooterLinks) <span class="cmt"># setup new test suite</span>
-<span class="cmt">#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(FooterLinks))</span>
-
+suite=unittest.TestLoader().loadTestsFromTestCase(WebsiteLoginComponent) <span class="cmt"># setup new test suite</span>
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(SavedProperties))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(SavedSearch))
 
 
 

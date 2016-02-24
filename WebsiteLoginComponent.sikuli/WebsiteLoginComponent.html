@@ -108,7 +108,7 @@
 
 
 
-    <span class="kw">def</span> test_CreateAccount(self):
+    <span class="kw">def</span> test_1CreateAccount_BW21(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
         config = json.loads(open(configPath).read())
         <span class="skw">click</span>(<img src="Account_Register_Button.png" />)
@@ -127,23 +127,6 @@
         <span class="skw">click</span>(<img src="RegisterPage_Register_Button.png" />)
         <span class="skw">wait</span>(<span class="dig">4</span>)
 
-        <span class="kw">if</span> exists(<img src="UsernameMyAccount-1.png" />):
-            <span class="kw">assert</span> True
-        <span class="kw">else</span>:
-            <span class="kw">assert</span> False
-
-
-    <span class="kw">def</span> test_login(self):
-        <span class="skw">wait</span>(<span class="dig">2</span>)
-        configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
-        config = json.loads(open(configPath).read())
-        <span class="skw">click</span>(<img src="SigninPage_SignIn_Button.png" />)
-        <span class="skw">click</span>(Pattern(<img src="SignInPopUp_emailAddress_field.png" />).similar(<span class="dig">0.62</span>).targetOffset(-<span class="dig">100</span>,<span class="dig">15</span>))
-        <span class="skw">type</span>(config[<span class="str">"username"</span>])
-        <span class="skw">type</span>(Key.TAB)
-        <span class="skw">type</span>(config[<span class="str">"password"</span>])
-        <span class="skw">click</span>(Pattern(<img src="SignInPopUp_SignIn_Button.png" />).similar(<span class="dig">0.94</span>))
-        <span class="skw">wait</span>(<span class="dig">3</span>)
         <span class="kw">if</span> exists(<img src="UsernameMyAccount-1.png" />):
             <span class="kw">assert</span> True
         <span class="kw">else</span>:

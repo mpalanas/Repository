@@ -94,7 +94,7 @@
         os.system(<span class="str">"taskkill /f /im "</span> +appTaskName)
         <span class="skw">wait</span>(<span class="dig">2</span>)
 
-    <span class="kw">def</span> test_addressIDSearch(self):
+    <span class="kw">def</span> test_addressIDSearch_BW5(self):
 
         <span class="skw">type</span>(<span class="str">"Glenfield"</span>)
         <span class="skw">find</span>(Pattern(<img src="MainPage_SearchBar_Results.png" />).similar(<span class="dig">0.50</span>))
@@ -105,7 +105,7 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_branch(self):
+    <span class="kw">def</span> test_branch_BW5(self):
         paste(<span class="str">"Manurewa branch"</span>)
         <span class="skw">wait</span> (<span class="dig">3</span>)
         <span class="cmt">#find("mainPage_quickSearch_resultHeading.png")</span>
@@ -116,7 +116,7 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_propertyID(self):
+    <span class="kw">def</span> test_propertyID_BW5(self):
         <span class="skw">type</span>(<span class="str">"15000"</span>)
         <span class="skw">click</span>(Pattern(<img src="MainPage_quicksearch_Button.png" />).similar(<span class="dig">0.89</span>).targetOffset(-<span class="dig">1</span>,<span class="dig">26</span>))
         <span class="kw">if</span> exists(Pattern(<img src="propertyDetail_rentalapplication_Button.png" />).similar(<span class="dig">0.72</span>)):
@@ -124,7 +124,7 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_propertyID(self):
+    <span class="kw">def</span> test_agentName_BW5(self):
 
         <span class="skw">type</span>(<span class="str">"Ketiesha"</span> + Key.ENTER)
         <span class="kw">if</span> exists(Pattern(<img src="AgentPage_AgentHeading.png" />).similar(<span class="dig">0.85</span>)):

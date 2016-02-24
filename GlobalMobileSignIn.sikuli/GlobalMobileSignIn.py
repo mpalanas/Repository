@@ -38,20 +38,30 @@ class GlobalMobileSignIn(unittest.TestCase):
             appTaskName = config["appTaskName"]
             os.system("taskkill /f /im " +appTaskName)
 
-#    def test_invalidInputSignin(self):
-#        click("globalMobileSigninPage_signin_Button.png")
-#        if exists("globalMobileSigninPage_signin_Error.png"):
- #           assert True
-##       else:
-#            assert False
-#   def test_invalidInputSignin(self):        
-#        click("globalMobileSigninPage_registerNow_Button.png")
-#        if exists("globalMobileSigninPage_register_error.png"):
-#           assert True
-#        else:
-#            assert False
+    def test_invalidInputSignin_BW188(self):
+        click("globalMobileSigninPage_signin_Button.png")
+        if exists("globalMobileSigninPage_signin_Error.png"):
+           assert True
+        else:
+            assert False
+    def test_invalidInputRegisterNow_BW188(self):
+        click("GlobalMobileSignin_CreateAccount_Button.png")
+        click("globalMobileSigninPage_registerNow_Button.png")
+        if exists("globalMobileSigninPage_register_error.png"):Click o
+           assert True
+        else:
+            assert False
 
-    def test_signin(self):
+    def test_invalidInputEmail_BW188(self):
+        click(Pattern("1456277744919.png").targetOffset(-63,19))
+        type(Key.ENTER)
+        if exists("1456277796102.png"):
+            assert True
+        else:
+            assert False
+
+
+    def test_signin_BW184(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
         config = json.loads(open(configPath).read())#reads the jsonfile
         click(Pattern("globalMobileSigninPage_signInEmail_textbox.png").targetOffset(-59,16))
@@ -67,7 +77,7 @@ class GlobalMobileSignIn(unittest.TestCase):
         else:
             assert False
                 
-    def test_register(self):
+    def test_register_BW185(self):
         timestr = time.strftime("%d%m%Y%H%M%S")#creates a unique username for testing
         configPath = os.path.join(os.path.dirname(os.getcwd()), "SikuliScripts\Repository\config.json")
         with open(configPath, "r") as config:
@@ -96,7 +106,7 @@ class GlobalMobileSignIn(unittest.TestCase):
         else:
             assert False
 
-    def test_googleLogin(self):
+    def test_googleLogin_BW186(self):
         click(Pattern("globalMobileSignIn_Google+_button.png").exact())
         wait(4)
         click(Pattern("GlobalMobileSignIn_Allow_GoogleButton.png").similar(0.97))
@@ -107,7 +117,7 @@ class GlobalMobileSignIn(unittest.TestCase):
         else:
             assert False
 
-    def test_haveAnAccountLink(self):
+    def test_haveAnAccountLink_BW187(self):
         click("GlobalMobileSignin_CreateAccount_Button.png")
         click(Pattern("GlobalMobileSignin_HaveAnAccount_Button.png").exact())
         if exists(Pattern("GlobamMobileSignin_SignInPage.png").exact()):

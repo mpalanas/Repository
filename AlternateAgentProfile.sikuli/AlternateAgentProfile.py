@@ -20,20 +20,20 @@ class AlternateAgentProfile(unittest.TestCase):
         os.system("taskkill /f /im " +appTaskName)
            
         wait(2)
-    def test_AgentDetail(self):
+    def test_AgentDetail_BW112(self):
         if exists(Pattern("AgentPage_AgentDetails.png").similar(0.94)):
             assert True
         else:
             assert False
 
-    def test_AgentProperties(self):
+    def test_AgentProperties_BW113(self):
         click(Pattern("AgentPage_Properties_Button.png").targetOffset(37,1))
         if exists("OpenHome_MoreDetailsProperty_Button-1.png"):
             assert True
         else:
             assert False
 
-    def test_AgentOpenHome(self):
+    def test_AgentOpenHome_BW115(self):
         click("AgentPage_OpenHome_Button.png")
         click(Pattern("1454634416653.png").similar(0.73))
         
@@ -42,14 +42,14 @@ class AlternateAgentProfile(unittest.TestCase):
         else:
             assert False
 
-    def test_AgentSoldProperties(self):
+    def test_AgentSoldProperties_BW114(self):
         click("AgentPage_SoldProperties_Button.png")
         if exists(Pattern("SoldProperty_SoldSticker.png").exact()):
             assert True
         else:
             assert False
 
-    def test_AgentVideo(self):
+    def test_AgentVideo_BW118(self):
         click(Pattern("AgentPage_Video_Button.png").similar(0.84))
         wait(4)
         hover("AgentPage_AgentVideo.png")

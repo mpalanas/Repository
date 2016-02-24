@@ -120,7 +120,7 @@
 
 
 
-    <span class="kw">def</span> test_1createSavedSearch(self):
+    <span class="kw">def</span> test_1createSavedSearch_BW132(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
         config = json.loads(open(configPath).read())
 
@@ -148,7 +148,7 @@
             <span class="kw">assert</span> False
 
 
-    <span class="kw">def</span> test_2EditSavedSearch(self):
+    <span class="kw">def</span> test_2EditSavedSearch_BW136(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
         config = json.loads(open(configPath).read())
         <span class="skw">wait</span>(<img src="MainPage_MyAccount_Dropdown.png" />)
@@ -167,7 +167,7 @@
             <span class="kw">assert</span> False
 
 
-    <span class="kw">def</span> test_3SavedSearchEditSchedule(self):
+    <span class="kw">def</span> test_3SavedSearchEditSchedule_BW136(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
         config = json.loads(open(configPath).read())
         <span class="skw">wait</span>(<img src="MainPage_MyAccount_Dropdown.png" />)
@@ -188,7 +188,7 @@
             <span class="kw">assert</span> False
 
 
-    <span class="kw">def</span> test_4SavedSearchRemove(self):
+    <span class="kw">def</span> test_4SavedSearchRemove_BW141(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
         config = json.loads(open(configPath).read())
         <span class="skw">wait</span>(<img src="MainPage_MyAccount_Dropdown.png" />)

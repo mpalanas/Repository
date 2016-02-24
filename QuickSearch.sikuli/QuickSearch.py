@@ -22,7 +22,7 @@ class QuickSearch(unittest.TestCase):
         os.system("taskkill /f /im " +appTaskName)
         wait(2)
 
-    def test_addressIDSearch(self):        
+    def test_addressIDSearch_BW5(self):        
         
         type("Glenfield")
         find(Pattern("MainPage_SearchBar_Results.png").similar(0.50))
@@ -33,7 +33,7 @@ class QuickSearch(unittest.TestCase):
         else:
             assert False
             
-    def test_branch(self): 
+    def test_branch_BW5(self): 
         paste("Manurewa branch")
         wait (3)
         #find("mainPage_quickSearch_resultHeading.png")
@@ -44,7 +44,7 @@ class QuickSearch(unittest.TestCase):
         else:
             assert False
             
-    def test_propertyID(self): 
+    def test_propertyID_BW5(self): 
         type("15000")
         click(Pattern("MainPage_quicksearch_Button.png").similar(0.89).targetOffset(-1,26))
         if exists(Pattern("propertyDetail_rentalapplication_Button.png").similar(0.72)):
@@ -52,7 +52,7 @@ class QuickSearch(unittest.TestCase):
         else:
             assert False
 
-    def test_propertyID(self): 
+    def test_agentName_BW5(self): 
        
         type("Ketiesha" + Key.ENTER)
         if exists(Pattern("AgentPage_AgentHeading.png").similar(0.85)):

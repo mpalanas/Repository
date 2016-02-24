@@ -110,20 +110,30 @@
             appTaskName = config[<span class="str">"appTaskName"</span>]
             os.system(<span class="str">"taskkill /f /im "</span> +appTaskName)
 
-<span class="cmt">#    def test_invalidInputSignin(self):</span>
-<span class="cmt">#        click("globalMobileSigninPage_signin_Button.png")</span>
-<span class="cmt">#        if exists("globalMobileSigninPage_signin_Error.png"):</span>
- <span class="cmt">#           assert True</span>
-<span class="cmt">##       else:</span>
-<span class="cmt">#            assert False</span>
-<span class="cmt">#   def test_invalidInputSignin(self):        </span>
-<span class="cmt">#        click("globalMobileSigninPage_registerNow_Button.png")</span>
-<span class="cmt">#        if exists("globalMobileSigninPage_register_error.png"):</span>
-<span class="cmt">#           assert True</span>
-<span class="cmt">#        else:</span>
-<span class="cmt">#            assert False</span>
+    <span class="kw">def</span> test_invalidInputSignin_BW188(self):
+        <span class="skw">click</span>(<img src="globalMobileSigninPage_signin_Button.png" />)
+        <span class="kw">if</span> exists(<img src="globalMobileSigninPage_signin_Error.png" />):
+           <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
+    <span class="kw">def</span> test_invalidInputRegisterNow_BW188(self):
+        <span class="skw">click</span>(<img src="GlobalMobileSignin_CreateAccount_Button.png" />)
+        <span class="skw">click</span>(<img src="globalMobileSigninPage_registerNow_Button.png" />)
+        <span class="kw">if</span> exists(<img src="globalMobileSigninPage_register_error.png" />):Click o
+           <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_signin(self):
+    <span class="kw">def</span> test_invalidInputEmail_BW188(self):
+        <span class="skw">click</span>(Pattern(<img src="1456277744919.png" />).targetOffset(-<span class="dig">63</span>,<span class="dig">19</span>))
+        <span class="skw">type</span>(Key.ENTER)
+        <span class="kw">if</span> exists(<img src="1456277796102.png" />):
+            <span class="kw">assert</span> True
+        <span class="kw">else</span>:
+            <span class="kw">assert</span> False
+
+
+    <span class="kw">def</span> test_signin_BW184(self):
         configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
         config = json.loads(open(configPath).read())<span class="cmt">#reads the jsonfile</span>
         <span class="skw">click</span>(Pattern(<img src="globalMobileSigninPage_signInEmail_textbox.png" />).targetOffset(-<span class="dig">59</span>,<span class="dig">16</span>))
@@ -139,7 +149,7 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_register(self):
+    <span class="kw">def</span> test_register_BW185(self):
         timestr = time.strftime(<span class="str">"%d%m%Y%H%M%S"</span>)<span class="cmt">#creates a unique username for testing</span>
         configPath = os.path.join(os.path.dirname(os.getcwd()), <span class="str">"SikuliScripts\Repository\config.json"</span>)
         <span class="kw">with</span> open(configPath, <span class="str">"r"</span>) <span class="kw">as</span> config:
@@ -168,7 +178,7 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_googleLogin(self):
+    <span class="kw">def</span> test_googleLogin_BW186(self):
         <span class="skw">click</span>(Pattern(<img src="globalMobileSignIn_Google+_button.png" />).exact())
         <span class="skw">wait</span>(<span class="dig">4</span>)
         <span class="skw">click</span>(Pattern(<img src="GlobalMobileSignIn_Allow_GoogleButton.png" />).similar(<span class="dig">0.97</span>))
@@ -179,7 +189,7 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_haveAnAccountLink(self):
+    <span class="kw">def</span> test_haveAnAccountLink_BW187(self):
         <span class="skw">click</span>(<img src="GlobalMobileSignin_CreateAccount_Button.png" />)
         <span class="skw">click</span>(Pattern(<img src="GlobalMobileSignin_HaveAnAccount_Button.png" />).exact())
         <span class="kw">if</span> exists(Pattern(<img src="GlobamMobileSignin_SignInPage.png" />).exact()):

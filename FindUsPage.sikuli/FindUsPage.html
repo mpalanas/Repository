@@ -94,7 +94,7 @@
         os.system(<span class="str">"taskkill /f /im "</span> +appTaskName)
         <span class="skw">wait</span>(<span class="dig">2</span>)
 
-    <span class="kw">def</span> test_FindABranch(self):
+    <span class="kw">def</span> test_FindABranch_BW107(self):
         <span class="skw">click</span>(Pattern(<img src="FindUsPage_FindABranch_Button.png" />).similar(<span class="dig">0.86</span>).targetOffset(<span class="dig">47</span>,-<span class="dig">27</span>))
         <span class="skw">click</span>(Pattern(<img src="findABranch_textSearch.png" />).targetOffset(-<span class="dig">39</span>,<span class="dig">6</span>))
         <span class="skw">type</span>(<span class="str">"glen eden"</span>)
@@ -106,7 +106,7 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_FindASalesperson(self):
+    <span class="kw">def</span> test_FindASalesperson_BW103(self):
         <span class="skw">click</span>(<img src="FindUs_FindASalesprson_Button.png" />)
         <span class="skw">click</span>(<img src="FindAsalesperson_SearchBar.png" />)
         <span class="skw">type</span>(<span class="str">"Ketiesha"</span>)
@@ -117,7 +117,7 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_FindASalespersonDropdown(self):
+    <span class="kw">def</span> test_FindASalespersonDropdown_BW103(self):
         <span class="skw">click</span>(<img src="FindUs_FindASalesprson_Button.png" />)
         <span class="skw">click</span>(Pattern(<img src="FindAsalesperson_Branch_Dropwdown.png" />).similar(<span class="dig">0.62</span>))
         <span class="kw">if</span> exists(<img src="FindUs_Dropdown_ResultResRental.png" />):
@@ -125,7 +125,7 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_FindAPropertyManager(self):
+    <span class="kw">def</span> test_FindAPropertyManager_BW104(self):
         <span class="skw">click</span>(<img src="FindUs_FindApropertyManager_Button.png" />)
         <span class="skw">click</span>(<img src="FindApropertyManager_SearchBar.png" />)
         <span class="skw">type</span>(<span class="str">"Jane Auret"</span>)
@@ -137,7 +137,7 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_FindAPropertyManagerDropdown(self):
+    <span class="kw">def</span> test_FindAPropertyManagerDropdown_BW104(self):
         <span class="skw">click</span>(<img src="FindUs_FindApropertyManager_Button.png" />)
         <span class="skw">click</span>(Pattern(<img src="FindAPropertyManager_Dropdown.png" />).similar(<span class="dig">0.65</span>))
         <span class="skw">wait</span>(<span class="dig">1</span>)
@@ -146,7 +146,7 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_FindACommercialSalesperson(self):
+    <span class="kw">def</span> test_FindACommercialSalesperson_BW105(self):
         <span class="skw">click</span>(<img src="FindUs_FindAcommercialSalesperson_Button.png" />)
         <span class="skw">click</span>(<img src="FindUs_FindACommercialSalesperson_SearchBar.png" />)
         <span class="skw">type</span>(<span class="str">"cam paterson"</span>)
@@ -157,7 +157,7 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_FindACommercialSalespersonDropdown(self):
+    <span class="kw">def</span> test_FindACommercialSalespersonDropdown_BW105(self):
         <span class="skw">click</span>(<img src="FindUs_FindAcommercialSalesperson_Button.png" />)
         <span class="skw">click</span>(Pattern(<img src="FindACommercialAgent_Branch_Dropdown.png" />).similar(<span class="dig">0.62</span>))
         <span class="skw">wait</span>(<span class="dig">1</span>)
@@ -167,7 +167,7 @@
             <span class="kw">assert</span> False
 
 
-    <span class="kw">def</span> test_FindACommercialPropertyManager(self):
+    <span class="kw">def</span> test_FindACommercialPropertyManager_BW106(self):
         <span class="skw">click</span>(<img src="FindUs_FindACommercialPropertyManager_Button.png" />)
         <span class="skw">click</span>(<img src="FundAcommercialPropertyManager_SearchBar.png" />)
         <span class="skw">type</span>(<span class="str">"Hannah"</span>)
@@ -177,7 +177,7 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_FindACommercialPropertyManagerDropdown(self):
+    <span class="kw">def</span> test_FindACommercialPropertyManagerDropdown_BW106(self):
         <span class="skw">click</span>(<img src="FindUs_FindACommercialPropertyManager_Button.png" />)
         <span class="skw">click</span>(Pattern(<img src="FindUs_FindAcommercialPropertyManager_Dropdown.png" />).similar(<span class="dig">0.62</span>))
         <span class="skw">wait</span>(<span class="dig">1</span>)
@@ -186,7 +186,7 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_AuctionVenue(self):
+    <span class="kw">def</span> test_AuctionVenue_BW108(self):
         <span class="skw">click</span>(<img src="FindUs_AuctionVenues_Button.png" />)
         <span class="skw">wait</span>(<span class="dig">1</span>)
         <span class="kw">if</span> exists(<img src="VenuePage_Map_Map.png" />):
@@ -194,7 +194,7 @@
         <span class="kw">else</span>:
             <span class="kw">assert</span> False
 
-    <span class="kw">def</span> test_AuctionVenue(self):
+    <span class="kw">def</span> test_Complaints_BW109(self):
         <span class="skw">click</span>(<img src="FindUs_Complaints_Button.png" />)
         <span class="skw">wait</span>(<span class="dig">1</span>)
         <span class="skw">find</span>(<img src="Complaint_PageTitle.png" />)
